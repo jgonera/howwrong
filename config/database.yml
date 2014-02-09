@@ -26,7 +26,7 @@ default: &default
 development:
   <<: *default
   database: howwrong_development
-  username: postgres
+  username: howwrong
   password: q
 
   # Connect on a TCP socket. Omitted by default since the client uses a
