@@ -2,9 +2,8 @@
 
 ## Development setup
 
-* Install PostgreSQL.
-* Create database user, development database and test database using `psql`
-  (`sudo -u postgres psql`):
+Install PostgreSQL and create database user, development database and test
+database using `psql` (`sudo -u postgres psql`):
 
 ```sql
 create user howwrong with password 'q';
