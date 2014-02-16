@@ -49,3 +49,6 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'slim-rails'
+
+gem 'rspec-rails', '~> 3.0.0.beta', group: [:development, :test]
+gem 'capybara', '~> 2.2.1', group: [:development, :test]
