@@ -25,6 +25,7 @@ default: &default
 
 development:
   <<: *default
+  host: localhost
   database: howwrong_development
   username: howwrong
   password: q
