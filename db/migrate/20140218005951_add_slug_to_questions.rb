@@ -1,4 +1,4 @@
-class AddSlugs < ActiveRecord::Migration
+class AddSlugToQuestions < ActiveRecord::Migration
   def change
     change_table :questions do |t|
       t.string :slug
