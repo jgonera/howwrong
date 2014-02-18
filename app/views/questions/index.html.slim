@@ -1,1 +1,7 @@
 h2= @question.text
+= form_tag controller: 'questions', action: 'vote', slug: @question.slug do
+  - for answer in @question.answers do
+    label
+      input type="radio" name="answer_id" value=answer.id
+      = answer.label
+  button Submit
