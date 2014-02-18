@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140209031856) do
+ActiveRecord::Schema.define(version: 20140218002750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,5 +30,9 @@ ActiveRecord::Schema.define(version: 20140209031856) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_foreign_key "answers", "questions", name: "answers_question_id_fk", dependent: :delete
+
+  add_foreign_key "questions", "answers", name: "questions_correct_answer_id_fk", column: "correct_answer_id"
 
 end
