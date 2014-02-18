@@ -12,6 +12,9 @@ gem 'pg'
 # Enforce relations in the database
 gem 'foreigner'
 
+# Slugs
+gem 'friendly_id', '~> 5.0.0'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'
 
