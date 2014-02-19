@@ -21,13 +21,23 @@ describe "home page" do
       answers.each { |answer| expect(page).to have_content answer }
     end
 
-    it "allows voting" do
-      visit '/'
-      choose "Maybe"
-      click_button "Submit"
-      votes = @question.answers.find_by(label: "Maybe").votes
-      expect(votes).to eq 1
+    context "when vote is cast" do
+      before :each do
+        visit '/'
+        choose "Maybe"
+        click_button "Submit"
+      end
+
+      it "allows increases votes for answer" do
+        votes = @question.answers.find_by(label: "Maybe").votes
+        expect(votes).to eq 1
+      end
+
+      it "shows results" do
+        expect(page).to have_content "Yes0"
+        expect(page).to have_content "No0"
+        expect(page).to have_content "Maybe1"
+      end
     end
   end
-
 end
