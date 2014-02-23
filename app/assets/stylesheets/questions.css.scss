@@ -5,14 +5,16 @@
 $primary-color: #293939;
 h2 {
   font-family: Georgia, Serif;
-  font-weight:normal;
-  font-size:48px;
+  font-weight: normal;
+  font-size: 48px;
   color: white;
 }
 
 label {
-  font-family: Georgia, Serif;
-  font-weight:normal;
-  font-size:20px;
-  color:white;
+  font-family: 'Nunito', sans-serif;
+  font-weight: normal;
+  font-size: 20px;
+  color: white;
+  display: block;
+  margin-bottom: 10px;
 }
