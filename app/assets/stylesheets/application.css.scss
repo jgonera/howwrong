@@ -16,25 +16,79 @@
 @import "questions";
 
 $bg-color: #2E232B;
-$dark-color: #271D23;
+$dark-color: #221A20;
+$red-color: #FF4130;
+$grey-color: #645f63;
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+#container {
+  margin: 0 auto;
+  width: 980px;
+  text-align: left;
+}
+
+#content {
+  display: block;
+  margin-left:200px;
+}
+
+#leftpanel {
+  float: left;
+  height:100%;
+}
+
+#leftpanel li {
+  display: block;
+  background-color: $dark-color;
+  height: 32px;
+  margin-top: 10px;
+  padding: 20px 5px 5px 12px;
+
+}
+
+#leftpanel li a {
+  color: $grey-color;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+}
+
 #logo {
-  display:block;
-  width:151px;
-  height:163px;
+  width: 146px;
+  height: 158px;
   background-color: $dark-color;
   font-family: 'Nunito', sans-serif;
   font-weight: bold;
-}
-#logo span {
-  display:block;
-}
-body {
-  background-color: $bg-color;
-  width: 960px;
-  color:white;
-  font-family: Georgia, Serif;
+  font-size: 22px;
+  letter-spacing: 0.8px;
+  padding: 5px;
 }
 
+#logo em {
+  color: $red-color;
+}
+
+#logo span {
+  display: block;
+  margin: 12px;
+}
+
+#logo span:first-child {
+  display: block;
+  margin-top: 15px;
+}
+
+body {
+  background-color: $bg-color;
+  color: white;
+  font-family: Georgia, Serif;
+  text-align: center;
+}
 
 h1 {
   font-family: 'Nunito', sans-serif;

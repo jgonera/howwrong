@@ -6,10 +6,17 @@ html
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
   body
-    div id="logo"
-      span HOW 
-      span 
-        em WRONG 
-      span YOU 
-      span ARE
-    = yield
+    div id="container"
+      div id="leftpanel"
+        div id="logo"
+          span HOW 
+          span 
+            em WRONG 
+          span YOU 
+          span ARE
+        ul
+          li: a href="/about" About
+          li: a href="/ask" Ask a question
+          li: a href="/archive" Archive
+      div id="content"
+        = yield
