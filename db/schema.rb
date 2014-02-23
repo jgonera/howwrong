@@ -47,8 +47,4 @@ ActiveRecord::Schema.define(version: 20140218080147) do
 
   add_index "questions", ["slug"], name: "index_questions_on_slug", unique: true, using: :btree
 
-  add_foreign_key "answers", "questions", name: "answers_question_id_fk", dependent: :delete
-
-  add_foreign_key "questions", "answers", name: "questions_correct_answer_id_fk", column: "correct_answer_id"
-
 end

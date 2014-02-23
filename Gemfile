@@ -9,9 +9,6 @@ gem 'rails', '4.1.0.beta1'
 # Use postgresql as the database for Active Record
 gem 'pg'
 
-# Enforce relations in the database
-gem 'foreigner'
-
 # Slugs
 gem 'friendly_id', '~> 5.0.0'
 
