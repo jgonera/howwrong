@@ -1,6 +1,6 @@
 h3= @question.text
 table
   - for answer in @question.answers do
-    tr class=(answer.is_correct ? 'correct' : nil)
+    tr
       td = answer.label
       td = answer.votes
