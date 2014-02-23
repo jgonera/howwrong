@@ -1,5 +1,5 @@
 table
   - for answer in @question.answers do
-    tr
+    tr class=(answer.is_correct ? 'correct' : nil)
       td= answer.label
       td= answer.votes
