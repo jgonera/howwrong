@@ -1,7 +1,11 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
-question = Question.create text: "How many Iraqis, both combatants and civilians, do you think have died as a consequence of the war that began in Iraq in 2003?"
+question = Question.create(
+  text: "How many Iraqis, both combatants and civilians, do you think have died as a consequence of the war that began in Iraq in 2003?",
+  source: "Moiz's ass",
+  source_url: "http://moiz.ca/ass"
+)
 question.answers.create [
   { label: "Up to 5,000" },
   { label: "5,001 — 10,000" },
