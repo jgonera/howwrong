@@ -1,4 +1,8 @@
 h3= @question.text
+dl
+  dt Source
+  dd
+    a href=@question.source_url = @question.source
 table
   - for answer in @question.answers do
     tr class=(answer.is_correct ? 'correct' : nil)
