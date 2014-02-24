@@ -1,8 +1,15 @@
 doctype html
 html
   head
+   link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'
     title How Wrong You Are
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
   body
+    div id="logo"
+      span HOW 
+      span 
+        em WRONG 
+      span YOU 
+      span ARE
     = yield

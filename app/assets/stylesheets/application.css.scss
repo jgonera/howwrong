@@ -10,6 +10,36 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+
+@import "reset";
+@import "questions";
+
+$bg-color: #2E232B;
+$dark-color: #271D23;
+#logo {
+  display:block;
+  width:151px;
+  height:163px;
+  background-color: $dark-color;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+}
+#logo span {
+  display:block;
+}
+body {
+  background-color: $bg-color;
+  width: 960px;
+  color:white;
+  font-family: Georgia, Serif;
+}
+
+
+h1 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  color: white;
+  opacity: 0.2;
+  text-transform: uppercase;
+}
