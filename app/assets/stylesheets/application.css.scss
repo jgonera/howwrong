@@ -36,12 +36,12 @@ $grey-color: #645f63;
   margin-left:200px;
 }
 
-#leftpanel {
+nav {
   float: left;
   height:100%;
 }
 
-#leftpanel li {
+nav li {
   display: block;
   background-color: $dark-color;
   height: 32px;
@@ -50,7 +50,7 @@ $grey-color: #645f63;
 
 }
 
-#leftpanel li a {
+nav li a {
   color: $grey-color;
   text-transform: uppercase;
   text-decoration: none;
