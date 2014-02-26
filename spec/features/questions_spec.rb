@@ -32,7 +32,7 @@ describe "home page" do
         click_button "Submit"
       end
 
-      it "allows increases votes for answer" do
+      it "increases votes for answer" do
         votes = @question.answers.find_by(label: "Maybe").votes
         expect(votes).to eq 1
       end
