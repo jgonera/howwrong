@@ -4,7 +4,15 @@ class QuestionsController < ApplicationController
   end
 
   def vote
-    Answer.increment_counter :votes, params[:answer_id]
+    session[:voted] ||= {}
+    question = Question.friendly.find params[:slug]
+
+    question.answers.find(params[:answer_id]).increment! :votes unless session[:voted][question.id]
+    session[:voted][question.id] = true
+
+    redirect_to action: 'results', slug: params[:slug]
+  rescue ActiveRecord::RecordNotFound
+    # mostly for answers that don't belong to the right question
     redirect_to action: 'results', slug: params[:slug]
   end
 
