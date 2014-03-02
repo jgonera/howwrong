@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   post 'questions/:slug/vote', to: 'questions#vote'
   get 'questions/:slug/results', to: 'questions#results'
+  get 'questions/:slug', to: 'questions#show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
