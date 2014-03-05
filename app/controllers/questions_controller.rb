@@ -26,6 +26,7 @@ class QuestionsController < ApplicationController
 
   def results
     @question = Question.friendly.find params[:slug]
+    @options = { answers: @question.answers }
     redirect_to action: 'show' unless session[:voted].has_key? @question.id
   end
 end

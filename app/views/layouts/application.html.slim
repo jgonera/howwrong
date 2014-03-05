@@ -10,10 +10,10 @@ html
     div id="container"
       nav
         div id="logo"
-          span HOW 
-          span 
-            em WRONG 
-          span YOU 
+          span HOW
+          span
+            em WRONG
+          span YOU
           span ARE
         ul
           li: a href="/about" About
@@ -21,5 +21,8 @@ html
           li: a href="/archive" Archive
       div id="content"
         = yield
-  script src="http://d3js.org/d3.v3.min.js" charset="utf-8"
-  = javascript_include_tag "application", "data-turbolinks-track" => true
+
+    javascript:
+      var howwrong = { options: #{@options.to_json.html_safe} };
+    script src="http://d3js.org/d3.v3.min.js" charset="utf-8"
+    = javascript_include_tag "application", "data-turbolinks-track" => true
