@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe QuestionsController do
   let(:question) { create :question }
+  let(:answer) { question.answers.first }
 
   describe "POST vote" do
-    let(:answer) { question.answers.first }
     let(:another_question) { create :question }
     let(:another_answer) { another_question.answers.first }
 
@@ -53,9 +53,15 @@ describe QuestionsController do
     end
 
     it "shows results if vote made" do
-      session[:voted] = { question.id => true }
+      session[:voted] = { question.id => answer.id }
       get :results, slug: question.slug
       expect(subject).to render_template 'results'
+    end
+
+    it "marks selected answer" do
+      session[:voted] = { question.id => answer.id }
+      get :results, slug: question.slug
+      expect(assigns[:vote_answer_id]).to eq answer.id
     end
   end
 end

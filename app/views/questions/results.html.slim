@@ -5,6 +5,6 @@ dl
     a href=@question.source_url = @question.source
 table
   - for answer in @question.answers do
-    tr class=(answer.is_correct ? 'correct' : nil)
+    tr class=((answer.is_correct ? 'correct' : '') + ' ' + (answer.id == @vote_answer_id ? 'vote' : ''))
       td = answer.label
       td = answer.votes

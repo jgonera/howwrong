@@ -29,4 +29,11 @@ describe "home page" do
     answer.reload
     expect(answer.votes).to eq 1
   end
+
+  it "marks selected answer in results" do
+    choose answer.label
+    click_button "Submit"
+    answer_row = page.find 'tr', text: answer.label
+    expect(page).to have_selector 'tr.vote', text: answer.label
+  end
 end

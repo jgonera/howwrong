@@ -15,8 +15,11 @@ class QuestionsController < ApplicationController
   def vote
     question = Question.friendly.find params[:slug]
 
-    question.answers.find(params[:answer_id]).increment! :votes unless session[:voted][question.id]
-    session[:voted][question.id] = true
+    unless session[:voted][question.id]
+      answer = question.answers.find(params[:answer_id])
+      answer.increment! :votes
+      session[:voted][question.id] = answer.id
+    end
 
     redirect_to action: 'results'
   rescue ActiveRecord::RecordNotFound
@@ -26,7 +29,8 @@ class QuestionsController < ApplicationController
 
   def results
     @question = Question.friendly.find params[:slug]
-    @options = { answers: @question.answers }
+    @vote_answer_id = session[:voted][@question.id]
+    @options = { answers: @question.answers, vote_answer_id: @vote_answer_id }
     redirect_to action: 'show' unless session[:voted].has_key? @question.id
   end
 end
