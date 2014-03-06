@@ -4,6 +4,6 @@ class Answer < ActiveRecord::Base
   default_scope { order 'id' }
 
   def as_json(options={})
-    { label: label, is_correct: is_correct }
+    { id: id, label: label, votes: votes, is_correct: is_correct }
   end
 end
