@@ -53,6 +53,10 @@ gem 'spring',        group: :development
 
 gem 'slim-rails'
 
-gem 'rspec-rails', '~> 3.0.0.beta', group: [:development, :test]
-gem 'capybara', '~> 2.2.1', group: [:development, :test]
-gem 'factory_girl_rails', '~> 4.0', group: [:development, :test]
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'capybara', '~> 2.2.1'
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'selenium-webdriver', '~> 2.40.0'
+  gem 'database_cleaner', '~> 1.2.0'
+end

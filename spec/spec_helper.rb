@@ -28,13 +28,10 @@ RSpec.configure do |config|
   # config.mock_with :rr
   config.include FactoryGirl::Syntax::Methods
 
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
@@ -46,4 +43,21 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.before js: true do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.after js: true do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before do
+    DatabaseCleaner.start
+    ActionMailer::Base.deliveries.clear
+  end
+
+  config.after do
+    DatabaseCleaner.clean
+  end
 end
