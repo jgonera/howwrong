@@ -14,8 +14,3 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
-
-var body = d3.select("body");
-var div = body.append("div");
-div.html("Hello, world!");

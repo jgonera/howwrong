@@ -8,3 +8,9 @@ table
     tr class=((answer.is_correct ? 'correct' : '') + ' ' + (answer.id == @vote_answer_id ? 'vote' : ''))
       td = answer.label
       td = answer.votes
+svg.chart
+
+javascript:
+  window.onload = function() {
+    drawAnswersGraph();
+  }

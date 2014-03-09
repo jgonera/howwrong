@@ -3,8 +3,8 @@
 
 question = Question.create(
   text: "How many Iraqis, both combatants and civilians, do you think have died as a consequence of the war that began in Iraq in 2003?",
-  source: "Moiz's ass",
-  source_url: "http://moiz.ca/ass"
+  source: "Iraq Body Count",
+  source_url: "https://www.iraqbodycount.org/"
 )
 question.answers.create [
   { label: "Up to 5,000" },

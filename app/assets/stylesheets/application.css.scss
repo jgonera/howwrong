@@ -44,18 +44,19 @@ nav {
 nav li {
   display: block;
   background-color: $dark-color;
-  height: 32px;
-  margin-top: 10px;
-  padding: 20px 5px 5px 12px;
+  height: 54px;
+  margin: 10px 0 10px 0;
 
 }
 
 nav li a {
+  display: block;
   color: $grey-color;
   text-transform: uppercase;
   text-decoration: none;
   font-family: 'Nunito', sans-serif;
   font-size: 12px;
+  padding: 21px 19px;
 }
 
 #logo {

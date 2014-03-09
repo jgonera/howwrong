@@ -5,3 +5,8 @@ h2= @question.text
       input type="radio" name="answer_id" value=answer.id
       = answer.label
   button Submit
+
+javascript:
+  window.onload = function() {
+    hideButton();
+  }

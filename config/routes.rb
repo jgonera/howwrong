@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'questions/:slug/results', to: 'questions#results'
   get 'questions/:slug', to: 'questions#show'
 
+  get 'about', to: 'about'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
