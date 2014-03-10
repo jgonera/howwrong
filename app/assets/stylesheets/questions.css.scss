@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 $primary-color: #293939;
+$red-color: #FF4130;
 h2 {
   font-family: Georgia, Serif;
   font-weight: normal;
@@ -20,11 +21,15 @@ label {
 }
 
 .chart rect {
-  fill: steelblue;
+  fill: #1F171D;
 }
 
 .chart text {
   fill: white;
   font: 10px sans-serif;
   text-anchor: end;
+}
+
+.bar:hover {
+  fill: $red-color;
 }
