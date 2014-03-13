@@ -25,7 +25,7 @@ describe "home page" do
   end
 
   it "allows single click voting if JavaScript enabled", js: true do
-    choose answer.label
+    find('label', text: answer.label).click
     answer.reload
     expect(answer.votes).to eq 1
   end
@@ -36,4 +36,5 @@ describe "home page" do
     answer_row = page.find 'tr', text: answer.label
     expect(page).to have_selector 'tr.vote', text: answer.label
   end
+
 end
