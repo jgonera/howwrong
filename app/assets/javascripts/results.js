@@ -1,16 +1,9 @@
-function drawAnswersGraph() {
-  var body = d3.select("body");
-
-  var count = 0, 
-    data = [];
-  var numberOfOptions = howwrong.options.answers.length;
-  while (count < numberOfOptions) {
-    data[count] = howwrong.options.answers[count].votes;
-    count++;
-  }
+$(function() {
+  var body = d3.select("body"),
+      data = howwrong.options.answers.map(function(answer) { return answer.votes; });
   
   var width = 420,
-    barHeight = 50;
+      barHeight = 50;
 
   var x = d3.scale.linear()
       .domain([0, d3.max(data)])
@@ -26,14 +19,14 @@ function drawAnswersGraph() {
       .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
 
   bar.append("rect")
-      .transition()
-        .attr("width", x)
-        .attr("height", barHeight - 10)
-        .attr("class", "bar");
+      .attr("width", x)
+      .attr("height", barHeight - 10)
+      .attr("class", "bar");
 
   bar.append("text")
       .attr("x", function(d) { return x(d) - 3; })
       .attr("y", barHeight / 2 - 5)
       .attr("dy", ".35em")
       .text(function(d) { return d; });
-}
+
+});

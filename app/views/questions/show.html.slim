@@ -6,7 +6,4 @@ h2= @question.text
       = answer.label
   button Submit
 
-javascript:
-  window.onload = function() {
-    hideButton();
-  }
+= content_for(:js) { javascript_include_tag "show.js" }

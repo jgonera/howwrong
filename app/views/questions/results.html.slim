@@ -15,7 +15,4 @@ table
       td = answer.votes
 svg.chart
 
-javascript:
-  window.onload = function() {
-    drawAnswersGraph();
-  }
+= content_for(:js) { javascript_include_tag "results.js" }
