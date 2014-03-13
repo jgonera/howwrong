@@ -37,4 +37,9 @@ describe "home page" do
     expect(page).to have_selector 'tr.vote', text: answer.label
   end
 
+  it "gives feedback in results" do
+    choose answer.label
+    click_button "Submit"
+    expect(page).to have_selector 'dd', text: answer.feedback.text
+  end
 end
