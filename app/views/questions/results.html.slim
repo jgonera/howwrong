@@ -3,8 +3,7 @@ dl
   dd 
     h3 = @question.text
   dt Correct Answer
-  - for answer in @question.answers do
-    dd = answer.label if answer.is_correct
+  dd = @question.answers.correct.label
   dt Source
   dd
     a href=@question.source_url = @question.source
