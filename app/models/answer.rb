@@ -1,5 +1,6 @@
 class Answer < ActiveRecord::Base
   belongs_to :question
+  belongs_to :feedback
 
   default_scope { order 'id' }
   scope :correct, -> { where(is_correct: true).first }
