@@ -34,6 +34,9 @@ label {
   fill: $red-color;
 }
 
-.js button {
-  display: none;
+.js {
+  button, input {
+    display: none;
+  }
 }
+

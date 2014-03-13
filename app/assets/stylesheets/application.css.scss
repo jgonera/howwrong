@@ -43,24 +43,22 @@ a {
 nav {
   float: left;
   height:100%;
-}
 
-nav li {
-  display: block;
-  background-color: $dark-color;
-  height: 54px;
-  margin: 10px 0 10px 0;
-
-}
-
-nav li a {
-  display: block;
-  color: $grey-color;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-family: 'Nunito', sans-serif;
-  font-size: 12px;
-  padding: 21px 19px;
+  li {
+    display: block;
+    background-color: $dark-color;
+    height: 54px;
+    margin: 10px 0 10px 0;
+    a {
+      display: block;
+      color: $grey-color;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: 'Nunito', sans-serif;
+      font-size: 12px;
+      padding: 21px 19px;
+    }
+  }
 }
 
 nav li a:hover {
