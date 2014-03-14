@@ -4,30 +4,62 @@
 
 $primary-color: #293939;
 $red-color: #FF4130;
+$dark-color: #1f171d;
+$light-color: #949094;
+$med-color: #4D3A47;
+
 h2 {
-  font-family: Georgia, Serif;
+  font-family: 'Cardo', serif;
   font-weight: normal;
   font-size: 48px;
   color: white;
+  padding-top: 10px;
 }
 
-label {
-  font-family: 'Nunito', sans-serif;
+label.button {
+  font-family: 'Open Sans', sans-serif;
   font-weight: normal;
-  font-size: 20px;
+  font-size: 15px;
   color: white;
   display: block;
   margin-bottom: 10px;
+  background-color: $med-color;
+  text-transform: uppercase;
+  padding: 18px 12px 12px 12px;
+  width: 180px;
+  height: 52px;
+  float: left;
+  margin-right: 10px;
+  text-align: center;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
 }
 
-.chart rect {
-  fill: #1F171D;
+label.button:hover {
+  cursor: pointer;
+  border-bottom: 4px solid $red-color;
+  color: $red-color;
 }
 
-.chart text {
-  fill: white;
-  font: 10px sans-serif;
-  text-anchor: end;
+label.button:active {
+  background-color: $dark-color;
+} 
+
+#choices {
+  padding-top: 10px;
+}
+
+.chart {
+  rect {
+    fill: $dark-color;
+  }
+  text {
+    fill: white;
+    font: 10px sans-serif;
+    text-anchor: end;
+
+  }
 }
 
 .bar:hover {
@@ -39,4 +71,15 @@ label {
     display: none;
   }
 }
+
+dt {
+  text-transform: uppercase;
+  color: $light-color;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  padding-top: 30px;
+  font-weight: 600;
+}
+
 

@@ -16,7 +16,7 @@
 @import "questions";
 
 $bg-color: #2E232B;
-$dark-color: #221A20;
+$dark-color: #1f171d;
 $red-color: #FF4130;
 $grey-color: #645f63;
 
@@ -54,48 +54,46 @@ nav {
       color: $grey-color;
       text-transform: uppercase;
       text-decoration: none;
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Open Sans', sans-serif;
       font-size: 12px;
       padding: 21px 19px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
     }
+      :hover {
+        color: white;
+      }
   }
-}
-
-nav li a:hover {
-  color: white;
 }
 
 #logo {
   width: 146px;
   height: 158px;
   background-color: $dark-color;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   font-size: 22px;
   letter-spacing: 0.8px;
   padding: 5px;
+  em {
+    color: $red-color;
+  }
+  span {
+    display: block;
+    margin: 12px;
+  }
+  span:first-child {
+    display: block;
+    margin-top: 15px;
+  }
+  a {
+    text-decoration: none;
+    display: block;
+    height: 147px;
+    width: 150px;
+  }
 }
 
-#logo em {
-  color: $red-color;
-}
-
-#logo span {
-  display: block;
-  margin: 12px;
-}
-
-#logo span:first-child {
-  display: block;
-  margin-top: 15px;
-}
-
-#logo a {
-  text-decoration: none;
-  display: block;
-  height: 147px;
-  width: 150px;
-}
 
 body {
   background-color: $bg-color;
@@ -105,7 +103,7 @@ body {
 }
 
 h1 {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 15px;
   color: white;
   opacity: 0.2;

@@ -1,9 +1,15 @@
-h2= @question.text
-= form_tag controller: 'questions', action: 'vote', slug: @question.slug do
-  - for answer in @question.answers do
-    label
-      input type="radio" name="answer_id" value=answer.id
-      = answer.label
-  button Submit
+dl
+  dt Questions
+  dd
+    h2= @question.text
+  dt Pick an answer
+  dd
+    = form_tag controller: 'questions', action: 'vote', slug: @question.slug do
+      div id="choices"
+        - for answer in @question.answers do
+          label class="button"
+            input type="radio" name="answer_id" value=answer.id
+            = answer.label
+      button Submit
 
 = content_for(:js) { javascript_include_tag "show.js" }
