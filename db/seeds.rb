@@ -22,6 +22,7 @@ question.answers.create [
   { label: "5,001 — 10,000", votes: 59, feedback: negative_feedback},
   { label: "10,001 — 20,000", votes: 21, feedback: negative_feedback },
   { label: "20,001 — 50,000", votes: 0, feedback: negative_feedback },
+  { label: "50,001 — 100,000", votes: 4, feedback: negative_feedback },
   { label: "100,001 — 500,000", votes: 45, is_correct: true, feedback: positive_feedback },
   { label: "500,001 — 1,000,000", votes: 3, feedback: negative_feedback},
   { label: "1,000,001+", votes: 32, feedback: negative_feedback}
