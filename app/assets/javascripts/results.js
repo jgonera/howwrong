@@ -19,14 +19,20 @@ $(function() {
       .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
 
   bar.append("rect")
-      .attr("width", x)
+      .attr("width", 0)
       .attr("height", barHeight - 10)
-      .attr("class", "bar");
+      .attr("class", "bar")
+      .transition()
+        .delay(function(d, i) { return i * 50; })
+        .duration(1000)
+        .attr('width', x);
 
   bar.append("text")
       .attr("x", function(d) { return x(d) - 3; })
       .attr("y", barHeight / 2 - 5)
       .attr("dy", ".35em")
       .text(function(d) { return d; });
+
+
 
 });
