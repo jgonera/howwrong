@@ -34,17 +34,15 @@ label.button {
   box-sizing:border-box;
   -moz-box-sizing:border-box;
   -webkit-box-sizing:border-box;
+  &:hover {
+    cursor: pointer;
+    border-bottom: 4px solid $red-color;
+    color: $red-color;
+  }
+  &:active {
+    background-color: $dark-color;
+  }
 }
-
-label.button:hover {
-  cursor: pointer;
-  border-bottom: 4px solid $red-color;
-  color: $red-color;
-}
-
-label.button:active {
-  background-color: $dark-color;
-} 
 
 #choices {
   padding-top: 10px;
@@ -67,7 +65,7 @@ label.button:active {
 }
 
 .js {
-  button, input {
+  button, input, table.results{
     display: none;
   }
 }
@@ -82,4 +80,10 @@ dt {
   font-weight: 600;
 }
 
+dd {
+  padding-top: 8px;
+}
 
+.chart {
+  padding-top: 30px;
+}

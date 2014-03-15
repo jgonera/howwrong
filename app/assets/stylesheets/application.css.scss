@@ -59,10 +59,10 @@ nav {
       padding: 21px 19px;
       font-weight: 600;
       letter-spacing: 0.02em;
-    }
-      :hover {
+      &:hover {
         color: white;
       }
+    }
   }
 }
 
@@ -81,10 +81,10 @@ nav {
   span {
     display: block;
     margin: 12px;
-  }
-  span:first-child {
-    display: block;
-    margin-top: 15px;
+    &:first-child {
+      display: block;
+      margin-top: 15px;
+    }
   }
   a {
     text-decoration: none;
