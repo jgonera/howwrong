@@ -4,7 +4,8 @@
 question = Question.create(
   text: "How many Iraqis, both combatants and civilians, do you think have died as a consequence of the war that began in Iraq in 2003?",
   source: "Iraq Body Count",
-  source_url: "https://www.iraqbodycount.org/"
+  source_url: "https://www.iraqbodycount.org/",
+  is_featured: true
 )
 
 positive_feedback = Feedback.create(
@@ -26,4 +27,35 @@ question.answers.create [
   { label: "100,001 — 500,000", votes: 45, is_correct: true, feedback: positive_feedback },
   { label: "500,001 — 1,000,000", votes: 3, feedback: negative_feedback},
   { label: "1,000,001+", votes: 32, feedback: negative_feedback}
+]
+
+question2 = Question.create(
+  text: "How old is the known universe, in years?",
+  source: "Wikipedia",
+  source_url: "https://en.wikipedia.org/wiki/Age_of_the_universe",
+  is_featured: false
+)
+
+question2.answers.create [
+  { label: "~4 billion ", votes: 50, feedback: negative_feedback},
+  { label: "~7000", votes: 590, feedback: negative_feedback},
+  { label: "~2 million", votes: 121, feedback: negative_feedback },
+  { label: "~20,000", votes: 40, feedback: negative_feedback },
+  { label: "~13 million", votes: 405, is_correct: true, feedback: positive_feedback }
+]
+
+
+question3 = Question.create(
+  text: "What is the percentage of women holding CEOs roles at Fortune 500 companies?",
+  source: "Wikipedia",
+  source_url: "https://en.wikipedia.org/wiki/Women_CEOs_of_the_Fortune_500",
+  is_featured: false
+)
+
+question2.answers.create [
+  { label: "1%", votes: 50, feedback: negative_feedback},
+  { label: "4.4%", votes: 590, is_correct: true, feedback: positive_feedback },
+  { label: "23.2%", votes: 121, feedback: negative_feedback },
+  { label: "30.9%", votes: 40, feedback: negative_feedback },
+  { label: "50%", votes: 405, feedback: negative_feedback }
 ]

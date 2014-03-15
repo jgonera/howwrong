@@ -1,5 +1,5 @@
 dl
-  dt Questions
+  dt Featured question
   dd
     h2= @question.text
   dt Pick an answer
@@ -11,5 +11,9 @@ dl
             input type="radio" name="answer_id" value=answer.id
             = answer.label
       button Submit
+
+ul
+  - for question in @other_questions do
+    li = question.text
 
 = content_for(:js) { javascript_include_tag "show.js" }

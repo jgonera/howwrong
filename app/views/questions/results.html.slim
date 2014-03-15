@@ -11,11 +11,13 @@ dl
     a href=@question.source_url = @question.source
   dt How Wrong?
   dd = @question.answers.find(@vote_answer_id).feedback.text
-table class="results"
-  - for answer in @question.answers do
-    tr class=((answer.is_correct ? 'correct' : '') + ' ' + (answer.id == @vote_answer_id ? 'vote' : ''))
-      td = answer.label
-      td = answer.votes
-svg.chart
+  dt How others answered?
+  dd
+  table class="results"
+    - for answer in @question.answers do
+      tr class=((answer.is_correct ? 'correct' : '') + ' ' + (answer.id == @vote_answer_id ? 'vote' : ''))
+        td = answer.label
+        td = answer.votes
+  svg.chart
 
 = content_for(:js) { javascript_include_tag "results.js" }

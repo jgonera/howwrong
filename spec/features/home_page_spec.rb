@@ -1,45 +1,51 @@
 require 'spec_helper'
 
 describe "home page" do
-  let!(:wrong_question) { create :question, text: "Are you wrong?" }
-  let!(:wrong_answer) { create :answer, question: wrong_question }
-  let!(:question) { create :question }
-  let(:answer) { question.answers.first }
+  let!(:question) { create :question, text: "Are you wrong?" }
+  let!(:wrong_answer) { create :answer, question: question }
+  let!(:featured_question) { create :question, is_featured: true }
+  let!(:another_question) { create :question, text: "Whats your favourite website?" }
+  let(:featured_answer) { featured_question.answers.first }
 
   before :each do
     visit '/'
   end
 
-  it "displays only the latest question, its answers and source" do
-    expect(page).to have_content question.text
-    question.answers.each { |answer| expect(page).to have_content answer.label }
-    expect(page).to_not have_content wrong_question.text
+  it "displays the latest featured question, its answers and source" do
+    expect(page).to have_selector 'h2', text: featured_question.text
+    featured_question.answers.each { |answer| expect(page).to have_content answer.label }
     expect(page).to_not have_content wrong_answer.label
   end
 
   it "allows voting" do
-    choose answer.label
+    choose featured_answer.label
     click_button "Submit"
-    answer.reload
-    expect(answer.votes).to eq 1
+    featured_answer.reload
+    expect(featured_answer.votes).to eq 1
   end
 
   it "allows single click voting if JavaScript enabled", js: true do
-    find('label', text: answer.label).click
-    answer.reload
-    expect(answer.votes).to eq 1
+    find('label', text: featured_answer.label).click
+    featured_answer.reload
+    expect(featured_answer.votes).to eq 1
   end
 
   it "marks selected answer in results" do
-    choose answer.label
+    choose featured_answer.label
     click_button "Submit"
-    answer_row = page.find 'tr', text: answer.label
-    expect(page).to have_selector 'tr.vote', text: answer.label
+    answer_row = page.find 'tr', text: featured_answer.label
+    expect(page).to have_selector 'tr.vote', text: featured_answer.label
   end
 
   it "gives feedback in results" do
-    choose answer.label
+    choose featured_answer.label
     click_button "Submit"
-    expect(page).to have_selector 'dd', text: answer.feedback.text
+    expect(page).to have_selector 'dd', text: featured_answer.feedback.text
+  end
+
+  it "displays other questions" do
+    expect(page).to have_selector 'li', text: question.text
+    expect(page).to have_selector 'li', text: another_question.text
+    expect(page).to_not have_selector 'li', text: featured_question.text
   end
 end
