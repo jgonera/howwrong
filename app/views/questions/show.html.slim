@@ -1,5 +1,5 @@
 dl
-  dt Featured question
+  dt Question
   dd
     h2= @question.text
   dt Pick an answer
@@ -12,8 +12,11 @@ dl
             = answer.label
       button Submit
 
-ul
-  - for question in @other_questions do
-    li = question.text
+= content_for(:footer) do
+  div id="other-questions"
+    dt Other questions
+    ul
+      - for question in @other_questions do
+        li = question.text
 
 = content_for(:js) { javascript_include_tag "show.js" }
