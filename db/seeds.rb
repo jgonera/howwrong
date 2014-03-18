@@ -52,7 +52,7 @@ question3 = Question.create(
   is_featured: false
 )
 
-question2.answers.create [
+question3.answers.create [
   { label: "1%", votes: 50, feedback: negative_feedback},
   { label: "4.4%", votes: 590, is_correct: true, feedback: positive_feedback },
   { label: "23.2%", votes: 121, feedback: negative_feedback },

@@ -23,7 +23,14 @@ html
         = yield
     div id="footer-container"
       div id="footer-content"
-        = yield(:footer)
+        dt Other questions
+        ul
+          - for question in @other_questions do
+            li
+              h4 = link_to question.text, '/questions/' + question.slug 
+              span
+                = question.votes_count
+                |  answers
 
     javascript:
       var howwrong = { options: #{@options.to_json.html_safe} };

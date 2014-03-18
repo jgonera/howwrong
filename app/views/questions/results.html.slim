@@ -20,10 +20,4 @@ dl
           td = answer.votes
     svg.chart
 
-= content_for(:footer) do
-  div id="other-questions"
-    ul
-      - for question in @other_questions do
-        li = question.text
-
 = content_for(:js) { javascript_include_tag "results.js" }

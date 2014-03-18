@@ -14,12 +14,7 @@
 
 @import "reset";
 @import "questions";
-
-$bg-color: #2E232B;
-$dark-color: #1f171d;
-$red-color: #FF4130;
-$grey-color: #645f63;
-$med-color: #4D3A47;
+@import "variables";
 
 * {
   margin: 0px;
@@ -123,9 +118,6 @@ h1 {
   margin-left: auto;
   margin-right: auto;
   text-align: left;
-}
-
-#other-questions {
   li {
     display: block;
     background: $med-color;
