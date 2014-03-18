@@ -2,11 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$primary-color: #293939;
-$red-color: #FF4130;
-$dark-color: #1f171d;
-$light-color: #949094;
-$med-color: #4D3A47;
+@import "variables";
 
 h2 {
   font-family: 'Cardo', serif;
@@ -60,8 +56,16 @@ label.button {
   }
 }
 
-.bar:hover {
-  fill: $red-color;
+.bar {
+  &:hover {
+    fill: $red-color;
+  }
+  &.vote {
+    fill: $red-color;
+  }
+  &.correct {
+    fill: $green-color;
+  }
 }
 
 .js {
