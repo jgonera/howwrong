@@ -19,6 +19,7 @@ $bg-color: #2E232B;
 $dark-color: #1f171d;
 $red-color: #FF4130;
 $grey-color: #645f63;
+$med-color: #4D3A47;
 
 * {
   margin: 0px;
@@ -94,7 +95,6 @@ nav {
   }
 }
 
-
 body {
   background-color: $bg-color;
   color: white;
@@ -108,4 +108,33 @@ h1 {
   color: white;
   opacity: 0.2;
   text-transform: uppercase;
+}
+#footer-container {
+  width: 100%;
+  clear: left;
+  background-color: $dark-color;
+  padding: 40px 0px 30px;
+  margin-top: 150px;
+  height: 330px;
+}
+
+#footer-content {
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+#other-questions {
+  li {
+    display: block;
+    background: $med-color;
+    height: 293px;
+    width: 212px;
+    float: left;
+    margin-right: 20px;
+    padding: 22px;
+    font-size: 20px;
+    line-height: 30px;
+  }
 }

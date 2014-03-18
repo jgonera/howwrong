@@ -21,6 +21,9 @@ html
           li: a href="/ask" Ask a question
       div id="content"
         = yield
+    div id="footer-container"
+      div id="footer-content"
+        = yield(:footer)
 
     javascript:
       var howwrong = { options: #{@options.to_json.html_safe} };

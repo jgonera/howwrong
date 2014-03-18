@@ -13,11 +13,17 @@ dl
   dd = @question.answers.find(@vote_answer_id).feedback.text
   dt How others answered?
   dd
-  table class="results"
-    - for answer in @question.answers do
-      tr class=((answer.is_correct ? 'correct' : '') + ' ' + (answer.id == @vote_answer_id ? 'vote' : ''))
-        td = answer.label
-        td = answer.votes
-  svg.chart
+    table class="results"
+      - for answer in @question.answers do
+        tr class=((answer.is_correct ? 'correct' : '') + ' ' + (answer.id == @vote_answer_id ? 'vote' : ''))
+          td = answer.label
+          td = answer.votes
+    svg.chart
+
+= content_for(:footer) do
+  div id="other-questions"
+    ul
+      - for question in @other_questions do
+        li = question.text
 
 = content_for(:js) { javascript_include_tag "results.js" }
