@@ -9,7 +9,7 @@ describe Question do
     expect(Answer.count).to eq 0
   end
 
-  describe '#votes_count', wip: true do
+  describe '#votes_count' do
     it "returns zero for a question with no votes" do
       expect(subject.votes_count).to eq 0
     end
