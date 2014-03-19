@@ -5,9 +5,12 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'questions#index'
 
-  post 'questions/:slug/vote', to: 'questions#vote'
-  get 'questions/:slug/results', to: 'questions#results'
-  get 'questions/:slug', to: 'questions#show'
+  resources :questions, only: [:show] do
+    member do
+      patch 'vote'
+      get 'results'
+    end
+  end
 
   get 'about', to: 'about'
 
