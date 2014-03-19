@@ -10,12 +10,12 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.friendly.find params[:slug]
+    @question = Question.friendly.find params[:id]
     @other_questions = Question.where('id != ?', @question.id)
   end
 
   def vote
-    question = Question.friendly.find params[:slug]
+    question = Question.friendly.find params[:id]
 
     unless session[:voted][question.id]
       answer = question.answers.find(params[:answer_id])
@@ -30,7 +30,7 @@ class QuestionsController < ApplicationController
   end
 
   def results
-    @question = Question.friendly.find params[:slug]
+    @question = Question.friendly.find params[:id]
     @other_questions = Question.where('id != ?', @question.id)
     @vote_answer_id = session[:voted][@question.id]
     @options = { answers: @question.answers, vote_answer_id: @vote_answer_id }

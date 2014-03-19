@@ -4,7 +4,7 @@ dl
     h2= @question.text
   dt Pick an answer
   dd
-    = form_tag controller: 'questions', action: 'vote', slug: @question.slug do
+    = form_for @question, url: vote_question_path(@question) do
       div id="choices"
         - for answer in @question.answers do
           label class="button"
