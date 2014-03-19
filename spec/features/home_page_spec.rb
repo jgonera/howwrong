@@ -25,7 +25,7 @@ describe "home page" do
   end
 
   it "allows single click voting if JavaScript enabled", js: true do
-    find('label', text: featured_answer.label).click
+    find('label', text: featured_answer.label.upcase).click
     featured_answer.reload
     expect(featured_answer.votes).to eq 1
   end
