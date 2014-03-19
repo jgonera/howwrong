@@ -5,13 +5,11 @@ class QuestionsController < ApplicationController
 
   def index
     @question = Question.featured.last
-    @other_questions = Question.where('id != ?', @question.id)
     render 'show'
   end
 
   def show
     @question = Question.friendly.find params[:id]
-    @other_questions = Question.where('id != ?', @question.id)
   end
 
   def vote
@@ -31,7 +29,6 @@ class QuestionsController < ApplicationController
 
   def results
     @question = Question.friendly.find params[:id]
-    @other_questions = Question.where('id != ?', @question.id)
     @vote_answer_id = session[:voted][@question.id]
     @options = { answers: @question.answers, vote_answer_id: @vote_answer_id }
     redirect_to action: 'show' unless session[:voted].has_key? @question.id

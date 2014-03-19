@@ -44,6 +44,13 @@ describe QuestionsController do
       get :show, id: question.id
       expect(response.body).to have_content question.text
     end
+
+    it "shows other question" do
+      another_question = create :question
+      get :show, id: question.id
+      expect(assigns[:other_questions].length).to eq 1
+      expect(assigns[:other_questions][0]).to eq another_question
+    end
   end
 
   describe "GET results" do
