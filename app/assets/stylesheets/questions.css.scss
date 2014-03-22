@@ -5,23 +5,23 @@
 @import "variables";
 
 h2 {
-  font-family: 'Cardo', serif;
   font-weight: normal;
   font-size: 48px;
   color: white;
   padding-top: 10px;
+  line-height: 48px;
 }
 
 label.button {
   font-family: 'Open Sans', sans-serif;
   font-weight: normal;
-  font-size: 15px;
+  font-size: 14px;
   color: white;
   display: block;
   margin-bottom: 10px;
   background-color: $med-color;
   text-transform: uppercase;
-  padding: 18px 12px 12px 12px;
+  padding: 13px 12px 12px 12px;
   width: 180px;
   height: 52px;
   float: left;
@@ -92,7 +92,7 @@ dd {
   padding-top: 5px;
   text.label {
     fill: #fff;
-    font-family: 'Cardo', serif;
+    font-family: Georgia, serif;
     font-size: 24px;
   }
 }
@@ -100,8 +100,73 @@ dd {
 dl#question {
   display: block;
   width: 260px;
-  dd{
-    font-size: 20px;
-    line-height: 26px;
-  }
+  position: absolute;
 }
+
+dl#info {
+  margin-left: 400px;
+}
+
+body dd {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.tooltip {
+    position: absolute;
+    top: -5px;
+    left: 60px;
+    width: 125px;
+    padding: 5px;
+    z-index: 100;
+    background: #000;
+    color: #fff;
+    -moz-border-radius: 5px; /* this works only in camino/firefox */
+    -webkit-border-radius: 5px; /* this is just for Safari */
+    height: 150px;
+}
+
+
+
+.tooltip {
+    position: relative;
+}
+
+.tooltip span {
+    display: none;
+    position: absolute;
+    top: -5px;
+    left: 60px;
+    width: 125px;
+    padding: 5px;
+    z-index: 100;
+    background: #000;
+    color: #fff;
+    -moz-border-radius: 5px; /* this works only in camino/firefox */
+    -webkit-border-radius: 5px; /* this is just for Safari */
+    height: 400px;
+}
+
+.tooltip span:before{
+    content:'';
+    display:block;
+    width:0;
+    height:0;
+    position:absolute;
+
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right:8px solid black;
+    left:-8px;
+
+    top:7px;
+}
+
+a:hover.tooltip {
+    font-size: 99%; /* this is just for IE */
+}
+
+a:hover.tooltip span {
+    display: block;
+}
+

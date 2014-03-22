@@ -12,7 +12,8 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'about', to: 'about'
+  get 'about', to: 'pages#about'
+  get 'ask', to: 'pages#ask'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

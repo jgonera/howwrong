@@ -1,8 +1,18 @@
 $(function() {
+  var tooltip = d3.select("body")
+    .append("div")
+    .append("span")
+    .attr("class", "tooltip")
+    .style("position", "absolute")
+    .style("z-index", "10")
+    .style("visibility", "hidden")
+    .style("background-color", "#000")
+    .text("a simple tooltip");
+
   var body = d3.select("body"),
       data = howwrong.options.answers,
       vote_answer_id = howwrong.options.vote_answer_id;
-  
+
   var width = 700,
       barHeight = 50;
 
@@ -13,6 +23,7 @@ $(function() {
   var chart = d3.select(".chart")
       .attr("width", width)
       .attr("height", barHeight * data.length + 10);
+
   var bar = chart.selectAll("g")
       .data(data)
     .enter().append("g")
@@ -27,6 +38,18 @@ $(function() {
       .classed("bar", true)
       .classed("vote", function(d) { return d.id === vote_answer_id; })
       .classed("correct", function(d) { return d.is_correct; })
+      .on("mouseover", function(d, i) {
+          tooltip.style("left", (d3.mouse(this)[0]+"px"));
+          tooltip.style("top", (d3.mouse(this)[1]+"px"));
+          tooltip.style("visibility", "visible");
+          tooltip.text(d.votes);
+        })
+      .on("mousemove", function(d, i) {
+        tooltip.style("left", ((x(d.votes))+700)+"px");
+        tooltip.style("top", (i * barHeight) + 10 + 350 +"px");
+        console.log(d);
+       })
+      .on("mouseout", function() { return tooltip.style("visibility", "hidden"); })
       .transition()
         .delay(function(d, i) { return i * 50; })
         .duration(1000)
@@ -39,11 +62,6 @@ $(function() {
       .attr("dy", ".35em")
       .text(function(d) { return d.label; });
 
-  bar.append("text")
-      .attr("x", function(d) { return x(d.votes) + 260; })
-      .attr("y", barHeight / 2 - 5)
-      .attr("dy", ".35em")
-      .text(function(d) { return d.votes; });
   var line = chart.append("line")
       .attr("x1", 260)
       .attr("y1", 0)
