@@ -1,3 +1,5 @@
+//= require d3.js
+
 $(function() {
   var tooltip = d3.select("body")
     .append("div")
