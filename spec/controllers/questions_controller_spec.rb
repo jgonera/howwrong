@@ -9,7 +9,7 @@ describe QuestionsController do
     let(:another_answer) { another_question.answers.first }
 
     it "increments answer's votes" do
-      post :vote, id: question.id, answer_id: answer.id
+      post :vote, id: question.slug, answer_id: answer.id
       answer.reload
       expect(answer.votes).to eq 1
     end
@@ -69,6 +69,13 @@ describe QuestionsController do
       session[:voted] = { question.id => answer.id }
       get :results, id: question.id
       expect(assigns[:vote_answer_id]).to eq answer.id
+    end
+  end
+
+  describe "GET short", wip: true do
+    it "redirects to canonical URL" do
+      get :short, id: question.id
+      expect(response).to redirect_to action: :show, id: question.slug
     end
   end
 end

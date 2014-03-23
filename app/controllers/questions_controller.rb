@@ -33,4 +33,8 @@ class QuestionsController < ApplicationController
     @options = { answers: @question.answers, vote_answer_id: @vote_answer_id }
     redirect_to action: 'show' unless session[:voted].has_key? @question.id
   end
+
+  def short
+    redirect_to action: 'show', id: Question.find(params[:id]).slug
+  end
 end
