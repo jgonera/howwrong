@@ -12,7 +12,7 @@ h2 {
   line-height: 48px;
 }
 
-label.button {
+[role="button"] {
   font-family: 'Open Sans', sans-serif;
   font-weight: normal;
   font-size: 14px;
@@ -32,9 +32,10 @@ label.button {
   -webkit-box-sizing:border-box;
   cursor: pointer;
 
+  -webkit-transition: border-bottom .15s, color .15s;
   transition: border-bottom .15s, color .15s;
 
-  &:hover {
+  &:hover, &:focus {
     border-bottom: 4px solid $red-color;
     color: $red-color;
   }
