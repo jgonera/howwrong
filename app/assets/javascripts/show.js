@@ -3,7 +3,9 @@ $(function() {
 
   $('[role="button"]')
     .on("click", function() {
-        $(this).closest("form").submit();
+      var $el = $(this);
+      $el.find('input[type="radio"]').prop('checked', true);
+      $el.closest("form").submit();
     })
     .on("keyup", function(ev) {
       var $el = $(this);
