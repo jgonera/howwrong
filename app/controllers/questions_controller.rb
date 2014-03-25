@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @question = Question.featured.last
+    @question = Question.featured.where.not(id: session[:voted].keys).last
     render 'show'
   end
 

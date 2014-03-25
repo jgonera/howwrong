@@ -3,8 +3,8 @@ require 'spec_helper'
 describe "home page" do
   let!(:question) { create :question, text: "Are you wrong?" }
   let!(:wrong_answer) { create :answer, question: question }
-  let!(:featured_question) { create :question, is_featured: true }
   let!(:another_question) { create :question, text: "Whats your favourite website?" }
+  let!(:featured_question) { create :question, text: "Are you featured 1?", is_featured: true }
   let(:featured_answer) { featured_question.answers.first }
 
   before :each do
@@ -47,5 +47,17 @@ describe "home page" do
     expect(page).to have_selector 'li', text: question.text
     expect(page).to have_selector 'li', text: another_question.text
     expect(page).to_not have_selector 'li', text: featured_question.text
+  end
+
+  context "when there are more featured questions" do
+    let!(:another_featured_question) { create :question, text: "Are you featured 2?", is_featured: true }
+    let(:another_featured_answer) { another_featured_question.answers.first }
+
+    it "replaces featured question with a different one", wip: true do
+      choose featured_answer.label
+      click_button "Submit"
+      visit '/'
+      expect(page).to have_selector 'h2', text: another_featured_question.text
+    end
   end
 end
