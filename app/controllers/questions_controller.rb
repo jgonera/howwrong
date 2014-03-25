@@ -16,7 +16,7 @@ class QuestionsController < ApplicationController
   def vote
     question = Question.friendly.find params[:id]
 
-    unless session[:voted][question.id]
+    unless session[:voted].has_key? question.id
       answer = question.answers.find(params[:answer_id])
       answer.increment! :votes
       session[:voted][question.id] = answer.id
