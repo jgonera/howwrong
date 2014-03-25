@@ -33,7 +33,7 @@ question2 = Question.create(
   text: "How old is the known universe, in years?",
   source: "Wikipedia",
   source_url: "https://en.wikipedia.org/wiki/Age_of_the_universe",
-  is_featured: false
+  is_featured: true
 )
 
 question2.answers.create [
