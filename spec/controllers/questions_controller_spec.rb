@@ -52,7 +52,7 @@ describe QuestionsController do
       expect(assigns[:other_questions][0]).to eq another_question
     end
 
-    it "redirects to results if question answered", wip: true do
+    it "redirects to results if question answered" do
       session[:voted] = { question.id => answer.id }
       get :show, id: question.slug
       expect(response).to redirect_to action: :results, id: question.slug
