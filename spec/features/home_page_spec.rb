@@ -53,7 +53,7 @@ describe "home page" do
     let!(:another_featured_question) { create :question, text: "Are you featured 2?", is_featured: true }
     let(:another_featured_answer) { another_featured_question.answers.first }
 
-    it "replaces featured question with a different one", wip: true do
+    it "replaces featured question with a different one" do
       choose featured_answer.label
       click_button "Submit"
       visit '/'
