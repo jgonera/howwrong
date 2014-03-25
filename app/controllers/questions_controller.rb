@@ -33,7 +33,11 @@ class QuestionsController < ApplicationController
     redirect_to action: 'show' unless session[:voted].has_key? @question.id
 
     @vote_answer_id = session[:voted][@question.id]
-    @options = { answers: @question.answers, vote_answer_id: @vote_answer_id }
+    @options = {
+      answers: @question.answers,
+      votes_count: @question.votes_count,
+      vote_answer_id: @vote_answer_id
+    }
   end
 
   def short
