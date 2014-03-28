@@ -4,10 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def render(*args)
-    if @question
-      @other_questions = Question.where('id != ?', @question.id)
-    else
-      @other_questions = Question.all
+    if !@questions
+      if @question
+        @other_questions = Question.where('id != ?', @question.id)
+      else
+        @other_questions = Question.all
+      end
     end
 
     super

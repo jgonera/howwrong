@@ -5,7 +5,17 @@ class QuestionsController < ApplicationController
 
   def index
     @question = Question.featured.where.not(id: session[:voted].keys).last
-    render 'show'
+
+    if @question.nil?
+      @questions = Question.all.limit(3)
+      render 'archive'
+    else
+      render 'show'
+    end
+  end
+
+  def archive
+    @questions = Question.all
   end
 
   def show

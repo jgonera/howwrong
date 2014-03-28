@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   get 'about', to: 'pages#about'
   get 'ask', to: 'pages#ask'
+  get 'archive', to: 'questions#archive'
 
   get '/:id', to: 'questions#short', constraints: { id: /\d+/ }
 

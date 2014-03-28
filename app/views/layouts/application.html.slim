@@ -23,14 +23,9 @@ html
         = yield
     div id="footer-container"
       div id="footer-content"
-        dt Other questions
-        ul
-          - for question in @other_questions do
-            li
-              h4 = link_to question.text, question_path(question)
-              span
-                = question.votes_count
-                |  answers
+        - if @other_questions
+          dt Other questions
+          = render partial: 'questions/list', locals: {questions: @other_questions}
 
     javascript:
       var howwrong = { options: #{@options.to_json.html_safe} };
