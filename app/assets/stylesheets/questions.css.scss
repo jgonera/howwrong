@@ -61,6 +61,7 @@ h2 {
 
   .bar {
     fill: $dark-color;
+    transition: fill .3s;
 
     &.vote {
       fill: $red-color;
@@ -69,6 +70,7 @@ h2 {
       fill: $green-color;
     }
   }
+
 
   g:hover .bar {
     fill: $red-color;
@@ -121,11 +123,13 @@ dl#info {
   width: 125px;
   padding: 5px;
   z-index: 100;
-  background: #000;
+  background: #000 3px 8px no-repeat;
   color: #fff;
-  height: 200px;
+  height: 150px;
   visibility: hidden;
   opacity: 0;
+  padding-left: 28px;
+  padding-top: 10px;
 
   -webkit-transition: opacity .3s, visibility 0s .3s;
   transition: opacity .3s, visibility 0s .3s;
@@ -149,6 +153,19 @@ dl#info {
     border-right: 8px solid black;
     left: -8px;
     top: 7px;
+  }
+
+  .tooltipText{
+    display:block;
+  }
+
+  &.correct {
+    background-image: image-url("tick.svg");
+    border-bottom: 4px solid $green-color;
+  }
+  &.wrong {
+    background-image: image-url("cross.svg");
+    border-bottom: 4px solid $red-color;
   }
 }
 

@@ -5,9 +5,19 @@ $(function() {
     .append("div")
     .attr("class", "tooltip");
 
+  var answerType = tooltip.append("span")
+      .attr("class", "tooltipText");
+
+  var votePercentage = tooltip.append("span")
+      .attr("class", "tooltipText");
+
+   var voteCount = tooltip.append("span")
+      .attr("class", "tooltipText");
+
   var body = d3.select("body"),
       data = howwrong.options.answers,
-      vote_answer_id = howwrong.options.vote_answer_id;
+      vote_answer_id = howwrong.options.vote_answer_id,
+      votes_count = howwrong.options.votes_count;
 
   var width = 700,
       barHeight = 50;
@@ -28,10 +38,15 @@ $(function() {
         return "translate(0," + y +")";
       })
       .on("mouseover", function(d, i) {
-        tooltip.style("left", x(d.votes)+700+"px");
-        tooltip.style("top", (i * barHeight) + 10 + 350 +"px");
-        tooltip.classed("visible", true);
-        tooltip.text(d.votes);
+        tooltip
+          .style("left", x(d.votes)+700+"px")
+          .style("top", (i * barHeight) + 10 + 350 +"px")
+          .classed("visible", true)
+          .classed("correct", d.is_correct)
+          .classed("wrong", !d.is_correct);
+        answerType.text(d.is_correct ? "Correct Answer" : "Wrong Answer");
+        votePercentage.text(Math.round((d.votes/votes_count) * 100) + "%");
+        voteCount.text(d.votes + (d.votes==1 ? " person " : " people ") + "answered this");
       })
       .on("mouseout", function() { return tooltip.classed("visible", false); });
 
@@ -45,10 +60,10 @@ $(function() {
       .transition()
         .delay(function(d, i) { return i * 50; })
         .duration(1000)
-        .attr('width', function(d, i) { return x(d.votes) });
+        .attr('width', function(d, i) { return Math.max(2, x(d.votes)) });
 
   bar.append("rect")
-      .attr("width", function(d) { return x(d.votes) + 245; })
+      .attr("width", function(d) { return Math.max(2, x(d.votes)) + 245; })
       .attr("height", barHeight);
 
   bar.append("text")

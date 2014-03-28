@@ -18,6 +18,13 @@
 
 a {
   color: white;
+  text-decoration: none;
+}
+
+#content a {
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 #container {
@@ -44,7 +51,6 @@ nav {
       display: block;
       color: $grey-color;
       text-transform: uppercase;
-      text-decoration: none;
       font-family: 'Open Sans', sans-serif;
       font-size: 12px;
       padding: 21px 19px;
@@ -102,10 +108,9 @@ h1 {
 #footer-container {
   width: 100%;
   clear: left;
-  background-color: $dark-color;
-  padding: 40px 0px 30px;
+  background-color: $alt-dark-color;
+  padding: 40px 0px 49px;
   margin-top: 150px;
-  height: 330px;
 }
 
 #footer-content {
@@ -113,15 +118,19 @@ h1 {
   margin-left: auto;
   margin-right: auto;
   text-align: left;
+  height: 330px;
   li {
     display: block;
-    background: $med-color;
-    height: 293px;
+    background: $alt-med-color;
+    min-height: 293px;
     width: 212px;
     float: left;
     margin-right: 20px;
     padding: 22px;
     font-size: 20px;
     line-height: 30px;
+    a {
+      display: block;
+    }
   }
 }
