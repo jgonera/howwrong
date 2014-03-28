@@ -17,37 +17,45 @@
 @import "reset";
 @import "questions";
 
+$nav-margin: 200px;
+
+body {
+  background-color: $bg-color;
+  color: white;
+  font-family: Georgia, serif;
+}
+
 a {
   color: white;
   text-decoration: none;
-}
 
-#content a {
   &:hover {
     text-decoration: underline;
   }
 }
 
-#container {
+.content {
+  padding-left: $nav-margin;
   margin: 0 auto;
-  width: 980px;
-  text-align: left;
-}
-
-#content {
-  display: block;
-  margin-left:200px;
+  width: 780px;
 }
 
 nav {
   float: left;
-  height:100%;
+  margin-left: -$nav-margin;
+
+  a {
+    &:hover, &:focus {
+      text-decoration: none;
+      color: white;
+    }
+  }
 
   li {
     display: block;
     background: $dark-color no-repeat 50% 50%;
-    height: 54px;
-    margin: 10px 0 10px 0;
+    margin: 10px 0;
+
     a {
       display: block;
       color: $grey-color;
@@ -57,18 +65,16 @@ nav {
       padding: 21px 19px;
       font-weight: 600;
       letter-spacing: 0.02em;
-
-      &:hover, &:focus {
-        color: white;
-      }
     }
   }
 
   .share li {
     width: 50px;
+    height: 54px;
     display: inline-block;
     text-indent: -9999px;
     overflow: hidden;
+
     a {
       padding: 0;
       display: block;
@@ -76,12 +82,15 @@ nav {
       height: 100%;
 
     }
+
     &.twitter {
       background-image: image-url("twitter.svg");
     }
+
     &.facebook {
       background-image: image-url("facebook.svg");
     }
+
     &.link {
       background-image: image-url("link.svg");
     }
@@ -89,72 +98,47 @@ nav {
 }
 
 #logo {
-  width: 146px;
-  height: 158px;
-  background-color: $dark-color;
+  width: 156px;
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   font-size: 22px;
   letter-spacing: 0.8px;
-  padding: 5px;
+
   em {
     color: $red-color;
   }
+
   span {
     display: block;
     margin: 12px;
-    &:first-child {
-      display: block;
-      margin-top: 15px;
-    }
   }
+
   a {
-    text-decoration: none;
     display: block;
-    height: 147px;
-    width: 150px;
+    background-color: $dark-color;
+    padding: 10px 5px;
   }
 }
 
-body {
-  background-color: $bg-color;
-  color: white;
-  font-family: Georgia, Serif;
-}
-
-h1 {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 15px;
-  color: white;
-  opacity: 0.2;
-  text-transform: uppercase;
-}
-#footer-container {
-  width: 100%;
+#footer {
   clear: left;
   background-color: $alt-dark-color;
-  padding: 40px 0px 49px;
+  padding: 40px 0px;
   margin-top: 150px;
-}
 
-#footer-content {
-  max-width: 980px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
-  height: 330px;
   li {
-    display: block;
+    display: inline-block;
+    vertical-align: top;
     background: $alt-med-color;
     min-height: 293px;
-    width: 212px;
-    float: left;
+    width: 202px;
     margin-right: 20px;
     padding: 22px;
     font-size: 20px;
     line-height: 30px;
-    a {
-      display: block;
+
+    &:nth-child(3n) {
+      margin-right: 0;
     }
   }
 }
