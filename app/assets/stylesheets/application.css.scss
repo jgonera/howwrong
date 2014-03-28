@@ -12,9 +12,10 @@
  *
  */
 
+@import "bourbon";
+@import "variables";
 @import "reset";
 @import "questions";
-@import "variables";
 
 a {
   color: white;
