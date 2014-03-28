@@ -5,14 +5,9 @@ $(function() {
     .append("div")
     .attr("class", "tooltip");
 
-  var answerType = tooltip.append("span")
-      .attr("class", "tooltipText");
-
-  var votePercentage = tooltip.append("span")
-      .attr("class", "tooltipText");
-
-   var voteCount = tooltip.append("span")
-      .attr("class", "tooltipText");
+  var answerType = tooltip.append("div");
+  var votePercentage = tooltip.append("div");
+  var voteCount = tooltip.append("div");
 
   var body = d3.select("body"),
       data = howwrong.options.answers,

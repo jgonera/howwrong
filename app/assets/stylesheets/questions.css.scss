@@ -149,10 +149,6 @@ dl#info {
     top: 7px;
   }
 
-  .tooltipText{
-    display:block;
-  }
-
   &.correct {
     background-image: image-url("tick.svg");
     border-bottom: 4px solid $green-color;
