@@ -144,4 +144,9 @@ nav {
       margin-right: 0;
     }
   }
+
+  a {
+    // prevent cursor flickering due to large line-height
+    display: block;
+  }
 }
