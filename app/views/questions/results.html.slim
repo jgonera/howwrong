@@ -12,7 +12,7 @@ dl id="info"
     a href=@question.source_url = @question.source
 dl id="other"
   dt How Wrong?
-  dd = @question.answers.find(@vote_answer_id).feedback.text
+  dd.howwrong = @question.answers.find(@vote_answer_id).feedback.text
   dt How others answered?
   dd
     table class="results"
