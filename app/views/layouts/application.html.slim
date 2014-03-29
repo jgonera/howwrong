@@ -11,7 +11,7 @@ html
     div#main
       div.content
         nav
-          h1 id="logo"
+          h1#logo
             a href="/"
               span HOW
               span
@@ -31,7 +31,7 @@ html
     div#footer
       div.content
         - if @other_questions
-          dt Other questions
+          h2 Other questions
           = render partial: 'questions/list', locals: {questions: @other_questions}
 
     javascript:
