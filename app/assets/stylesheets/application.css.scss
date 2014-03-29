@@ -21,7 +21,7 @@ $nav-margin: 200px;
 $top-margin: 30px;
 
 body {
-  background-color: $bg-color;
+  background: $alt-dark-color;
   color: white;
   font-family: Georgia, serif;
 }
@@ -36,20 +36,22 @@ a {
 }
 
 #main {
+  background: $bg-color;
   min-height: 300px;
+  padding-bottom: 150px;
 }
 
 .content {
   position: relative;
-  padding-left: $nav-margin;
-  margin: $top-margin auto 0;
+  padding: $top-margin 0 0 $nav-margin;
+  margin: 0 auto;
   width: 780px;
   font-size: 20px;
 }
 
 nav {
   position: absolute;
-  top: -$top-margin;
+  top: 0;
   left: 0;
 
   a {
@@ -129,9 +131,7 @@ nav {
 }
 
 #footer {
-  background-color: $alt-dark-color;
   padding: 10px 0px 40px;
-  margin-top: 150px;
 }
 
 .questions {

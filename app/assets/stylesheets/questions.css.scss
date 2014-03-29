@@ -70,14 +70,17 @@
   }
 }
 
-dt, h2 {
+dt, .content > h2 {
   text-transform: uppercase;
   color: $light-color;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   letter-spacing: 0.02em;
-  margin-top: 30px;
   font-weight: 600;
+}
+
+dt {
+  margin-top: 30px;
 
   &:first-child {
     margin-top: 0;
