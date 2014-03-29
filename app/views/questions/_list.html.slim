@@ -2,6 +2,6 @@ ul.questions
   - for question in questions do
     li
       h4 = link_to question.text, question_path(question)
-      span
+      span.label-title
         = question.votes_count
         |  answers

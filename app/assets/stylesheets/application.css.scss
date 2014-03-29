@@ -136,6 +136,7 @@ nav {
 
 .questions {
   li {
+    position: relative;
     display: inline-block;
     vertical-align: top;
     background: $alt-med-color;
@@ -148,6 +149,11 @@ nav {
 
     &:nth-child(3n) {
       margin-right: 0;
+    }
+
+    span {
+      position: absolute;
+      bottom: 16px;
     }
   }
 
