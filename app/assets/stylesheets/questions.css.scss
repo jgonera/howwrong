@@ -70,13 +70,14 @@
   }
 }
 
-dt, .content > h2 {
+dt, .content > h2, .label-title {
   text-transform: uppercase;
   color: $light-color;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   letter-spacing: 0.02em;
   font-weight: 600;
+  line-height: 16px;
 }
 
 dt {
@@ -121,13 +122,29 @@ dl#other {
   width: 125px;
   padding: 5px;
   z-index: 100;
-  background: #000 3px 8px no-repeat;
+  background: $dark-color 3px 8px no-repeat;
   color: #fff;
-  height: 150px;
+  height: 100px;
   visibility: hidden;
   opacity: 0;
   padding-left: 28px;
   padding-top: 10px;
+
+  .label {
+    color: $grey-color;
+    width: 120px;
+  }
+
+  .bottom {
+    position: absolute;
+    bottom: 13px;
+  }
+
+  .votePercentage {
+    font-size: 28px;
+    position: relative;
+    top: 8px;
+  }
 
   @include transition(opacity .3s, visibility 0s .3s);
 
@@ -146,7 +163,7 @@ dl#other {
     position: absolute;
     border-top: 8px solid transparent;
     border-bottom: 8px solid transparent;
-    border-right: 8px solid black;
+    border-right: 8px solid $dark-color;
     left: -8px;
     top: 7px;
   }
