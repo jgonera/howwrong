@@ -2,7 +2,7 @@
   dl
     dt Question
     dd
-      h2= @question.text
+      h2.question = @question.text
     dt Pick an answer
     dd
       = form_for @question, url: vote_question_path(@question) do
