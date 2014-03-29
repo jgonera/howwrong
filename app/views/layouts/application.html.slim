@@ -8,27 +8,28 @@ html
     javascript:
       document.body.className += ' js'
 
-    div class="content"
-      nav
-        h1 id="logo"
-          a href="/"
-            span HOW
-            span
-              em WRONG
-            span YOU
-            span ARE
-        ul
-          li: a href="/about" About
-          li: a href="/ask" Ask a question
-        ul.share
-          li.twitter: a href="http://twitter.com/howwrongyouare" Tweet
-          li.facebook: a href="http://facebook.com/howwrongyouare" Facebook
-          li.link: a href= request.original_url Link
+    div#main
+      div.content
+        nav
+          h1 id="logo"
+            a href="/"
+              span HOW
+              span
+                em WRONG
+              span YOU
+              span ARE
+          ul
+            li: a href="/about" About
+            li: a href="/ask" Ask a question
+          ul.share
+            li.twitter: a href="http://twitter.com/howwrongyouare" Tweet
+            li.facebook: a href="http://facebook.com/howwrongyouare" Facebook
+            li.link: a href= request.original_url Link
 
-      = yield
+        = yield
 
-    div id="footer"
-      div class="content"
+    div#footer
+      div.content
         - if @other_questions
           dt Other questions
           = render partial: 'questions/list', locals: {questions: @other_questions}

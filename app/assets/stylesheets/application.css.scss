@@ -35,15 +35,21 @@ a {
   }
 }
 
+#main {
+  min-height: 300px;
+}
+
 .content {
+  position: relative;
   padding-left: $nav-margin;
   margin: $top-margin auto 0;
   width: 780px;
 }
 
 nav {
-  float: left;
-  margin: (-$top-margin) 0 0 (-$nav-margin);
+  position: absolute;
+  top: -$top-margin;
+  left: 0;
 
   a {
     &:hover, &:focus {
@@ -122,7 +128,6 @@ nav {
 }
 
 #footer {
-  clear: left;
   background-color: $alt-dark-color;
   padding: 10px 0px 40px;
   margin-top: 150px;
