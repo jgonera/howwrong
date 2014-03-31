@@ -57,11 +57,6 @@
       fill: $green-color;
     }
   }
-
-
-  g:hover .bar {
-    fill: $red-color;
-  }
 }
 
 .js {
@@ -70,7 +65,7 @@
   }
 }
 
-dt, .content > h2, .label-title {
+dt, .content > h2, .left > h2, .label-title {
   text-transform: uppercase;
   color: $light-color;
   font-family: 'Open Sans', sans-serif;
@@ -78,6 +73,7 @@ dt, .content > h2, .label-title {
   letter-spacing: 0.02em;
   font-weight: 600;
 }
+
 
 dt {
   margin-top: 30px;
@@ -88,7 +84,7 @@ dt {
 }
 
 dd {
-  padding-top: 8px;
+  padding-top: 4px;
 }
 
 .chart {
@@ -96,24 +92,44 @@ dd {
   text.label {
     fill: #fff;
     font-family: Georgia, serif;
-    font-size: 24px;
+    font-size: 20px;
   }
 }
 
 dl#question {
-  float: left;
-  width: 45%;
+  width: 75%;
 }
 
-dl#info {
+dl#correct-answer, dl#your-answer {
+  width: 50%;
+  padding-top: 25px;
+  a {
+    font-size: 15px;
+    position: relative;
+    top: -8px;
+  }
+}
+
+dl#correct-answer {
+  background: image-url("tick.svg") no-repeat;
+  margin-top: 40px;
+}
+
+dl#your-answer {
+  background: image-url("cross.svg") no-repeat;
   float: right;
-  width: 45%;
+  margin-top: -112px;
 }
 
 dl#other {
-  clear: both;
+  margin-top: 30px;
   .howwrong {
-    font-size: 33px;
+    font-size: 48px;
+  }
+  img.social {
+    margin-right: 15px;
+    position: relative;
+    top: -8px;
   }
 }
 

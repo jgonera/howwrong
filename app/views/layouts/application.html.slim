@@ -21,18 +21,22 @@ html
           ul
             li: a href="/about" About
             li: a href="/ask" Ask a question
-          ul.share
-            li.twitter: a href="http://twitter.com/howwrongyouare" Tweet
-            li.facebook: a href="http://facebook.com/howwrongyouare" Facebook
-            li.link: a href= request.original_url Link
 
         = yield
 
     div#footer
-      div.content
-        - if @other_questions
-          h2 Other questions
-          = render partial: 'questions/list', locals: {questions: @other_questions}
+      div.container
+        div.left
+            h2 Share the love
+            ul.share
+              li.twitter: a href="http://twitter.com/howwrongyouare" Tweet
+              li.facebook: a href="http://facebook.com/howwrongyouare" Facebook
+              li.link: a href= request.original_url Link
+            h2.license This work is under CC-BY-NC-SA 3.0 license.
+        div.content
+          - if @other_questions
+            h2 Other questions
+            = render partial: 'questions/list', locals: {questions: @other_questions}
 
     javascript:
       var howwrong = { options: #{@options.to_json.html_safe} };

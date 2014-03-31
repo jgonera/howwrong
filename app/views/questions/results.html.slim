@@ -2,18 +2,21 @@ dl id="question"
   dt Question
   dd
     h3 = @question.text
-dl id="info"
+dl id="correct-answer"
   dt Correct Answer
   dd = @question.answers.correct.label
+  a href=@question.source_url = @question.source
+dl id="your-answer"
   dt Your Answer
   dd = @question.answers.find(@vote_answer_id).label
-  dt Source
-  dd
-    a href=@question.source_url = @question.source
 dl id="other"
   dt How Wrong?
   dd.howwrong = @question.answers.find(@vote_answer_id).feedback.text
-  dt How others answered?
+  a href="http://twitter.com/howwrongyouare"
+    img.social src="/assets/twitter.svg"
+  a href="http://facebook.com/howwrongyouare"
+    img.social src="/assets/facebook.svg"
+  dt How Others Answered
   dd
     table class="results"
       - for answer in @question.answers do
