@@ -34,8 +34,8 @@ $(function() {
       })
       .on("mouseover", function(d, i) {
         tooltip
-          .style("left", x(d.votes)+700+"px")
-          .style("top", (i * barHeight) + 10 + 350 +"px")
+          .style("left", x(d.votes)+window.innerWidth/2+"px")
+          .style("top", (i * barHeight) + 10 + 525 +"px")
           .classed("visible", true)
           .classed("correct", d.is_correct)
           .classed("wrong", !d.is_correct);
