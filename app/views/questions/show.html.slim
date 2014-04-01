@@ -8,7 +8,7 @@
       = form_for @question, url: vote_question_path(@question) do
         div id="choices"
           - for answer in @question.answers do
-            div role="button" tabindex="0"
+            div.button role="button" tabindex="0"
               label
                 input type="radio" name="answer_id" value=answer.id
                 = answer.label

@@ -1,17 +1,3 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- */
-
 @import "bourbon";
 @import "variables";
 @import "reset";
@@ -51,19 +37,11 @@ a {
 }
 
 nav {
+  font-family: 'Open Sans', sans-serif;
   position: absolute;
   top: 0;
   left: 0;
   line-height: 1;
-
-  a {
-    text-decoration: none;
-    color: #fff;
-    &:hover, &:focus {
-      text-decoration: none;
-      color: white;
-    }
-  }
 
   li {
     display: block;
@@ -71,12 +49,10 @@ nav {
     margin: 10px 0;
 
     a {
-      display: block;
       color: $grey-color;
       text-transform: uppercase;
-      font-family: 'Open Sans', sans-serif;
       font-size: 12px;
-      padding: 21px 19px;
+      padding: 17px 19px;
       font-weight: 600;
       letter-spacing: 0.02em;
     }
@@ -85,7 +61,6 @@ nav {
 
 #logo {
   width: 156px;
-  font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   font-size: 22px;
   letter-spacing: 0.8px;
@@ -103,6 +78,11 @@ nav {
     display: block;
     background-color: $dark-color;
     padding: 10px 5px;
+    color: #fff;
+
+    &:hover, &:focus {
+      text-decoration: none;
+    }
   }
 }
 
@@ -156,20 +136,14 @@ nav {
 
 .questions {
   li {
-    position: relative;
     display: inline-block;
     vertical-align: top;
     background: $dark-color;
-    min-height: 253px;
-    width: 202px;
+    height: 297px;
+    width: 246px;
     margin-right: 20px;
-    padding: 22px;
     font-size: 20px;
-    border-bottom: 4px solid transparent;
-    @include transition(border-bottom-color .5s);
-    &:hover {
-      border-bottom-color: $link-color;
-    }
+
     &:nth-child(3n) {
       margin-right: 0;
     }
@@ -182,9 +156,23 @@ nav {
   }
 
   a {
-    // prevent cursor flickering due to large line-height
-    display: block;
+    position: relative;
+    padding: 22px;
     color: #fff;
+    height: 100%;
+  }
+}
+
+.button {
+  box-sizing: border-box;
+  display: block;
+  border-bottom: 4px solid transparent;
+  border-top: 4px solid transparent;
+  @include transition(border-bottom-color .25s, color .25s);
+
+  &:hover, &:focus {
+    border-bottom-color: $link-color;
     text-decoration: none;
+    color: #fff;
   }
 }
