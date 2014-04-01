@@ -3,7 +3,7 @@
 @import "reset";
 @import "questions";
 
-$nav-margin: 200px;
+$nav-margin: 220px;
 $top-margin: 30px;
 
 body {
@@ -31,7 +31,7 @@ a {
   position: relative;
   padding: $top-margin 0 0 $nav-margin;
   margin: 0 auto;
-  width: 780px;
+  width: 760px;
   font-size: 24px;
   line-height: 1.4;
 }
@@ -146,7 +146,7 @@ nav {
     vertical-align: top;
     background: $dark-color;
     height: 297px;
-    width: 246px;
+    width: 240px;
     margin-right: 20px;
     font-size: 20px;
 
