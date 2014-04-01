@@ -32,7 +32,10 @@ html
             li.twitter: a.button href="http://twitter.com/howwrongyouare" Tweet
             li.facebook: a.button href="http://facebook.com/howwrongyouare" Facebook
             li.link: a.button href= request.original_url Link
-          p.label-title This work is under CC-BY-NC-SA 3.0 license.
+          p.label-title
+            ' This work is under
+            a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/" CC-BY-NC-SA 3.0
+            |  license.
 
         - if @other_questions
           h2 Other questions
