@@ -164,7 +164,7 @@ nav {
 }
 
 .button {
-  box-sizing: border-box;
+  @include box-sizing(border-box);
   display: block;
   border-bottom: 4px solid transparent;
   border-top: 4px solid transparent;
