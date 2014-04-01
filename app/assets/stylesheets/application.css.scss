@@ -112,46 +112,44 @@ nav {
   li {
     margin-top: 15px;
   }
-  .container {
-    border-top: 3px solid $light-color;
-    width: 980px;
-    margin: 0 auto;
-  }
-
-  .left {
-    width: 200px;
-    padding: $top-margin 0 0 0;
-  }
 
   .content {
-    margin-top: -147px;
+    border-top: 3px solid $light-color;
   }
 
-  .share li {
-    width: 50px;
-    height: 54px;
-    display: inline-block;
-    text-indent: -9999px;
-    overflow: hidden;
-    background: $dark-color no-repeat 50% 50%;
-    a {
-      padding: 0;
-      display: block;
-      width: 100%;
-      height: 100%;
+  .share {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    padding: $top-margin 0 0 0;
 
-    }
+    li {
+      width: 50px;
+      height: 54px;
+      display: inline-block;
+      text-indent: -9999px;
+      overflow: hidden;
+      background: $dark-color no-repeat 50% 50%;
 
-    &.twitter {
-      background-image: image-url("twitter.svg");
-    }
+      a {
+        padding: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
 
-    &.facebook {
-      background-image: image-url("facebook.svg");
-    }
+      &.twitter {
+        background-image: image-url("twitter.svg");
+      }
 
-    &.link {
-      background-image: image-url("link.svg");
+      &.facebook {
+        background-image: image-url("facebook.svg");
+      }
+
+      &.link {
+        background-image: image-url("link.svg");
+      }
     }
   }
 }

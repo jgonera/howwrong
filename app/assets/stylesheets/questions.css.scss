@@ -65,7 +65,7 @@
   }
 }
 
-dt, .content > h2, .left > h2, .label-title {
+dt, .content h2, .label-title {
   text-transform: uppercase;
   color: $light-color;
   font-family: 'Open Sans', sans-serif;
@@ -133,7 +133,7 @@ dl#other {
   }
 }
 
-h2.question {
+h1.question {
   font-size: 48px;
 }
 
