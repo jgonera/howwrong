@@ -89,29 +89,30 @@ dd {
   }
 }
 
-dl#question {
+dl.question {
   width: 75%;
 }
 
-dl#correct-answer, dl#your-answer {
+.answer {
+  display: inline-block;
+  vertical-align: top;
   width: 50%;
   padding-top: 25px;
-  a {
-    font-size: 15px;
-    position: relative;
-    top: -8px;
+  margin-top: 30px;
+  background-repeat: no-repeat;
+
+  &.correct {
+    background-image: image-url("tick.svg");
   }
-}
 
-dl#correct-answer {
-  background: image-url("tick.svg") no-repeat;
-  margin-top: 40px;
-}
+  &.wrong {
+    background-image: image-url("cross.svg");
+  }
 
-dl#your-answer {
-  background: image-url("cross.svg") no-repeat;
-  float: right;
-  margin-top: -112px;
+  a {
+    display: block;
+    font-size: 15px;
+  }
 }
 
 dl#other {

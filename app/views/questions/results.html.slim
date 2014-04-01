@@ -1,12 +1,13 @@
-dl id="question"
+dl class="question"
   dt Question
   dd
     h1 = @question.text
-dl id="correct-answer"
+dl class="answer correct"
   dt Correct Answer
-  dd = @question.answers.correct.label
-  a href=@question.source_url = @question.source
-dl id="your-answer"
+  dd
+    = @question.answers.correct.label
+    a href=@question.source_url = @question.source
+dl class="answer #{@is_wrong ? 'wrong' : 'correct'}"
   dt Your Answer
   dd = @question.answers.find(@vote_answer_id).label
 dl id="other"

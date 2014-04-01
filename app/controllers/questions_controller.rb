@@ -43,6 +43,7 @@ class QuestionsController < ApplicationController
     redirect_to action: 'show' unless session[:voted].has_key? @question.id
 
     @vote_answer_id = session[:voted][@question.id]
+    @is_wrong = @vote_answer_id != @question.answers.correct.id
     @options = {
       answers: @question.answers,
       votes_count: @question.votes_count,
