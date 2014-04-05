@@ -3,21 +3,27 @@
 $(function() {
   var tooltip = d3.select(".chart")
     .append("div")
-    .attr("class", "tooltip");
+    .attr("class", "tooltip")
+    .on("mouseover", function() {
+      tooltip.classed("visible", true);
+    })
+    .on("mouseout", function() {
+      tooltip.classed("visible", false);
+    });
 
   var answerType = tooltip.append("div").attr("class", "label-title");
   var votePercentage = tooltip.append("div").attr("class", "votePercentage");
-  var voteCount = tooltip.append("div").attr("class", "label-title bottom");
+  var voteCount = tooltip.append("div").attr("class", "label-title");
 
-  var body = d3.select("body"),
-      data = howwrong.options.answers,
+  var data = howwrong.options.answers,
       vote_answer_id = howwrong.options.vote_answer_id,
       votes_count = howwrong.options.votes_count;
 
   var width = 600,
       barHeight = 40,
       barGap = 10,
-      labelWidth = 245;
+      labelWidth = 245,
+      height = (barHeight + barGap) * data.length + barGap;
 
   var x = d3.scale.linear()
       .domain([0, d3.max(data, function(answer) { return answer.votes; })])
@@ -26,7 +32,7 @@ $(function() {
   var chart = d3.select(".chart")
       .append("svg")
       .attr("width", width)
-      .attr("height", (barHeight + barGap) * data.length + barGap);
+      .attr("height", height);
 
   var bar = chart.selectAll("g")
       .data(data)
@@ -46,10 +52,10 @@ $(function() {
         votePercentage.text(Math.round((d.votes/votes_count) * 100) + "%");
         voteCount.text(d.votes + (d.votes==1 ? " person " : " people ") + "answered this");
       })
-      .on("mouseout", function() { return tooltip.classed("visible", false); });
+      .on("mouseout", function() { tooltip.classed("visible", false); });
 
   bar.append("rect")
-      .attr("x", 245)
+      .attr("x", labelWidth)
       .attr("width", 0)
       .attr("height", barHeight)
       .classed("bar", true)
@@ -61,22 +67,21 @@ $(function() {
         .attr('width', function(d, i) { return Math.max(2, x(d.votes)) });
 
   bar.append("rect")
-      .attr("width", function(d) { return Math.max(2, x(d.votes)) + 245; })
+      .attr("width", width)
       .attr("height", barHeight);
 
   bar.append("text")
       .attr("class", "label")
-      .attr("x", 230)
-      .attr("y", barHeight / 2 - 5)
-      .attr("dy", ".35em")
+      .attr("x", labelWidth - barGap*2)
+      .attr("y", 0)
+      .attr("dy", "1.25em")
       .text(function(d) { return d.label; });
 
-  var line = chart.append("line")
-      .attr("x1", 245)
+  chart.append("line")
+      .attr("x1", labelWidth)
       .attr("y1", 0)
-      .attr("x2", 245)
-      .attr("y2", 800)
-      .attr("style", "stroke:#6b656e; stroke-width:1");
+      .attr("x2", labelWidth)
+      .attr("y2", height);
 
 });
 

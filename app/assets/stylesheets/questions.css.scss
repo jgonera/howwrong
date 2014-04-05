@@ -89,19 +89,22 @@ dd {
     font-size: 20px;
   }
 
+  line {
+    stroke: #6b656e;
+    stroke-width: 1;
+  }
+
   .tooltip {
     position: absolute;
     top: 0;
     width: 125px;
-    padding: 5px;
+    padding: 10px 10px 10px 32px;
     z-index: 100;
     background: $dark-color 4px 8px no-repeat;
     color: $text-color;
-    height: 100px;
+    height: 96px;
     visibility: hidden;
     opacity: 0;
-    padding-left: 32px;
-    padding-top: 10px;
     margin-left: 10px;
 
     .label {
@@ -109,15 +112,9 @@ dd {
       width: 120px;
     }
 
-    .bottom {
-      position: absolute;
-      bottom: 13px;
-    }
-
     .votePercentage {
       font-size: 28px;
-      position: relative;
-      top: 8px;
+      padding: 4px 0;
     }
 
     @include transition(opacity .3s, visibility 0s .3s);
