@@ -8,7 +8,7 @@ $top-margin: 30px;
 
 body {
   background: $alt-dark-color;
-  color: white;
+  color: $text-color;
   font-family: Georgia, serif;
 }
 
@@ -45,10 +45,10 @@ nav {
 
   li {
     display: block;
-    background: $dark-color no-repeat 50% 50%;
     margin: 10px 0;
 
     a {
+      background: $dark-color no-repeat 50% 50%;
       color: $grey-color;
       text-transform: uppercase;
       font-size: 12px;
@@ -78,7 +78,7 @@ nav {
     display: block;
     background-color: $dark-color;
     padding: 10px 5px;
-    color: #fff;
+    color: $text-color;
 
     &:hover, &:focus {
       text-decoration: none;
@@ -115,7 +115,6 @@ nav {
       margin-right: 10px;
       text-indent: -9999px;
       overflow: hidden;
-      background: $dark-color no-repeat 50% 50%;
 
       &:last-child {
         margin-right: 0;
@@ -123,17 +122,18 @@ nav {
 
       a {
         height: 100%;
+        background: $dark-color no-repeat 50% 50%;
       }
 
-      &.twitter {
+      a.twitter {
         background-image: image-url("twitter.svg");
       }
 
-      &.facebook {
+      a.facebook {
         background-image: image-url("facebook.svg");
       }
 
-      &.link {
+      a.link {
         background-image: image-url("link.svg");
       }
     }
@@ -144,7 +144,6 @@ nav {
   li {
     display: inline-block;
     vertical-align: top;
-    background: $dark-color;
     height: 297px;
     width: 240px;
     margin-right: 20px;
@@ -163,22 +162,27 @@ nav {
 
   a {
     position: relative;
+    background: $dark-color;
     padding: 22px;
-    color: #fff;
+    color: $text-color;
     height: 100%;
   }
 }
 
+
 .button {
   @include box-sizing(border-box);
   display: block;
-  border-bottom: 4px solid transparent;
-  border-top: 4px solid transparent;
+  border-radius: 3px;
   @include transition(border-bottom-color .25s, color .25s);
 
   &:hover, &:focus {
-    border-bottom-color: $link-color;
     text-decoration: none;
-    color: #fff;
+    color: $text-color;
+    box-shadow: inset 0px -4px 0 $link-color;
+  }
+
+  &:active {
+    //make an active state
   }
 }
