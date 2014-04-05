@@ -13,7 +13,7 @@ dl class="answer #{@is_wrong ? 'wrong' : 'correct'}"
 dl id="other"
   dt How Wrong?
   dd.howwrong = @question.answers.find(@vote_answer_id).feedback.text
-  a href="http://twitter.com/howwrongyouare"
+  a href="https://twitter.com/intent/tweet?hashtags=howwrongyouare"
     img.social src="/assets/twitter.svg"
   a href="http://facebook.com/howwrongyouare"
     img.social src="/assets/facebook.svg"
@@ -24,6 +24,6 @@ dl id="other"
         tr class=((answer.is_correct ? 'correct' : '') + ' ' + (answer.id == @vote_answer_id ? 'vote' : ''))
           td = answer.label
           td = answer.votes
-    svg.chart
+    div.chart
 
 = content_for(:js) { javascript_include_tag "results.js" }

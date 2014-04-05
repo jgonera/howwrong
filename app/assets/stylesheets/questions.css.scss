@@ -81,11 +81,75 @@ dd {
 }
 
 .chart {
+  position: relative;
   padding-top: 5px;
   text.label {
     fill: $text-color;
     font-family: Georgia, serif;
     font-size: 20px;
+  }
+
+  .tooltip {
+    position: absolute;
+    top: 0;
+    width: 125px;
+    padding: 5px;
+    z-index: 100;
+    background: $dark-color 4px 8px no-repeat;
+    color: $text-color;
+    height: 100px;
+    visibility: hidden;
+    opacity: 0;
+    padding-left: 32px;
+    padding-top: 10px;
+    margin-left: 10px;
+
+    .label {
+      color: $grey-color;
+      width: 120px;
+    }
+
+    .bottom {
+      position: absolute;
+      bottom: 13px;
+    }
+
+    .votePercentage {
+      font-size: 28px;
+      position: relative;
+      top: 8px;
+    }
+
+    @include transition(opacity .3s, visibility 0s .3s);
+
+    &.visible {
+      visibility: visible;
+      opacity: 1;
+
+      @include transition(opacity .3s);
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      position: absolute;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-right: 8px solid $dark-color;
+      left: -8px;
+      top: 7px;
+    }
+
+    &.correct {
+      background-image: image-url("tick.svg");
+      border-bottom: 4px solid $green-color;
+    }
+    &.wrong {
+      background-image: image-url("cross.svg");
+      border-bottom: 4px solid $red-color;
+    }
   }
 }
 
@@ -130,66 +194,3 @@ dl#other {
 h1.question {
   font-size: 48px;
 }
-
-.tooltip {
-  position: absolute;
-  top: 0;
-  width: 125px;
-  padding: 5px;
-  z-index: 100;
-  background: $dark-color 4px 8px no-repeat;
-  color: $text-color;
-  height: 100px;
-  visibility: hidden;
-  opacity: 0;
-  padding-left: 32px;
-  padding-top: 10px;
-
-  .label {
-    color: $grey-color;
-    width: 120px;
-  }
-
-  .bottom {
-    position: absolute;
-    bottom: 13px;
-  }
-
-  .votePercentage {
-    font-size: 28px;
-    position: relative;
-    top: 8px;
-  }
-
-  @include transition(opacity .3s, visibility 0s .3s);
-
-  &.visible {
-    visibility: visible;
-    opacity: 1;
-
-    @include transition(opacity .3s);
-  }
-
-  &:before {
-    content: '';
-    display: block;
-    width: 0;
-    height: 0;
-    position: absolute;
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-right: 8px solid $dark-color;
-    left: -8px;
-    top: 7px;
-  }
-
-  &.correct {
-    background-image: image-url("tick.svg");
-    border-bottom: 4px solid $green-color;
-  }
-  &.wrong {
-    background-image: image-url("cross.svg");
-    border-bottom: 4px solid $red-color;
-  }
-}
-
