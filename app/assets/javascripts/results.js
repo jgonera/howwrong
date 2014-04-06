@@ -22,12 +22,10 @@ $(function() {
   var width = 600,
       barHeight = 40,
       barGap = 10,
-      labelWidth = 245,
-      height = (barHeight + barGap) * data.length + barGap;
-
-  var x = d3.scale.linear()
-      .domain([0, d3.max(data, function(answer) { return answer.votes; })])
-      .range([0, width - labelWidth]);
+      labelGap = barGap * 2,
+      height = (barHeight + barGap) * data.length + barGap,
+      labelWidth,
+      x;
 
   var chart = d3.select(".chart")
       .append("svg")
@@ -54,6 +52,22 @@ $(function() {
       })
       .on("mouseout", function() { tooltip.classed("visible", false); });
 
+  var labels = bar.append("text")
+      .attr("class", "label")
+      .attr("y", 0)
+      .attr("dy", "1.25em")
+      .text(function(d) { return d.label; });
+
+  labelWidth = Math.max.apply(null, labels[0].map(function(label) {
+    return Math.ceil(label.getBBox().width);
+  })) + labelGap;
+
+  labels.attr("x", labelWidth - labelGap);
+
+  x = d3.scale.linear()
+      .domain([0, d3.max(data, function(answer) { return answer.votes; })])
+      .range([0, width - labelWidth]);
+
   bar.append("rect")
       .attr("x", labelWidth)
       .attr("width", 0)
@@ -69,13 +83,6 @@ $(function() {
   bar.append("rect")
       .attr("width", width)
       .attr("height", barHeight);
-
-  bar.append("text")
-      .attr("class", "label")
-      .attr("x", labelWidth - barGap*2)
-      .attr("y", 0)
-      .attr("dy", "1.25em")
-      .text(function(d) { return d.label; });
 
   chart.append("line")
       .attr("x1", labelWidth)
