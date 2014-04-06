@@ -41,7 +41,7 @@ question2.answers.create [
   { label: "~7000", votes: 590, feedback: negative_feedback},
   { label: "~2 million", votes: 121, feedback: negative_feedback },
   { label: "~20,000", votes: 40, feedback: negative_feedback },
-  { label: "~13 million", votes: 405, is_correct: true, feedback: positive_feedback }
+  { label: "~14 billion", votes: 405, is_correct: true, feedback: positive_feedback }
 ]
 
 
