@@ -29,9 +29,12 @@ html
         div.share
           h2 Share the love
           ul
-            li: a.button.twitter href="http://twitter.com/howwrongyouare" Tweet
-            li: a.button.facebook href="http://facebook.com/howwrongyouare" Facebook
-            li: a.button.link href= request.original_url Link
+            li: a.button.twitter href="https://twitter.com/intent/tweet?url=http%3A//howwrongyouare.com" target="_blank" Tweet
+            li: a.button.facebook href="https://www.facebook.com/share.php?u=http%3A//howwrongyouare.com" target="_blank" Facebook
+            li
+              button.button.link
+              div.tooltip
+                input type="text" value="http://howwrongyouare.com"
           p.label-title
             ' This work is under
             a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/" CC-BY-NC-SA 3.0

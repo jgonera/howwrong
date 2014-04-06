@@ -53,7 +53,7 @@
 }
 
 .js {
-  button, input, table.results{
+  form button, form input, table.results{
     display: none;
   }
 }
@@ -95,16 +95,12 @@ dd {
   }
 
   .tooltip {
-    position: absolute;
     top: 0;
-    width: 125px;
-    padding: 10px 10px 10px 32px;
-    z-index: 100;
-    background: $dark-color 4px 8px no-repeat;
-    color: $text-color;
-    height: 96px;
-    visibility: hidden;
-    opacity: 0;
+    width: 167px;
+    padding-left: 32px;
+    background-position: 4px 8px;
+    background-repeat: no-repeat;
+    height: 116px;
     margin-left: 10px;
 
     .label {
@@ -115,15 +111,6 @@ dd {
     .votePercentage {
       font-size: 28px;
       padding: 4px 0;
-    }
-
-    @include transition(opacity .3s, visibility 0s .3s);
-
-    &.visible {
-      visibility: visible;
-      opacity: 1;
-
-      @include transition(opacity .3s);
     }
 
     &:before {

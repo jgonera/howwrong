@@ -8,8 +8,21 @@ $top-margin: 30px;
 
 body {
   background: $alt-dark-color;
+}
+
+body, input {
   color: $text-color;
   font-family: Georgia, serif;
+}
+
+::-moz-selection {
+  background-color: $link-color;
+  color: $text-color;
+}
+
+::selection {
+  background-color: $link-color;
+  color: $text-color;
 }
 
 a {
@@ -109,32 +122,58 @@ nav {
     padding: $top-margin 0 0 0;
 
     li {
-      width: 46px;
-      height: 54px;
       display: inline-block;
       margin-right: 10px;
-      text-indent: -9999px;
       overflow: hidden;
 
       &:last-child {
         margin-right: 0;
       }
 
-      a {
-        height: 100%;
+      a, button {
+        text-indent: -9999px;
+        width: 46px;
+        height: 54px;
+        cursor: pointer;
         background: $dark-color no-repeat 50% 50%;
       }
 
-      a.twitter {
+      .twitter {
         background-image: image-url("twitter.svg");
       }
 
-      a.facebook {
+      .facebook {
         background-image: image-url("facebook.svg");
       }
 
-      a.link {
+      .link {
+        position: relative;
         background-image: image-url("link.svg");
+      }
+    }
+
+    .tooltip {
+      width: 100%;
+      bottom: -26px;
+      right: 0;
+
+      &:before {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid $dark-color;
+        top: -8px;
+        right: 15px;
+      }
+
+      input {
+        width: 100%;
+        font-size: 15px;
+        background: transparent;
       }
     }
   }
@@ -184,5 +223,25 @@ nav {
 
   &:active {
     //make an active state
+  }
+}
+
+.tooltip {
+  position: absolute;
+  @include box-sizing(border-box);
+  padding: 10px;
+  z-index: 100;
+  background: $dark-color;
+  color: $text-color;
+  visibility: hidden;
+  opacity: 0;
+
+  @include transition(opacity .3s, visibility 0s .3s);
+
+  &.visible {
+    visibility: visible;
+    opacity: 1;
+
+    @include transition(opacity .3s);
   }
 }

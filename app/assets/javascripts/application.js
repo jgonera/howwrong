@@ -12,3 +12,19 @@
 //
 //= require jquery
 //= require turbolinks
+
+$(function() {
+  var $tooltip = $(".share .tooltip").on("click", function(ev) {
+    ev.stopPropagation();
+  });
+
+  $(".share .link").on("click", function(ev) {
+    ev.stopPropagation();
+    $tooltip.addClass("visible");
+    $tooltip.find("input").select();
+  });
+
+  $("body").on("click", function() {
+    $tooltip.removeClass("visible");
+  });
+});
