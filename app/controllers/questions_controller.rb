@@ -49,6 +49,16 @@ class QuestionsController < ApplicationController
       votes_count: @question.votes_count,
       vote_answer_id: @vote_answer_id
     }
+
+    short_url = short_question_url @question.id
+    @twitter_url = "https://twitter.com/intent/tweet?" + {
+      text: @is_wrong ? "I was wrong about #{@question.topic}" : "I was right about #{@question.topic}",
+      url: short_url,
+      via: "howwrongyouare"
+    }.to_query
+    @facebook_url = "https://www.facebook.com/share.php?" + {
+      u: short_url
+    }.to_query
   end
 
   def short

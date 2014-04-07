@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'ask', to: 'pages#ask'
   get 'archive', to: 'questions#archive'
 
-  get '/:id', to: 'questions#short', constraints: { id: /\d+/ }
+  get '/:id', to: 'questions#short', constraints: { id: /\d+/ }, as: 'short_question'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

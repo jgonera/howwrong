@@ -3,6 +3,7 @@
 
 question = Question.create(
   text: "How many Iraqis, both combatants and civilians, do you think have died as a consequence of the war that began in Iraq in 2003?",
+  topic: "Iraq War",
   source: "Iraq Body Count",
   source_url: "https://www.iraqbodycount.org/",
   is_featured: true
@@ -31,6 +32,7 @@ question.answers.create [
 
 question2 = Question.create(
   text: "How old is the known universe, in years?",
+  topic: "age of the universe",
   source: "Wikipedia",
   source_url: "https://en.wikipedia.org/wiki/Age_of_the_universe",
   is_featured: true
@@ -47,6 +49,7 @@ question2.answers.create [
 
 question3 = Question.create(
   text: "What is the percentage of women holding CEOs roles at Fortune 500 companies?",
+  topic: "women CEOs",
   source: "Wikipedia",
   source_url: "https://en.wikipedia.org/wiki/Women_CEOs_of_the_Fortune_500",
   is_featured: false
