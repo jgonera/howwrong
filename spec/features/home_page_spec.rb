@@ -12,7 +12,7 @@ describe "home page" do
   end
 
   it "displays the latest featured question, its answers and source" do
-    expect(page).to have_selector 'h2', text: featured_question.text
+    expect(page).to have_selector 'h1', text: featured_question.text
     featured_question.answers.each { |answer| expect(page).to have_content answer.label }
     expect(page).to_not have_content wrong_answer.label
   end
@@ -57,7 +57,7 @@ describe "home page" do
       choose featured_answer.label
       click_button "Submit"
       visit '/'
-      expect(page).to have_selector 'h2', text: another_featured_question.text
+      expect(page).to have_selector 'h1', text: another_featured_question.text
     end
   end
 end
