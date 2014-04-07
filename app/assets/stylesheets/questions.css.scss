@@ -144,15 +144,19 @@ dl.question {
   display: inline-block;
   vertical-align: top;
   width: 50%;
-  padding-top: 25px;
   margin-top: 30px;
-  background-repeat: no-repeat;
 
-  &.correct {
+  dt {
+    display: inline-block;
+    padding: 2px 25px 0 0;
+    background: no-repeat 100% 0;
+  }
+
+  &.correct dt {
     background-image: image-url("tick.svg");
   }
 
-  &.wrong {
+  &.wrong dt {
     background-image: image-url("cross.svg");
   }
 
