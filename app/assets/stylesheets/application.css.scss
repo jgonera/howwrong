@@ -42,24 +42,15 @@ a {
 
 .content {
   position: relative;
-  padding: $top-margin 0 0 $nav-margin;
-  margin: 0 auto;
-  width: 760px;
   font-size: 24px;
   line-height: 1.4;
 }
 
 nav {
   font-family: 'Open Sans', sans-serif;
-  position: absolute;
-  top: 0;
-  left: 0;
   line-height: 1;
 
   li {
-    display: block;
-    margin: 10px 0;
-
     a {
       background: $dark-color no-repeat 50% 50%;
       color: $grey-color;
@@ -73,18 +64,12 @@ nav {
 }
 
 #logo {
-  width: 158px;
   font-weight: bold;
   font-size: 22px;
   letter-spacing: 0.8px;
 
   em {
     color: $red-color;
-  }
-
-  span {
-    display: block;
-    margin: 12px;
   }
 
   a {
@@ -244,4 +229,38 @@ nav {
 
     @include transition(opacity .3s);
   }
+}
+
+// desktop
+@media all and (min-width: $desktop-mobile-width) {
+  .content {
+    padding: $top-margin 0 0 $nav-margin;
+    margin: 0 auto;
+    width: 760px;
+  }
+
+  nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    li {
+      display: block;
+      margin: 10px 0;
+    }
+  }
+
+  #logo {
+    width: 158px;
+
+    span {
+      display: block;
+      margin: 12px;
+    }
+  }
+}
+
+// mobile
+@media all and (max-width: $desktop-mobile-width) {
+
 }
