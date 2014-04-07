@@ -30,23 +30,24 @@ html
 
     div#footer
       div.content
-        div.share
+        - if @other_questions
+          section
+            h2 Other questions
+            = render partial: 'questions/list', locals: {questions: @other_questions}
+
+        section.share
           h2 Share the love
           ul
-            li: a.button.twitter href="https://twitter.com/intent/tweet?url=http%3A//howwrongyouare.com" target="_blank" Tweet
-            li: a.button.facebook href="https://www.facebook.com/share.php?u=http%3A//howwrongyouare.com" target="_blank" Facebook
-            li
-              button.button.link
+            li.twitter: a.button href="https://twitter.com/intent/tweet?url=http%3A//howwrongyouare.com" target="_blank" Tweet
+            li.facebook: a.button href="https://www.facebook.com/share.php?u=http%3A//howwrongyouare.com" target="_blank" Facebook
+            li.link
+              button.button
               div.tooltip
                 input type="text" value="http://howwrongyouare.com"
           p.label-title
             ' This work is under
             a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/" CC-BY-NC-SA 3.0
             |  license.
-
-        - if @other_questions
-          h2 Other questions
-          = render partial: 'questions/list', locals: {questions: @other_questions}
 
     javascript:
       var howwrong = { options: #{@options.to_json.html_safe} };

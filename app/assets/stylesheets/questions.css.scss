@@ -10,9 +10,6 @@
   background-color: $dark-color;
   text-transform: uppercase;
   padding: 11px 12px;
-  width: 180px;
-  float: left;
-  margin-right: 10px;
   text-align: center;
 
   &, * {
@@ -194,6 +191,30 @@ dl#other {
   }
 }
 
-h1.question {
-  font-size: 48px;
+
+// desktop
+@media all and (min-width: $desktop-mobile-width) {
+  [role="button"] {
+    width: 180px;
+    margin-right: 10px;
+  }
+
+  h1.question {
+    font-size: 48px;
+  }
+}
+
+// mobile
+@media all and (max-width: $desktop-mobile-width) {
+  [role="button"] {
+    width: 48%;
+
+    &:nth-child(2n+1) {
+      margin-right: 4%;
+    }
+  }
+
+  h1.question {
+    font-size: 30px;
+  }
 }

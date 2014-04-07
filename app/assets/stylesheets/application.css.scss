@@ -37,7 +37,6 @@ a {
 #main {
   background: $bg-color;
   min-height: 300px;
-  padding-bottom: 150px;
 }
 
 .content {
@@ -51,7 +50,8 @@ nav {
   line-height: 1;
 
   li {
-    a {
+    .button {
+      display: block;
       background: $dark-color no-repeat 50% 50%;
       color: $grey-color;
       text-transform: uppercase;
@@ -85,8 +85,6 @@ nav {
 }
 
 #footer {
-  padding: 40px 0px 40px;
-
   li {
     margin-top: 15px;
   }
@@ -95,20 +93,9 @@ nav {
     font-size: 10px;
   }
 
-  .content {
-    border-top: 3px solid $light-color;
-  }
-
   .share {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 158px;
-    padding: $top-margin 0 0 0;
-
     li {
       display: inline-block;
-      margin-right: 10px;
       overflow: hidden;
 
       &:last-child {
@@ -117,21 +104,20 @@ nav {
 
       a, button {
         text-indent: -9999px;
-        width: 46px;
         height: 54px;
         cursor: pointer;
         background: $dark-color no-repeat 50% 50%;
       }
 
-      .twitter {
+      &.twitter a {
         background-image: image-url("twitter.svg");
       }
 
-      .facebook {
+      &.facebook a {
         background-image: image-url("facebook.svg");
       }
 
-      .link {
+      &.link button {
         position: relative;
         background-image: image-url("link.svg");
       }
@@ -166,22 +152,7 @@ nav {
 
 .questions {
   li {
-    display: inline-block;
-    vertical-align: top;
-    height: 297px;
-    width: 240px;
-    margin-right: 20px;
     font-size: 20px;
-
-    &:nth-child(3n) {
-      margin-right: 0;
-    }
-
-    span {
-      position: absolute;
-      bottom: 22px;
-      color: $grey-color;
-    }
   }
 
   a {
@@ -196,7 +167,8 @@ nav {
 
 .button {
   @include box-sizing(border-box);
-  display: block;
+  display: inline-block;
+  vertical-align: top;
   border-radius: 3px;
   @include transition(box-shadow .25s, color .25s);
 
@@ -239,6 +211,10 @@ nav {
     width: 760px;
   }
 
+  #main {
+    padding-bottom: 50px;
+  }
+
   nav {
     position: absolute;
     top: 0;
@@ -258,9 +234,85 @@ nav {
       margin: 12px;
     }
   }
+
+  #footer {
+    padding: 40px 0px 40px;
+
+    .content {
+      border-top: 3px solid $light-color;
+    }
+
+    .share {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 158px;
+      margin: $top-margin 0 0 0;
+
+      li {
+        margin-right: 10px;
+
+        a, button {
+          width: 46px;
+        }
+      }
+    }
+  }
+
+  .questions {
+    li {
+      display: inline-block;
+      vertical-align: top;
+      height: 297px;
+      width: 240px;
+      margin-right: 20px;
+
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+
+      span {
+        position: absolute;
+        bottom: 22px;
+        color: $grey-color;
+      }
+    }
+  }
 }
 
 // mobile
 @media all and (max-width: $desktop-mobile-width) {
+  .content {
+    section {
+      padding: 30px 20px;
+    }
+  }
 
+  #logo {
+    text-align: center;
+  }
+
+  #footer {
+    .share {
+      li {
+        width: 48%;
+
+        a {
+          width: 100%;
+        }
+
+        &:nth-child(2n+1) {
+          margin-right: 4%;
+        }
+
+        &.link {
+          display: none;
+        }
+      }
+
+      p {
+        margin-top: 20px;
+      }
+    }
+  }
 }
