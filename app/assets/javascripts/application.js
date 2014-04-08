@@ -17,6 +17,8 @@ $(function() {
   var $tooltip = $(".share .tooltip").on("click", function(ev) {
     ev.stopPropagation();
   });
+  var $nav = $("nav ul");
+  var tapEvent = "ontouchstart" in window ? "touchend" : "click";
 
   $(".share .link").on("click", function(ev) {
     ev.stopPropagation();
@@ -26,5 +28,9 @@ $(function() {
 
   $("body").on("click", function() {
     $tooltip.removeClass("visible");
+  });
+
+  $("#hamburger").on(tapEvent, function() {
+    $nav.toggleClass("visible");
   });
 });
