@@ -85,12 +85,12 @@ nav {
 }
 
 #footer {
-  li {
-    margin-top: 15px;
-  }
-
   .label-title {
     font-size: 10px;
+  }
+
+  h2 {
+    margin-bottom: 15px;
   }
 
   .share {
@@ -153,9 +153,11 @@ nav {
 .questions {
   li {
     font-size: 20px;
+    margin-bottom: 15px;
   }
 
   a {
+    display: block;
     position: relative;
     background: $dark-color;
     padding: 22px;
