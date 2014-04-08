@@ -1,6 +1,7 @@
 doctype html
 html
   head
+    meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     link href='http://fonts.googleapis.com/css?family=Open+Sans:700,600' rel='stylesheet' type='text/css'
     title How Wrong You Are
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
@@ -12,6 +13,7 @@ html
       div.content
         nav
           h1#logo
+            button#hamburger Open navigation
             a href="/"
               span
                 ' HOW
