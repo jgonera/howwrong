@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require turbolinks
+//= require retina
 
 $(function() {
   var $tooltip = $(".share .tooltip").on("click", function(ev) {
