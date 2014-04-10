@@ -25,30 +25,6 @@
   padding-top: 10px;
 }
 
-.chart {
-  rect {
-    fill: transparent;
-  }
-  text {
-    fill: white;
-    font: 10px sans-serif;
-    text-anchor: end;
-
-  }
-
-  .bar {
-    fill: $dark-color;
-    @include transition(fill .3s);
-
-    &.vote {
-      fill: $red-color;
-    }
-    &.correct {
-      fill: $green-color;
-    }
-  }
-}
-
 .js {
   form button, form input, table.results{
     display: none;
@@ -79,7 +55,24 @@ h2 {
 .chart {
   position: relative;
   padding-top: 5px;
-  text.label {
+
+  rect {
+    fill: transparent;
+  }
+
+  .bar {
+    fill: $dark-color;
+    @include transition(fill .3s);
+
+    &.vote {
+      fill: $red-color;
+    }
+    &.correct {
+      fill: $green-color;
+    }
+  }
+
+  text {
     fill: $text-color;
     font-family: Georgia, serif;
     font-size: 20px;
@@ -193,6 +186,10 @@ dl#other {
 
 // desktop
 @media all and (min-width: $desktop-mobile-width) {
+  .mobile {
+    display: none;
+  }
+
   [role="button"] {
     width: 180px;
     margin-right: 10px;
@@ -201,10 +198,20 @@ dl#other {
   h1.question {
     font-size: 48px;
   }
+
+  .chart {
+    text {
+      text-anchor: end;
+    }
+  }
 }
 
 // mobile
 @media all and (max-width: $desktop-mobile-width) {
+  .desktop {
+    display: none;
+  }
+
   [role="button"] {
     width: 48%;
 

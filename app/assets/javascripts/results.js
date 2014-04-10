@@ -3,7 +3,7 @@
 $(function() {
   var tooltip = d3.select(".chart")
     .append("div")
-    .attr("class", "tooltip")
+    .attr("class", "tooltip desktop")
     .on("mouseover", function() {
       tooltip.classed("visible", true);
     })
@@ -52,6 +52,22 @@ $(function() {
       })
       .on("mouseout", function() { tooltip.classed("visible", false); });
 
+  var desktopBars = bar.append("rect")
+      .attr("width", 0)
+      .attr("height", barHeight)
+      .classed("desktop", true)
+      .classed("bar", true)
+      .classed("vote", function(d) { return d.id === vote_answer_id; })
+      .classed("correct", function(d) { return d.is_correct; });
+
+  var mobileBars = bar.append("rect")
+      .attr("width", 0)
+      .attr("height", barHeight)
+      .classed("mobile", true)
+      .classed("bar", true)
+      .classed("vote", function(d) { return d.id === vote_answer_id; })
+      .classed("correct", function(d) { return d.is_correct; });
+
   var labels = bar.append("text")
       .attr("class", "label")
       .attr("y", 0)
@@ -68,13 +84,14 @@ $(function() {
       .domain([0, d3.max(data, function(answer) { return answer.votes; })])
       .range([0, width - labelWidth]);
 
-  bar.append("rect")
+  desktopBars
       .attr("x", labelWidth)
-      .attr("width", 0)
-      .attr("height", barHeight)
-      .classed("bar", true)
-      .classed("vote", function(d) { return d.id === vote_answer_id; })
-      .classed("correct", function(d) { return d.is_correct; })
+      .transition()
+        .delay(function(d, i) { return i * 50; })
+        .duration(1000)
+        .attr('width', function(d, i) { return Math.max(2, x(d.votes)) });
+
+  mobileBars
       .transition()
         .delay(function(d, i) { return i * 50; })
         .duration(1000)
@@ -85,9 +102,17 @@ $(function() {
       .attr("height", barHeight);
 
   chart.append("line")
+      .classed("desktop", true)
       .attr("x1", labelWidth)
       .attr("y1", 0)
       .attr("x2", labelWidth)
+      .attr("y2", height);
+
+  chart.append("line")
+      .classed("mobile", true)
+      .attr("x1", 0)
+      .attr("y1", 0)
+      .attr("x2", 0)
       .attr("y2", height);
 
 });
