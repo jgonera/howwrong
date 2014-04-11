@@ -16,10 +16,10 @@ $(function() {
   var votePercentage = tooltip.append("div").attr("class", "votePercentage");
   var voteCount = tooltip.append("div").attr("class", "label-title");
 
-  function Graph(container, data) {
-    this.container = container;
+  function Graph(el, data) {
+    var self = this;
+    this.container = d3.select(el);
     this.data = data;
-    this.width = 600;
     this.barHeight = 40;
     this.barGap = 10;
     this.labelGap = this.barGap * 2;
@@ -27,15 +27,26 @@ $(function() {
     this.scale = {};
     this.bars = {};
 
-    this.setContainer();
+    this.setChart();
     this.renderRows();
+
+    d3.select(window).on("resize", this.rescale.bind(this));
   }
 
+  Graph.prototype.rescale = function() {
+    this.width = parseInt(this.container.style("width"), 10);
+    this.chart.attr("width", this.width);
 
-  Graph.prototype.setContainer = function() {
-    this.chart = d3.select(this.container)
+    this.setScale("desktop");
+    this.setScale("mobile");
+
+    this.animateBars("desktop");
+    this.animateBars("mobile");
+  };
+
+  Graph.prototype.setChart = function() {
+    this.chart = this.container
         .append("svg")
-        .attr("width", this.width)
         .attr("height", this.height);
   };
 
@@ -56,11 +67,7 @@ $(function() {
     this.renderLabels("desktop");
     this.renderLabels("mobile");
 
-    this.setScale("desktop");
-    this.setScale("mobile");
-
-    this.animateBars("desktop");
-    this.animateBars("mobile");
+    this.rescale();
 
     this.renderLine("desktop");
     this.renderLine("mobile");
