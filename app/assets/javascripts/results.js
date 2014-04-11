@@ -27,12 +27,12 @@ $(function() {
     this.scale = {};
     this.bars = {};
 
-    this.setContrainer();
+    this.setContainer();
     this.renderRows();
   }
 
 
-  Graph.prototype.setContrainer = function() {
+  Graph.prototype.setContainer = function() {
     this.chart = d3.select(this.container)
         .append("svg")
         .attr("width", this.width)
