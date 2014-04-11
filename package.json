@@ -1,0 +1,12 @@
+{
+  "name": "howwrong",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jgonera/howwrong.git"
+  },
+  "dependencies": {
+    "d3": "3",
+    "smash": "0"
+  }
+}
