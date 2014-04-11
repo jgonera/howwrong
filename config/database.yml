@@ -58,6 +58,7 @@ test:
 
 production:
   <<: *default
+  host: localhost
   database: d998fgrj456mjp
   username: xlyoeaosxyugqb
   password: Ltnaqge3LcSZjAIO0z9_GUg8QY
