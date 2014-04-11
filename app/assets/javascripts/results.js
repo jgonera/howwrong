@@ -96,6 +96,7 @@ $(function() {
   Graph.prototype.renderLabels = function(type) {
     var labels = this.rows.append("text")
       .classed(type, true)
+      .attr("x", this.barGap/2)
       .attr("y", 0)
       .attr("dy", "1.25em")
       .text(function(d) { return d.label; });

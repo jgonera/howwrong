@@ -61,7 +61,7 @@ h2 {
   }
 
   .bar {
-    fill: $dark-color;
+    fill: $bar-color;
     @include transition(fill .3s);
 
     &.vote {
