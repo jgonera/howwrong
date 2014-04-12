@@ -1,4 +1,5 @@
 namespace :d3 do
+  # https://github.com/mbostock/smash/wiki
   D3_MODULES = %w(
     node_modules/d3/src/start.js
     node_modules/d3/src/arrays/max.js
