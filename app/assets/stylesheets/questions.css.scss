@@ -5,20 +5,23 @@
 [role="button"] {
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
-  color: $grey-color;
+  color: #e6e6e6;
   margin-bottom: 10px;
-  background-color: $dark-color;
   text-transform: uppercase;
   padding: 11px 12px;
   text-align: center;
-
+  @include background-image(linear-gradient(to bottom, #888DB8 0%, #4655AA 1px));
+  border: 1px solid #353551;
   &, * {
     cursor: pointer;
   }
 
   &:active {
     background-color: $dark-color;
+    outline: 0;
+    @include background-image(linear-gradient(to bottom, #222222 0%, #4655AA 1px));
   }
+
 }
 
 #choices {
