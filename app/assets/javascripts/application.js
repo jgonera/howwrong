@@ -10,28 +10,27 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require turbolinks
+//= require d3
 //= require retina
 
-$(function() {
-  var $tooltip = $(".share .tooltip").on("click", function(ev) {
-    ev.stopPropagation();
+(function() {
+  var tooltip = d3.select(".share .tooltip").on("click", function() {
+    d3.event.stopPropagation();
   });
-  var $nav = $("nav ul");
+  var nav = d3.select("nav ul");
   var tapEvent = "ontouchstart" in window ? "touchend" : "click";
 
-  $(".share .link").on("click", function(ev) {
-    ev.stopPropagation();
-    $tooltip.addClass("visible");
-    $tooltip.find("input").select();
+  d3.select(".share .link").on("click", function() {
+    d3.event.stopPropagation();
+    tooltip.classed("visible", true);
+    tooltip.select("input").node().select();
   });
 
-  $("body").on("click", function() {
-    $tooltip.removeClass("visible");
+  d3.select("body").on("click", function() {
+    tooltip.classed("visible", false);
   });
 
-  $("#hamburger").on(tapEvent, function() {
-    $nav.toggleClass("visible");
+  d3.select("#hamburger").on(tapEvent, function() {
+    nav.classed("visible", !nav.classed("visible"));
   });
-});
+}());

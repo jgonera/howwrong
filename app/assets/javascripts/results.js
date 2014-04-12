@@ -1,6 +1,4 @@
-//= require d3.js
-
-$(function() {
+(function() {
   var tooltip = d3.select(".chart")
     .append("div")
     .attr("class", "tooltip desktop")
@@ -151,5 +149,4 @@ $(function() {
 
   new Graph(".chart", howwrong.options);
 
-});
-
+}());

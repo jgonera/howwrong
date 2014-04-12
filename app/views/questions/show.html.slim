@@ -5,7 +5,7 @@
       h1.question = @question.text
     dt Pick an answer
     dd
-      = form_for @question, url: vote_question_path(@question) do
+      = form_for @question, url: vote_question_path(@question), html: { class: "vote-form" } do
         div id="choices"
           - for answer in @question.answers do
             div.button role="button" tabindex="0"

@@ -1,17 +1,19 @@
-$(function() {
+(function() {
   var KEY_ENTER = 13, KEY_SPACE = 32;
 
-  $('[role="button"]')
+  function submit(el) {
+    d3.select(el).select('input[type="radio"]').property('checked', true);
+    d3.select(".vote-form").node().submit();
+  }
+
+  d3.selectAll('.vote-form [role="button"]')
     .on("click", function() {
-      var $el = $(this);
-      $el.find('input[type="radio"]').prop('checked', true);
-      $el.closest("form").submit();
+      submit(this);
     })
-    .on("keyup", function(ev) {
-      var $el = $(this);
+    .on("keyup", function() {
+      var ev = d3.event;
       if (ev.which === KEY_ENTER || ev.which === KEY_SPACE) {
-        $el.find("input").prop("checked", true);
-        $el.click();
+        submit(this);
       }
     });
-});
+}());
