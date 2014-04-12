@@ -56,10 +56,4 @@ test:
   username: howwrong
   password: q
 
-production:
-  <<: *default
-  host: ec2-54-243-47-196.compute-1.amazonaws.com
-  database: d998fgrj456mjp
-  username: xlyoeaosxyugqb
-  password: Ltnaqge3LcSZjAIO0z9_GUg8QY
-  port: 5432
+# production handled by Heroku
