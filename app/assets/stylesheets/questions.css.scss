@@ -125,10 +125,6 @@ h2 {
   }
 }
 
-dl.question {
-  width: 75%;
-}
-
 .answer {
   display: inline-block;
   vertical-align: top;
@@ -197,6 +193,10 @@ dl#other {
 
   h1.question {
     font-size: 48px;
+  }
+
+  dl.question {
+    width: 75%;
   }
 
   .chart {
