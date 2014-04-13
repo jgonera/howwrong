@@ -12,25 +12,6 @@
 //
 //= require d3
 //= require retina
-
-(function() {
-  var tooltip = d3.select(".share .tooltip").on("click", function() {
-    d3.event.stopPropagation();
-  });
-  var nav = d3.select("nav ul");
-  var tapEvent = "ontouchstart" in window ? "touchend" : "click";
-
-  d3.select(".share .link").on("click", function() {
-    d3.event.stopPropagation();
-    tooltip.classed("visible", true);
-    tooltip.select("input").node().select();
-  });
-
-  d3.select("body").on("click", function() {
-    tooltip.classed("visible", false);
-  });
-
-  d3.select("#hamburger").on(tapEvent, function() {
-    nav.classed("visible", !nav.classed("visible"));
-  });
-}());
+//= require common
+//= require form
+//= require results

@@ -147,6 +147,8 @@
       .attr("height", this.barHeight);
   };
 
-  new Graph(".chart", howwrong.options);
+  if (howwrong.options) {
+    new Graph(".chart", howwrong.options);
+  }
 
 }());
