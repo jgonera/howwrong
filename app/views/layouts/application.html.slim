@@ -53,4 +53,4 @@ html
 
     javascript:
       var howwrong = { options: #{@options.to_json.html_safe} };
-    = javascript_include_tag "application"
+    = javascript_include_tag "application", async: Rails.env.production?
