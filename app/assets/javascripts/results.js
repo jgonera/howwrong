@@ -1,7 +1,7 @@
 (function() {
   var tooltip = d3.select(".chart")
     .append("div")
-    .attr("class", "tooltip desktop")
+    .attr("class", "tooltip desktop icon")
     .on("mouseover", function() {
       tooltip.classed("visible", true);
     })
@@ -77,8 +77,8 @@
           .style("left", self.scale.desktop(d.votes) + self.barOffset + "px")
           .style("top", i * (self.barHeight + self.barGap) + self.barHeight/2 + "px")
           .classed("visible", true)
-          .classed("correct", d.is_correct)
-          .classed("wrong", !d.is_correct);
+          .classed("tick", d.is_correct)
+          .classed("cross", !d.is_correct);
         answerType.text(d.is_correct ? "Correct Answer" : "Wrong Answer");
         votePercentage.text(Math.round((d.votes/self.data.votes_count) * 100) + "%");
         voteCount.text(d.votes + (d.votes==1 ? " person " : " people ") + "answered this");

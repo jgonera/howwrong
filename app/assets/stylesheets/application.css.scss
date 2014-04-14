@@ -33,6 +33,31 @@ a {
   }
 }
 
+.icon {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+
+  &.tick {
+    background-image: inline-svg("tick.svg");
+  }
+
+  &.cross {
+    background-image: inline-svg("cross.svg");
+  }
+
+  &.facebook {
+    background-image: inline-svg("facebook.svg");
+  }
+
+  &.twitter {
+    background-image: inline-svg("twitter.svg");
+  }
+
+  &.link {
+    background-image: inline-svg("link.svg");
+  }
+}
+
 #main {
   background: $bg-color;
   min-height: 300px;
@@ -45,20 +70,6 @@ a {
 
   section > p {
     margin-bottom: 20px;
-  }
-
-  .social {
-    display: inline-block;
-    width: 32px;
-    height: 32px;
-    text-indent: -9999px;
-    overflow: hidden;
-    vertical-align: top;
-    background: no-repeat 50% 50%;
-    &.twitter {
-      margin-left: -5px;
-      background-image: image-url("twitter.svg");
-    }
   }
 }
 
@@ -116,20 +127,7 @@ nav {
         text-indent: -9999px;
         height: 54px;
         cursor: pointer;
-        background: $dark-color no-repeat 50% 50%;
-      }
-
-      &.twitter a {
-        background-image: image-url("twitter.svg");
-      }
-
-      &.facebook a {
-        background-image: image-url("facebook.svg");
-      }
-
-      &.link button {
-        position: relative;
-        background-image: image-url("link.svg");
+        background-color: $dark-color;
       }
     }
 
@@ -355,7 +353,7 @@ nav {
     width: $hamburger-width;
     height: 100%;
     text-indent: -9999px;
-    background: image-url("hamburger.svg") no-repeat 50% 50%;
+    background: inline-svg("hamburger.svg") no-repeat 50% 50%;
     opacity: .8;
   }
 

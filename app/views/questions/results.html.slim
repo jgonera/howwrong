@@ -2,20 +2,20 @@ dl class="question"
   dt Question
   dd
     h1 = @question.text
-dl class="answer correct"
-  dt Correct Answer
+dl.answer
+  dt.icon.tick Correct Answer
   dd
     = @question.answers.correct.label
     a href=@question.source_url = @question.source
-dl class="answer #{@is_wrong ? 'wrong' : 'correct'}"
-  dt Your Answer
+dl.answer
+  dt class="#{@is_wrong ? 'icon cross' : 'icon tick'}" Your Answer
   dd = @question.answers.find(@vote_answer_id).label
 dl id="other"
   dt How Wrong?
   dd.howwrong
     p = @question.answers.find(@vote_answer_id).feedback.text
-    a.social.twitter href=@twitter_url target="_blank" Share on Twitter
-    a.social.facebook href=@facebook_url target="_blank" Share on Facebook
+    a.social.icon.twitter href=@twitter_url target="_blank" Share on Twitter
+    a.social.icon.facebook href=@facebook_url target="_blank" Share on Facebook
   dt How Others Answered
   dd
     table class="results"

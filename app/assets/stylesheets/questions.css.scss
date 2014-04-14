@@ -117,12 +117,11 @@ h2 {
       top: 7px;
     }
 
-    &.correct {
-      background-image: image-url("tick.svg");
+    &.tick {
       border-bottom: 4px solid $green-color;
     }
-    &.wrong {
-      background-image: image-url("cross.svg");
+
+    &.cross {
       border-bottom: 4px solid $red-color;
     }
   }
@@ -138,14 +137,6 @@ h2 {
     display: inline-block;
     padding: 2px 25px 0 0;
     background: no-repeat 100% 0;
-  }
-
-  &.correct dt {
-    background-image: image-url("tick.svg");
-  }
-
-  &.wrong dt {
-    background-image: image-url("cross.svg");
   }
 
   a {
@@ -169,19 +160,12 @@ dl#other {
     text-indent: -9999px;
     overflow: hidden;
     vertical-align: top;
-    background: no-repeat 50% 50%;
 
     &.twitter {
       margin-left: -5px;
-      background-image: image-url("twitter.svg");
-    }
-
-    &.facebook {
-      background-image: image-url("facebook.svg");
     }
   }
 }
-
 
 // desktop
 @media all and (min-width: $desktop-mobile-width) {
