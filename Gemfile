@@ -61,3 +61,7 @@ group :development, :test do
   gem 'selenium-webdriver', '~> 2.40.0'
   gem 'database_cleaner', '~> 1.2.0'
 end
+
+# So apparently Heroku doesn't gzip stuff by default anymore
+# https://devcenter.heroku.com/articles/http-routing#gzipped-responses
+gem 'heroku-deflater', group: :production
