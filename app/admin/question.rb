@@ -1,29 +1,24 @@
 ActiveAdmin.register Question do
-  permit_params :text, :source, :source_url, :is_featured, :topic
+  permit_params :text, :slug, :source, :source_url, :is_featured, :topic
 
   controller do
-    def find_resource
-      scoped_collection.where(slug: params[:id]).first!
-    end
+    defaults finder: :find_by_slug
 
-    # def update
-    #   @question = Question.friendly.find(params[:id])
-    #   @question.slug = nil
-    #   @question.update(permitted_params)
-    # end
+    def update
+      params[:question].merge!({ slug: nil })
+      update!
+    end
   end
 
-  # See permitted parameters documentation:
-  # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-  #
-  # or
-  #
-  # permit_params do
-  #  permitted = [:permitted, :attributes]
-  #  permitted << :other if resource.something?
-  #  permitted
-  # end
+  form do |f|
+    f.inputs do
+      f.input :text
+      f.input :source
+      f.input :source_url
+      f.input :topic
+      f.input :is_featured
+    end
 
+    f.actions
+  end
 end
