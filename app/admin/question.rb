@@ -1,5 +1,6 @@
 ActiveAdmin.register Question do
-  permit_params :text, :slug, :source, :source_url, :is_featured, :topic
+  permit_params :text, :slug, :source, :source_url, :is_featured, :topic,
+    answers_attributes: [:id, :label, :is_correct, :_destroy]
 
   controller do
     defaults finder: :find_by_slug
@@ -23,6 +24,7 @@ ActiveAdmin.register Question do
       f.has_many :answers, heading: "Answers", allow_destroy: true, new_record: true do |af|
         af.input :label
         af.input :is_correct
+        af.input :feedback
       end
     end
 
