@@ -40,12 +40,12 @@ html
         section.share
           h2 Share the love
           ul
-            li: a.button.icon.facebook href="https://twitter.com/intent/tweet?url=http%3A//howwrongyouare.org" target="_blank" Tweet
-            li: a.button.icon.twitter href="https://www.facebook.com/share.php?u=http%3A//howwrongyouare.org" target="_blank" Facebook
+            li: a.button.icon.twitter href="https://twitter.com/intent/tweet?url=http%3A//#{request.host_with_port}" target="_blank" Tweet
+            li: a.button.icon.facebook href="https://www.facebook.com/share.php?u=http%3A//#{request.host_with_port}" target="_blank" Facebook
             li.link
               button.button.icon.link
               div.tooltip
-                input type="text" value="http://howwrongyouare.org"
+                input type="text" value="http://#{request.host_with_port}"
           p.label-title
             ' This work is under
             a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/" CC-BY-NC-SA 3.0
