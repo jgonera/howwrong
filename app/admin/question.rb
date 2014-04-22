@@ -19,6 +19,13 @@ ActiveAdmin.register Question do
       f.input :is_featured
     end
 
+    f.inputs do
+      f.has_many :answers, heading: "Answers", allow_destroy: true, new_record: true do |af|
+        af.input :label
+        af.input :is_correct
+      end
+    end
+
     f.actions
   end
 end
