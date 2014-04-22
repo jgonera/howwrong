@@ -1,6 +1,6 @@
 ActiveAdmin.register Question do
   permit_params :text, :slug, :source, :source_url, :is_featured, :topic,
-    answers_attributes: [:id, :label, :is_correct, :_destroy]
+    answers_attributes: [:id, :label, :is_correct, :feedback_id, :_destroy]
 
   controller do
     defaults finder: :find_by_slug
