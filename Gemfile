@@ -65,7 +65,7 @@ end
 # So apparently Heroku doesn't gzip stuff by default anymore
 # https://devcenter.heroku.com/articles/http-routing#gzipped-responses
 gem 'heroku-deflater', group: :production
-gem 'unicorn'
+gem 'puma'
 gem 'foreman'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
