@@ -20,3 +20,6 @@
 
 # Node.js dependencies
 /node_modules
+
+# local settings for foreman/unicorn
+.env
