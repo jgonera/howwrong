@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
     @question = Question.featured.where.not(id: session[:voted].keys).last
 
     if @question.nil?
-      @questions = Question.all.limit(3)
+      @questions = Question.all
       render 'archive'
     else
       render 'show'

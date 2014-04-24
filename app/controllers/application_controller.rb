@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
   def render(*args)
     if !@questions
       if @question
-        @other_questions = Question.where('id != ?', @question.id)
+        @other_questions = Question.random(3, exclude: @question)
       else
-        @other_questions = Question.all
+        @other_questions = Question.random(3)
       end
     end
 

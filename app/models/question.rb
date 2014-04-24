@@ -8,6 +8,13 @@ class Question < ActiveRecord::Base
 
   scope :featured, -> { where(is_featured: true) }
 
+  def self.random(n, options = {})
+    start = rand(count - n + 1)
+    ret = offset(start).limit(n)
+    ret = ret.where('id != ?', options[:exclude].id) if options.has_key? :exclude
+    ret
+  end
+
   def votes_count
     self.answers.inject(0) { |sum, answer| sum + answer.votes }
   end
