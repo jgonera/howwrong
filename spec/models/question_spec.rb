@@ -31,10 +31,17 @@ describe Question do
       Question.random(3)
     end
 
-    it "excludes given question" do
-      allow(Question).to receive(:rand).and_return(0)
-      questions = Question.random(1, exclude: question_0)
-      expect(questions[0].id).to_not eq question_0.id
+    context "when exclude parameter provided" do
+      it "excludes given question" do
+        allow(Question).to receive(:rand).and_return(0)
+        questions = Question.random(1, exclude: question_0)
+        expect(questions[0].id).to_not eq question_0.id
+      end
+
+      it "subtracts n+1 from maximum offset" do
+        allow(Question).to receive(:rand).with(2).and_return(0)
+        Question.random(1, exclude: question_0)
+      end
     end
   end
 
