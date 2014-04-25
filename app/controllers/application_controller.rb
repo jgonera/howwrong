@@ -4,6 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def render(*args)
+    if @title.nil?
+      @title = ""
+    else
+      @title += " · "
+    end
+    @title += "How Wrong You Are"
+
     if !@questions
       if @question
         @other_questions = Question.random(3, exclude: @question)

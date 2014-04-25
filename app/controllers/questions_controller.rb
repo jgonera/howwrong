@@ -21,6 +21,7 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.friendly.find params[:id]
     redirect_to action: 'results' if session[:voted].has_key? @question.id
+    @title = @question.text
   end
 
   def vote
@@ -42,6 +43,7 @@ class QuestionsController < ApplicationController
     @question = Question.friendly.find params[:id]
     redirect_to action: 'show' unless session[:voted].has_key? @question.id
 
+    @title = @question.text
     @vote_answer_id = session[:voted][@question.id]
     @is_wrong = @vote_answer_id != @question.answers.correct.id
     @options = {
