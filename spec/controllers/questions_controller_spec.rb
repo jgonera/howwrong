@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe QuestionsController do
-  let(:question) { create :question }
+  let!(:question) { create :question }
   let(:answer) { question.answers.first }
+  let!(:another_question) { create :question }
+  let(:another_answer) { another_question.answers.first }
 
   describe "POST vote" do
-    let(:another_question) { create :question }
-    let(:another_answer) { another_question.answers.first }
 
     it "increments answer's votes" do
       post :vote, id: question.slug, answer_id: answer.id
@@ -65,16 +65,20 @@ describe QuestionsController do
       expect(response).to redirect_to action: :show
     end
 
-    it "shows results if vote made" do
-      session[:voted] = { question.id => answer.id }
-      get :results, id: question.slug
-      expect(subject).to render_template 'results'
-    end
+    context "when vote made" do
+      before :each do
+        session[:voted] = { question.id => answer.id }
+      end
 
-    it "marks selected answer" do
-      session[:voted] = { question.id => answer.id }
-      get :results, id: question.slug
-      expect(assigns[:vote_answer_id]).to eq answer.id
+      it "shows results if vote made" do
+        get :results, id: question.slug
+        expect(subject).to render_template 'results'
+      end
+
+      it "marks selected answer" do
+        get :results, id: question.slug
+        expect(assigns[:vote_answer_id]).to eq answer.id
+      end
     end
   end
 

@@ -26,4 +26,8 @@ class Question < ActiveRecord::Base
   def votes_count
     self.answers.inject(0) { |sum, answer| sum + answer.votes }
   end
+
+  def next
+    self.class.where("id > ?", id).order("id ASC").first || self.class.first
+  end
 end

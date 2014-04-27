@@ -2,8 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-[role="button"] {
-  font-family: 'Open Sans', sans-serif;
+.button.uppercase.vote {
   font-size: 14px;
   color: #e6e6e6;
   margin-bottom: 10px;
@@ -12,6 +11,7 @@
   text-align: center;
   @include background-image(linear-gradient(to bottom, #888DB8 0%, #4655AA 1px));
   border: 1px solid #353551;
+
   &, * {
     cursor: pointer;
   }
@@ -159,7 +159,7 @@ dl#other {
     display: none;
   }
 
-  [role="button"] {
+  .button.vote {
     width: 180px;
     margin-right: 10px;
   }
@@ -187,7 +187,7 @@ dl#other {
     display: none;
   }
 
-  [role="button"] {
+  .button.vote {
     width: 48%;
 
     &:nth-child(2n+1) {

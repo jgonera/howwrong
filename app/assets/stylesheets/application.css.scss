@@ -56,6 +56,12 @@ a {
   &.link {
     background-image: inline-svg("link.svg");
   }
+
+  &.next {
+    background-image: inline-svg("next.svg");
+    background-position: 95% 50%;
+    padding-right: 32px;
+  }
 }
 
 #main {
@@ -94,13 +100,6 @@ nav {
   li {
     .button {
       display: block;
-      background: $dark-color no-repeat 50% 50%;
-      color: $grey-color;
-      text-transform: uppercase;
-      font-size: 12px;
-      padding: 17px 19px;
-      font-weight: 600;
-      letter-spacing: 0.02em;
     }
   }
 }
@@ -141,7 +140,6 @@ nav {
         text-indent: -9999px;
         height: 54px;
         cursor: pointer;
-        background-color: $dark-color;
       }
     }
 
@@ -193,7 +191,19 @@ nav {
   display: inline-block;
   vertical-align: top;
   border-radius: 3px;
+  background: $dark-color no-repeat 50% 50%;
+  padding: 17px 19px;
   @include transition(box-shadow .25s, color .25s);
+
+  &.uppercase {
+    font-family: 'Open Sans', sans-serif;
+    color: $grey-color;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
 
   &:hover, &:focus {
     text-decoration: none;
@@ -253,6 +263,12 @@ nav {
       display: block;
       margin: 10px 0;
     }
+  }
+
+  .button.next {
+    position: absolute;
+    top: 0;
+    right: 10px;
   }
 
   #hamburger {
@@ -338,7 +354,7 @@ nav {
 
   .content {
     section {
-      padding: 30px 15px 0;
+      padding: 40px 15px 0;
     }
   }
 
@@ -358,6 +374,12 @@ nav {
         text-align: center;
       }
     }
+  }
+
+  .button.next {
+    position: fixed;
+    top: 5em;
+    right: 0;
   }
 
   #hamburger {

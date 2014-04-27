@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Question do
-  subject { Question.create text: "O rly?" }
+  subject! { Question.create text: "O rly?" }
 
   it "removes answers when question removed" do
     subject.answers.create [{ label: "Hai" }, { label: "No" }]
@@ -53,6 +53,18 @@ describe Question do
     it "returns the count of votes" do
       subject.answers.create [{ label: "Hai", votes: 2 }, { label: "No", votes: 3 }]
       expect(subject.votes_count).to eq 5
+    end
+  end
+
+  describe '#next' do
+    let!(:another_question) { Question.create(text: "O rly another?") }
+
+    it "returns next question" do
+      expect(subject.next).to eq another_question
+    end
+
+    it "wraps around if no more questions" do
+      expect(another_question.next).to eq subject
     end
   end
 end

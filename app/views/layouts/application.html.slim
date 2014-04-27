@@ -25,8 +25,11 @@ html
               span
                 ' ARE
           ul
-            li: a.button href="/about" About
-            li: a.button href="/ask" Submit question
+            li: a.button.uppercase href="/about" About
+            li: a.button.uppercase href="/ask" Submit question
+
+        - if @question
+          a.button.uppercase.icon.next href=question_path(@question.next) Next question
 
         section = yield
 
