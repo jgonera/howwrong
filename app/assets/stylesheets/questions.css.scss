@@ -52,6 +52,10 @@ dt {
 }
 
 h2 {
+  margin-bottom: 5px;
+}
+
+#footer h2 {
   margin-bottom: 15px;
 }
 
@@ -149,6 +153,7 @@ dl#other {
   margin-top: 30px;
 
   .howwrong p {
+    margin-top: -8px;
     font-size: 48px;
   }
 }
@@ -166,6 +171,7 @@ dl#other {
 
   h1.question {
     font-size: 48px;
+    line-height: 1.35;
   }
 
   dl.question {
