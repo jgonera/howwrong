@@ -59,7 +59,7 @@ a {
 
   &.next {
     background-image: inline-svg("next.svg");
-    background-position: 95% 50%;
+    background-position: right 10px top 50%;
     padding-right: 32px;
   }
 }
@@ -360,13 +360,17 @@ nav {
 
   nav {
     ul {
-      height: 0;
+      max-height: 0;
       overflow: hidden;
+      // needed to cover next button when nav open
+      position: relative;
+      z-index: 2;
+      background: $bg-color;
 
-      @include transition(height .25s);
+      @include transition(max-height .25s);
 
       &.visible {
-        height: 4.5em;
+        max-height: 5em;
       }
 
       li {
@@ -378,8 +382,20 @@ nav {
 
   .button.next {
     position: fixed;
+    z-index: 1;
     top: 5em;
     right: 0;
+    overflow: hidden;
+    white-space: nowrap;
+
+    @include transition(opacity .25s);
+  }
+
+  .scrolled .button.next {
+    width: 0;
+    text-indent: -9999px;
+    opacity: .8;
+    padding-left: 10px;
   }
 
   #hamburger {
