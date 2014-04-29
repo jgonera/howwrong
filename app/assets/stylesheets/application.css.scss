@@ -212,7 +212,8 @@ nav {
   }
 
   &:active {
-    //make an active state
+    outline: 0;
+    @include background-image(linear-gradient(to bottom, #000 0, transparent 2px));
   }
 }
 

@@ -17,7 +17,6 @@
   }
 
   &:active {
-    background-color: $dark-color;
     outline: 0;
     @include background-image(linear-gradient(to bottom, #222222 0%, #4655AA 1px));
   }
