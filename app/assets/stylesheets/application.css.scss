@@ -371,7 +371,7 @@ nav {
       @include transition(max-height .25s);
 
       &.visible {
-        max-height: 5em;
+        max-height: 6em;
       }
 
       li {
