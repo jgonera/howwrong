@@ -27,8 +27,9 @@ class Question < ActiveRecord::Base
     self.answers.inject(0) { |sum, answer| sum + answer.votes }
   end
 
+  # this in fact returns an older (previous) question from the DB point of view
   def next(options = {})
-    ret = self.class.where("id > ?", id)
+    ret = self.class.where("id < ?", id)
     ret = ret.where.not(id: options[:exclude]) if options.has_key? :exclude
     ret.order("id ASC").first
   end
