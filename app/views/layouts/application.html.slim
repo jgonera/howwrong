@@ -29,10 +29,8 @@ html
             li: a.button.uppercase href="/ask" Submit question
             li: a.button.uppercase href="/archive" See all questions
 
-        - if @next_question
-          a.button.uppercase.icon.next href=question_path(@next_question) Next question
-        - else
-          a.button.uppercase.icon.next href="/archive" Next question
+        - if @next_question_path
+          a.button.uppercase.icon.next href=@next_question_path Next question
 
         section = yield
 
