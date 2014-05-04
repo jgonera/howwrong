@@ -61,15 +61,15 @@ describe Question do
     let!(:another_question2) { Question.create(text: "O rly another?") }
 
     it "returns next question" do
-      expect(subject.next).to eq another_question
+      expect(another_question.next).to eq subject
     end
 
     it "returns nil if no more questions" do
-      expect(another_question2.next).to eq nil
+      expect(subject.next).to eq nil
     end
 
     it "skips a question if exclude parameter present" do
-      expect(subject.next(exclude: [another_question.id])).to eq another_question2
+      expect(another_question2.next(exclude: [another_question.id])).to eq subject
     end
   end
 end

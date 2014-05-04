@@ -31,6 +31,6 @@ class Question < ActiveRecord::Base
   def next(options = {})
     ret = self.class.where("id < ?", id)
     ret = ret.where.not(id: options[:exclude]) if options.has_key? :exclude
-    ret.order("id ASC").first
+    ret.order("id ASC").last
   end
 end
