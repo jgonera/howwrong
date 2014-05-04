@@ -3,6 +3,15 @@ class QuestionsController < ApplicationController
     session[:voted] ||= {}
   end
 
+  # FIXME: this needs tests/refactoring
+  def render(*args)
+    if @question
+      @next_question = @question.next(exclude: session[:voted].keys)
+    end
+
+    super
+  end
+
   def index
     @question = Question.featured.where.not(id: session[:voted].keys).last
 
@@ -43,7 +52,6 @@ class QuestionsController < ApplicationController
     @question = Question.friendly.find params[:id]
     redirect_to action: 'show' unless session[:voted].has_key? @question.id
 
-    @next_question = @question.next
     @title = @question.text
     @vote_answer_id = session[:voted][@question.id]
     @is_wrong = @vote_answer_id != @question.answers.correct.id

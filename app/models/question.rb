@@ -27,7 +27,9 @@ class Question < ActiveRecord::Base
     self.answers.inject(0) { |sum, answer| sum + answer.votes }
   end
 
-  def next
-    self.class.where("id > ?", id).order("id ASC").first || self.class.first
+  def next(options = {})
+    ret = self.class.where("id > ?", id)
+    ret = ret.where.not(id: options[:exclude]) if options.has_key? :exclude
+    ret.order("id ASC").first
   end
 end

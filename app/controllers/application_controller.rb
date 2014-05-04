@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  # FIXME: this needs tests/refactoring
   def render(*args)
     if @title.nil?
       @title = ""
