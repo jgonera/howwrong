@@ -46,7 +46,6 @@ describe QuestionsController do
     end
 
     it "shows other question" do
-      another_question = create :question
       get :show, id: question.slug
       expect(assigns[:other_questions].length).to eq 1
       expect(assigns[:other_questions][0]).to eq another_question
