@@ -9,13 +9,15 @@ class Question < ActiveRecord::Base
   scope :featured, -> { where(is_featured: true) }
 
   def self.random(n, options = {})
-    max = count - n
+    # e.g. if we want to choose 1 out of 3, we have 3 offsets to choose from
+    # if we want 2 out of 3, we have 2 offsets
+    max = count - n + 1
 
     if options.has_key? :exclude
-      ret = where('id != ?', options[:exclude].id)
+      exclude = options[:exclude]
+      max -= exclude.kind_of?(Array) ? exclude.length : 1
+      ret = where.not(id: exclude)
     else
-      # one more to choose from if we don't exclude one
-      max += 1
       ret = self
     end
 
@@ -25,12 +27,5 @@ class Question < ActiveRecord::Base
 
   def votes_count
     self.answers.inject(0) { |sum, answer| sum + answer.votes }
-  end
-
-  # this in fact returns an older (previous) question from the DB point of view
-  def next(options = {})
-    ret = self.class.where("id < ?", id)
-    ret = ret.where.not(id: options[:exclude]) if options.has_key? :exclude
-    ret.order("id ASC").last
   end
 end

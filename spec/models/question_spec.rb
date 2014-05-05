@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Question do
-  subject! { Question.create text: "O rly?" }
+  subject { Question.create text: "O rly?" }
 
   it "removes answers when question removed" do
     subject.answers.create [{ label: "Hai" }, { label: "No" }]
@@ -34,13 +34,19 @@ describe Question do
     context "when exclude parameter provided" do
       it "excludes given question" do
         allow(Question).to receive(:rand).and_return(0)
-        questions = Question.random(1, exclude: question_0)
+        questions = Question.random(1, exclude: question_0.id)
         expect(questions[0].id).to_not eq question_0.id
       end
 
-      it "subtracts n+1 from maximum offset" do
-        allow(Question).to receive(:rand).with(2).and_return(0)
-        Question.random(1, exclude: question_0)
+      it "excludes multiple questions" do
+        allow(Question).to receive(:rand).and_return(0)
+        questions = Question.random(2, exclude: [question_0.id, question_1.id])
+        expect(questions[0].id).to eq question_2.id
+      end
+
+      it "subtracts excluded questions from maximum offset" do
+        allow(Question).to receive(:rand).with(1).and_return(0)
+        Question.random(1, exclude: [question_0.id, question_1.id])
       end
     end
   end
@@ -53,23 +59,6 @@ describe Question do
     it "returns the count of votes" do
       subject.answers.create [{ label: "Hai", votes: 2 }, { label: "No", votes: 3 }]
       expect(subject.votes_count).to eq 5
-    end
-  end
-
-  describe '#next' do
-    let!(:another_question) { Question.create(text: "O rly another?") }
-    let!(:another_question2) { Question.create(text: "O rly another?") }
-
-    it "returns next question" do
-      expect(another_question.next).to eq subject
-    end
-
-    it "returns nil if no more questions" do
-      expect(subject.next).to eq nil
-    end
-
-    it "skips a question if exclude parameter present" do
-      expect(another_question2.next(exclude: [another_question.id])).to eq subject
     end
   end
 end

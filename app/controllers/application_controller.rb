@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
     if !@questions
       if @question
-        @other_questions = Question.random(3, exclude: @question)
+        @other_questions = Question.random(3, exclude: @question.id)
       else
         @other_questions = Question.random(3)
       end

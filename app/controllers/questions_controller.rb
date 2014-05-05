@@ -6,7 +6,9 @@ class QuestionsController < ApplicationController
   # FIXME: this needs tests/refactoring
   def render(*args)
     if @question
-      next_question = @question.next(exclude: session[:voted].keys)
+      exclude = session[:voted].keys
+      exclude << @question.id
+      next_question = Question.random(1, exclude: exclude).first
       @next_question_path = next_question.nil? ? "/archive" : question_path(next_question)
     end
 
