@@ -160,7 +160,12 @@ dl#other {
 // desktop
 @media all and (min-width: $desktop-mobile-width) {
   .mobile {
-    display: none;
+    // don't use display: none because it breaks getBBox() in Firefox
+    // FIXME: this is unreliable
+    visibility: hidden !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
   }
 
   .button.vote {
@@ -189,7 +194,12 @@ dl#other {
 // mobile
 @media all and (max-width: $desktop-mobile-width) {
   .desktop {
-    display: none;
+    // don't use display: none because it breaks getBBox() in Firefox
+    // FIXME: this is unreliable
+    visibility: hidden !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
   }
 
   .button.vote {
