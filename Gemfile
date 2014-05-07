@@ -68,4 +68,6 @@ gem 'heroku-deflater', group: :production
 gem 'puma'
 gem 'foreman'
 
+gem 'newrelic_rpm'
+
 gem 'activeadmin', github: 'gregbell/active_admin'
