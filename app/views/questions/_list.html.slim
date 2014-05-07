@@ -4,5 +4,5 @@ ul.questions
       a.button href=question_path(question)
         h4 = question.text
         span.label-title
-          = question.votes_count
+          = number_with_delimiter(question.votes_count)
           |  answers
