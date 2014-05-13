@@ -323,6 +323,11 @@ nav {
       width: 240px;
       margin-right: 20px;
 
+      h4 {
+        overflow: hidden;
+        height: 230px;
+      }
+
       &:nth-child(3n) {
         margin-right: 0;
       }
