@@ -1,9 +1,9 @@
 require "spec_helper"
 
 describe "quiz page", wip: true do
-  let!(:question_1) { create :question, text: "Question 1" }
-  let!(:question_2) { create :question, text: "Question 2" }
-  let!(:quiz) { create :quiz, questions: [question_1, question_2] }
+  let!(:quiz) { create :quiz }
+  let!(:question_1) { create :question, text: "Question 1", quizzes: [quiz] }
+  let!(:question_2) { create :question, text: "Question 2", quizzes: [quiz] }
 
   before :each do
     visit quiz_path(quiz)
@@ -15,6 +15,6 @@ describe "quiz page", wip: true do
   end
 
   it "doesn't show other questions" do
-    expect(page).to_not have_content question_2.label
+    expect(page).to_not have_content question_2.text
   end
 end

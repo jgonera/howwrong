@@ -24,4 +24,8 @@ FactoryGirl.define do
     text "You're right!"
     is_positive true
   end
+
+  factory :quiz do
+    title "Super fun quiz"
+  end
 end

@@ -62,3 +62,7 @@ question3.answers.create [
   { label: "30.9%", votes: 40, feedback: negative_feedback },
   { label: "50%", votes: 405, feedback: negative_feedback }
 ]
+
+quiz = Quiz.create(title: "Awesome quiz")
+quiz.questions << question2 << question3
+

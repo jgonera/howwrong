@@ -3,6 +3,8 @@ class Question < ActiveRecord::Base
   friendly_id :text, use: :slugged
 
   has_many :answers, dependent: :delete_all
+  has_many :quiz_questions
+  has_many :quizzes, through: :quiz_questions
   # needed for activeadmin (formtastic)
   accepts_nested_attributes_for :answers, allow_destroy: true
 

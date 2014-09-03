@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :quizzes, only: [:show]
+
   get 'about', to: 'pages#about'
   get 'ask', to: 'pages#ask'
   get 'archive', to: 'questions#archive'
