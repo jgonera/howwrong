@@ -10,7 +10,7 @@ gem 'rails', '4.1.1'
 gem 'pg'
 
 # Slugs
-gem 'friendly_id', '~> 5.0.0'
+gem 'friendly_id', '~> 5.0.4'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -55,9 +55,9 @@ gem 'spring',        group: :development
 gem 'slim-rails'
 
 group :development, :test do
-  gem 'rspec-rails', '3.0.0.beta1'
-  gem 'capybara', '~> 2.2.1'
-  gem 'factory_girl_rails', '~> 4.0'
+  gem 'rspec-rails', '~> 3.0.2'
+  gem 'capybara', '~> 2.4.1'
+  gem 'factory_girl_rails', '~> 4.4.1'
   gem 'selenium-webdriver', '~> 2.40.0'
   gem 'database_cleaner', '~> 1.2.0'
 end

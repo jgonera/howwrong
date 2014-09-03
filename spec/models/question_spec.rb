@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Question do
   subject { Question.create text: "O rly?" }
 

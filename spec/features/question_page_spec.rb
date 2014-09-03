@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe "question page" do
   let!(:question) { create :question, text: "Are you wrong?" }
   let(:answer) { question.answers.first }

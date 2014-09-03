@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe QuestionsController do
   let!(:question) { create :question }
   let(:answer) { question.answers.first }

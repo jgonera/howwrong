@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe "home page" do
   let!(:question) { create :question, text: "Are you wrong?" }
   let!(:wrong_answer) { create :answer, question: question }
