@@ -4,17 +4,17 @@ ruby '2.1.0'
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.1'
+gem 'rails', '4.1.5'
 
 # Use postgresql as the database for Active Record
-gem 'pg'
+gem 'pg', '~> 0.17.1'
 
 # Slugs
 gem 'friendly_id', '~> 5.0.4'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
-gem 'bourbon'
+gem 'bourbon', '~> 3.2.1'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -52,7 +52,7 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'slim-rails'
+gem 'slim-rails', '~> 2.1.5'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.2'
@@ -65,9 +65,10 @@ end
 # So apparently Heroku doesn't gzip stuff by default anymore
 # https://devcenter.heroku.com/articles/http-routing#gzipped-responses
 gem 'heroku-deflater', group: :production
-gem 'puma'
-gem 'foreman'
+gem 'puma', '~> 2.9.0'
+gem 'foreman', '~> 0.75.0'
 
 gem 'newrelic_rpm'
 
+gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
