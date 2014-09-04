@@ -58,8 +58,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0.2'
   gem 'capybara', '~> 2.4.1'
   gem 'factory_girl_rails', '~> 4.4.1'
-  gem 'selenium-webdriver', '~> 2.40.0'
-  gem 'database_cleaner', '~> 1.2.0'
+  gem 'selenium-webdriver', '~> 2.42.0'
+  gem 'database_cleaner', '~> 1.3.0'
 end
 
 # So apparently Heroku doesn't gzip stuff by default anymore

@@ -57,4 +57,12 @@ RSpec.configure do |config|
   config.after do
     DatabaseCleaner.clean
   end
+
+  # Use Chrome until https://code.google.com/p/selenium/issues/detail?id=7710
+  # is fixed
+  Capybara.register_driver :chrome do |app|
+    Capybara::Selenium::Driver.new(app, browser: :chrome)
+  end
+
+  Capybara.javascript_driver = :chrome
 end
