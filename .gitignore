@@ -23,3 +23,6 @@
 
 # local settings for foreman/unicorn
 .env
+
+# rbenv gems
+.gems
