@@ -22,6 +22,7 @@ class QuestionsController < ApplicationController
       @questions = Question.all
       render 'archive'
     else
+      @other_questions = Question.random(exclude: @question.id)
       render 'show'
     end
   end
@@ -34,6 +35,7 @@ class QuestionsController < ApplicationController
     @question = Question.friendly.find params[:id]
     redirect_to action: 'results' if session[:voted].has_key? @question.id
     @title = @question.text
+    @other_questions = Question.random(exclude: @question.id)
   end
 
   def vote
@@ -73,6 +75,7 @@ class QuestionsController < ApplicationController
     @facebook_url = "https://www.facebook.com/share.php?" + {
       u: short_url
     }.to_query
+    @other_questions = Question.random(exclude: @question.id)
   end
 
   def short

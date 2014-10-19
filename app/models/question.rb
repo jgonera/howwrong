@@ -8,17 +8,16 @@ class Question < ActiveRecord::Base
 
   scope :featured, -> { where(is_featured: true) }
 
-  def self.random(n, options = {})
+  def self.random(n = 3, exclude: nil)
     # e.g. if we want to choose 1 out of 3, we have 3 offsets to choose from
     # if we want 2 out of 3, we have 2 offsets
     max = count - n + 1
 
-    if options.has_key? :exclude
-      exclude = options[:exclude]
+    if exclude.nil?
+      ret = self
+    else
       max -= exclude.kind_of?(Array) ? exclude.length : 1
       ret = where.not(id: exclude)
-    else
-      ret = self
     end
 
     start = rand(max)
