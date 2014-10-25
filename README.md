@@ -2,14 +2,17 @@
 
 ## Development setup
 
-Install PostgreSQL and create a database user using `sudo -u postgres psql`:
+Install PostgreSQL and create a database user using:
 
-```sql
-create user howwrong with password 'q';
-alter user howwrong createdb;
+```bash
+$ createuser -d -W howwrong
 ```
 
-Then run `bin/rake db:setup`
+Then run:
+
+```bash
+$ bin/rake db:setup
+```
 
 ## Running tests
 
