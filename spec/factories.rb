@@ -4,25 +4,30 @@ FactoryGirl.define do
     source "Daily Bullshit"
     source_url "http://fakefakecrap.com"
 
-    after(:create) do |question|
-      create(:answer, label: 'Yes', is_correct: true, question: question, feedback: create(:positive_feedback))
-      create(:answer, label: 'No', question: question)
+    after :create do |question|
+      create :answer, :correct, question: question
+      create :answer, question: question
     end
   end
 
   factory :answer do
-    label "Answer"
+    sequence(:label) { |n| "Answer #{n}" }
     question
     feedback
+
+    trait :correct do
+      is_correct true
+      association :feedback, :positive
+    end
   end
 
   factory :feedback do
     text "You suck!"
-  end
 
-  factory :positive_feedback, class: Feedback do
-    text "You're right!"
-    is_positive true
+    trait :positive do
+      text "You rock!"
+      is_positive true
+    end
   end
 
   factory :quiz do
