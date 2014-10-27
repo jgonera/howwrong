@@ -1,12 +1,16 @@
 FactoryGirl.define do
   factory :question do
-    text "Are you tested?"
+    sequence(:text) { |n| "Are you tested #{n}?" }
     source "Daily Bullshit"
     source_url "http://fakefakecrap.com"
 
     after :create do |question|
       create :answer, :correct, question: question
       create :answer, question: question
+    end
+
+    trait :featured do
+      is_featured true
     end
   end
 
@@ -32,5 +36,9 @@ FactoryGirl.define do
 
   factory :quiz do
     title "Super fun quiz"
+
+    after :create do |quiz|
+      create_list :question, 2, quizzes: [quiz]
+    end
   end
 end

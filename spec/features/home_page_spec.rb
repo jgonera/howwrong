@@ -1,6 +1,6 @@
 describe "home page" do
-  let!(:question) { create :question, text: "Are you wrong?" }
-  let!(:featured_question) { create :question, text: "Are you featured 1?", is_featured: true }
+  let!(:question) { create :question }
+  let!(:featured_question) { create :question, :featured }
 
   before :each do
     visit '/'
@@ -16,7 +16,7 @@ describe "home page" do
   end
 
   context "when there are more featured questions" do
-    let!(:another_featured_question) { create :question, text: "Are you featured 2?", is_featured: true }
+    let!(:another_featured_question) { create :question, :featured }
 
     it "replaces featured question with a different one after voting" do
       choose featured_question.answers.first.label
