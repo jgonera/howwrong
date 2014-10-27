@@ -1,4 +1,4 @@
-describe Question do
+RSpec.describe Question do
   subject { Question.create text: "O rly?" }
 
   it "removes answers when question removed" do

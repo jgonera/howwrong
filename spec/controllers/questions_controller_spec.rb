@@ -1,4 +1,4 @@
-describe QuestionsController do
+RSpec.describe QuestionsController do
   let!(:question) { create :question }
   let(:answer) { question.answers.first }
   let!(:another_question) { create :question }

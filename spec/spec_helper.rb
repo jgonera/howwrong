@@ -20,6 +20,9 @@ require 'rails_helper'
 require 'capybara/rspec'
 
 RSpec.configure do |config|
+  # Don't expose RSpec DSL globally
+  config.expose_dsl_globally = false
+
   # These two settings work together to allow you to limit a spec run
   # to individual examples or groups you care about by tagging them with
   # `:focus` metadata. When nothing is tagged with `:focus`, all examples

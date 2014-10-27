@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "quiz page" do
+RSpec.describe "quiz page" do
   let!(:quiz) { create :quiz }
 
   before :each do

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe QuizzesController do
+RSpec.describe QuizzesController do
   describe "GET show" do
     it "assigns @quiz" do
       quiz = build_stubbed(:quiz)
