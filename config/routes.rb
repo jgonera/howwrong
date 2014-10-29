@@ -14,7 +14,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :quizzes, only: [:show]
+  resources :quizzes, only: [:show] do
+    resources :questions, only: [:show] do
+      member do
+        patch 'vote'
+        get 'results'
+      end
+    end
+  end
 
   get 'about', to: 'pages#about'
   get 'ask', to: 'pages#ask'
