@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :quizzes, only: [:show] do
-    resources :questions, only: [:show] do
+    resources :questions, controller: 'quiz_questions', only: [:show] do
       member do
         patch 'vote'
         get 'results'
