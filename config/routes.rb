@@ -7,21 +7,14 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'questions#index'
 
-  resources :questions, only: [:show] do
-    member do
-      patch 'vote'
-      get 'results'
-    end
-  end
+  get 'questions/:id', to: 'questions#show', as: :question
+  patch 'questions/:id/vote', to: 'questions#vote', as: :vote_question
+  get 'questions/:id/results', to: 'questions#results', as: :results_questions
 
-  resources :quizzes, only: [:show] do
-    resources :questions, controller: 'quiz_questions', only: [:show] do
-      member do
-        patch 'vote'
-        get 'results'
-      end
-    end
-  end
+  get 'quizzes/:quiz_id', to: 'quiz_questions#show_quiz', as: :quiz
+  get 'quizzes/:quiz_id/questions/:id', to: 'quiz_questions#show', as: :quiz_question
+  patch 'quizzes/:quiz_id/questions/:id/vote', to: 'quiz_questions#vote', as: :vote_quiz_question
+  get 'quizzes/:quiz_id/questions/:id/results', to: 'quiz_questions#results', as: :results_quiz_question
 
   get 'about', to: 'pages#about'
   get 'ask', to: 'pages#ask'
