@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   patch 'questions/:id/vote', to: 'questions#vote', as: :vote_question
   get 'questions/:id/results', to: 'questions#results', as: :results_questions
 
-  get 'quizzes/:quiz_id', to: 'quiz_questions#show_quiz', as: :quiz
+  get 'quizzes/:quiz_id', to: 'quiz_questions#show', as: :quiz
   get 'quizzes/:quiz_id/questions/:id', to: 'quiz_questions#show', as: :quiz_question
   patch 'quizzes/:quiz_id/questions/:id/vote', to: 'quiz_questions#vote', as: :vote_quiz_question
   get 'quizzes/:quiz_id/questions/:id/results', to: 'quiz_questions#results', as: :results_quiz_question

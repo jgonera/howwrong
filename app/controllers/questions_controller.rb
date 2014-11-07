@@ -1,8 +1,4 @@
-class QuestionsController < ApplicationController
-  before_action do
-    session[:voted] ||= {}
-  end
-
+class QuestionsController < BaseQuestionsController
   # FIXME: this needs tests/refactoring
   def render(*args)
     if @question
