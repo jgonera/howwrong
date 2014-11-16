@@ -16,6 +16,15 @@ RSpec.shared_examples "question page" do
   end
 
   context "when vote submitted" do
+    before :each do
+      choose answer.label
+      click_button "Submit"
+    end
+
     it_behaves_like "results page"
+
+    it "gives feedback in results" do
+      expect(page).to have_selector 'dd', text: answer.feedback.text
+    end
   end
 end

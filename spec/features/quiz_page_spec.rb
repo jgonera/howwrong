@@ -18,13 +18,18 @@ RSpec.describe "quiz page" do
     expect(page).to_not have_content quiz.questions[1].text
   end
 
-  context "when vote submitted", focus:true do
+  context "when vote submitted" do
     let(:answer) { quiz.questions.first.answers.first }
+
+    before :each do
+      choose answer.label
+      click_button "Submit"
+    end
 
     it_behaves_like "results page"
 
     it "shows a link to quiz's next question" do
-      expect(page).to have_link "Next question", href: quiz_question_path(quiz, quiz.questions[1])
+      expect(page).to have_link "Next question", href: quiz_question_path(quiz, 1)
     end
   end
 end

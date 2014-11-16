@@ -4,12 +4,10 @@ class BaseQuestionsController < ApplicationController
   end
 
   def vote
-    question = Question.friendly.find(params[:id])
-
-    unless session[:voted].has_key?(question.id)
-      answer = question.answers.find(params[:answer_id])
+    unless session[:voted].has_key?(@question.id)
+      answer = @question.answers.find(params[:answer_id])
       answer.increment!(:votes)
-      session[:voted][question.id] = answer.id
+      session[:voted][@question.id] = answer.id
     end
 
     redirect_to action: 'results'
@@ -19,7 +17,6 @@ class BaseQuestionsController < ApplicationController
   end
 
   def results
-    @question = Question.friendly.find(params[:id])
     redirect_to action: 'show' unless session[:voted].has_key?(@question.id)
 
     @title = @question.text

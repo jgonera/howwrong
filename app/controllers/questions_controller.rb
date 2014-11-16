@@ -34,7 +34,15 @@ class QuestionsController < BaseQuestionsController
     @other_questions = Question.random(exclude: @question.id)
   end
 
+  def vote
+    @question = Question.friendly.find(params[:id])
+
+    super
+  end
+
   def results
+    @question = Question.friendly.find(params[:id])
+
     super
 
     short_url = short_question_url @question.id
