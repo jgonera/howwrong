@@ -5,9 +5,9 @@ RSpec.describe "quiz_questions/show.html.slim" do
   it "renders form with correct link" do
     assign :quiz, quiz
     assign :question, question
-    assign :n, 1
+    assign :question_number, 2
 
     render
-    expect(rendered).to have_selector "form[action='#{vote_quiz_question_path(quiz, 1)}']"
+    expect(rendered).to have_selector "form[action='#{vote_quiz_question_path(quiz, 2)}']"
   end
 end

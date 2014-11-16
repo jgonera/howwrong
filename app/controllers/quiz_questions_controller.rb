@@ -5,8 +5,8 @@ class QuizQuestionsController < BaseQuestionsController
     @quiz = Quiz.friendly.find(params[:quiz_id])
 
     @question =
-      if @n
-        @quiz.questions[@n]
+      if @question_index
+        @quiz.questions[@question_index]
       else
         @quiz.questions.first
       end
@@ -14,15 +14,15 @@ class QuizQuestionsController < BaseQuestionsController
 
   def vote
     @quiz = Quiz.friendly.find(params[:quiz_id])
-    @question = @quiz.questions[@n]
+    @question = @quiz.questions[@question_index]
 
     super
   end
 
   def results
     @quiz = Quiz.friendly.find(params[:quiz_id])
-    @question = @quiz.questions[@n]
-    @next_question_path = quiz_question_path(@quiz, @n + 1)
+    @question = @quiz.questions[@question_index]
+    @next_question_path = quiz_question_path(@quiz, @question_number + 1)
 
     super
   end
@@ -32,6 +32,7 @@ class QuizQuestionsController < BaseQuestionsController
   def set_question_number
     # use Integer instead of #to_i to raise an exception if string is not a
     # number
-    @n = params[:n] ? Integer(params[:n]) : 0
+    @question_number = params[:n] ? Integer(params[:n]) : 1
+    @question_index = @question_number - 1
   end
 end

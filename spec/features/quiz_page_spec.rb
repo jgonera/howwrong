@@ -29,7 +29,7 @@ RSpec.describe "quiz page" do
     it_behaves_like "results page"
 
     it "shows a link to quiz's next question" do
-      expect(page).to have_link "Next question", href: quiz_question_path(quiz, 1)
+      expect(page).to have_link "Next question", href: quiz_question_path(quiz, 2)
     end
   end
 end

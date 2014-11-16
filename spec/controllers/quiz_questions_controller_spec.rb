@@ -15,7 +15,7 @@ RSpec.describe QuizQuestionsController do
     end
 
     it "assigns quiz and given question if question number present" do
-      get :show, quiz_id: quiz.slug, n: 1
+      get :show, quiz_id: quiz.slug, n: 2
 
       expect(assigns(:quiz)).to eq quiz
       expect(assigns(:question)).to eq quiz.questions[1]
@@ -24,35 +24,35 @@ RSpec.describe QuizQuestionsController do
 
   describe "POST vote" do
     it "increments answer's votes" do
-      post :vote, quiz_id: quiz.slug, n: 0, answer_id: answer.id
+      post :vote, quiz_id: quiz.slug, n: 1, answer_id: answer.id
       answer.reload
       expect(answer.votes).to eq 1
     end
 
     it "allows only one vote" do
-      post :vote, quiz_id: quiz.slug, n: 0, answer_id: answer.id
-      post :vote, quiz_id: quiz.slug, n: 0, answer_id: answer.id
+      post :vote, quiz_id: quiz.slug, n: 1, answer_id: answer.id
+      post :vote, quiz_id: quiz.slug, n: 1, answer_id: answer.id
       answer.reload
       expect(answer.votes).to eq 1
     end
 
     it "checks if the answer belongs to the question" do
-      post :vote, quiz_id: quiz.slug, n: 0, answer_id: another_answer.id
+      post :vote, quiz_id: quiz.slug, n: 1, answer_id: another_answer.id
       another_answer.reload
       expect(another_answer.votes).to eq 0
     end
 
     # this one not DRYable?
     it "redirects to proper results page" do
-      post :vote, quiz_id: quiz.slug, n: 0, answer_id: answer.id
+      post :vote, quiz_id: quiz.slug, n: 1, answer_id: answer.id
 
-      expect(response).to redirect_to action: :results, quiz_id: quiz.slug, n: 0
+      expect(response).to redirect_to action: :results, quiz_id: quiz.slug, n: 1
     end
   end
 
   describe "GET results" do
     it "redirects to the question if no vote made" do
-      get :results, quiz_id: quiz.slug, n: 0
+      get :results, quiz_id: quiz.slug, n: 1
       expect(response).to redirect_to action: :show
     end
 
@@ -62,18 +62,18 @@ RSpec.describe QuizQuestionsController do
       end
 
       it "shows results if vote made" do
-        get :results, quiz_id: quiz.slug, n: 0
+        get :results, quiz_id: quiz.slug, n: 1
         expect(subject).to render_template 'results'
       end
 
       it "marks selected answer" do
-        get :results, quiz_id: quiz.slug, n: 0
+        get :results, quiz_id: quiz.slug, n: 1
         expect(assigns[:vote_answer_id]).to eq answer.id
       end
 
       it "assigns link to next question" do
-        get :results, quiz_id: quiz.slug, n: 0
-        expect(assigns[:next_question_path]).to eq quiz_question_path(quiz, 1)
+        get :results, quiz_id: quiz.slug, n: 1
+        expect(assigns[:next_question_path]).to eq quiz_question_path(quiz, 2)
       end
     end
   end
