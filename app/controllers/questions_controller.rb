@@ -1,16 +1,4 @@
 class QuestionsController < BaseQuestionsController
-  # FIXME: this needs tests/refactoring
-  def render(*args)
-    if @question
-      exclude = session[:voted].keys
-      exclude << @question.id
-      next_question = Question.random(1, exclude: exclude).first
-      @next_question_path = next_question.nil? ? "/archive" : question_path(next_question)
-    end
-
-    super
-  end
-
   def index
     @question = Question.featured.where.not(id: session[:voted].keys).last
 
@@ -19,6 +7,7 @@ class QuestionsController < BaseQuestionsController
       render 'archive'
     else
       @other_questions = Question.random(exclude: @question.id)
+      set_next_question_path
       render 'show'
     end
   end
@@ -32,6 +21,7 @@ class QuestionsController < BaseQuestionsController
     redirect_to action: 'results' if session[:voted].has_key? @question.id
     @title = @question.text
     @other_questions = Question.random(exclude: @question.id)
+    set_next_question_path
   end
 
   def vote
@@ -55,9 +45,19 @@ class QuestionsController < BaseQuestionsController
       u: short_url
     }.to_query
     @other_questions = Question.random(exclude: @question.id)
+    set_next_question_path
   end
 
   def short
     redirect_to action: 'show', id: Question.find(params[:id]).slug
+  end
+
+  protected
+
+  def set_next_question_path
+    exclude = session[:voted].keys
+    exclude << @question.id
+    next_question = Question.random(1, exclude: exclude).first
+    @next_question_path = next_question.nil? ? "/archive" : question_path(next_question)
   end
 end
