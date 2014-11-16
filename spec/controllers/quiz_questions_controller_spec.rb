@@ -36,15 +36,6 @@ RSpec.describe QuizQuestionsController do
       expect(answer.votes).to eq 1
     end
 
-    it "blocks votes for different questions independently" do
-      post :vote, quiz_id: quiz.slug, n: 0, answer_id: answer.id
-      post :vote, quiz_id: quiz.slug, n: 0, answer_id: another_answer.id
-      answer.reload
-      another_answer.reload
-      expect(answer.votes).to eq 1
-      expect(another_answer.votes).to eq 1
-    end
-
     it "checks if the answer belongs to the question" do
       post :vote, quiz_id: quiz.slug, n: 0, answer_id: another_answer.id
       another_answer.reload
@@ -55,7 +46,7 @@ RSpec.describe QuizQuestionsController do
     it "redirects to proper results page" do
       post :vote, quiz_id: quiz.slug, n: 0, answer_id: answer.id
 
-      expect(response).to redirect_to action: :results, quiz_id: quiz.slug, id: question.slug
+      expect(response).to redirect_to action: :results, quiz_id: quiz.slug, n: 0
     end
   end
 
