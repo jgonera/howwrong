@@ -5,7 +5,6 @@ RSpec.describe QuestionsController do
   let(:another_answer) { another_question.answers.first }
 
   describe "POST vote" do
-
     it "increments answer's votes" do
       post :vote, id: question.slug, answer_id: answer.id
       answer.reload

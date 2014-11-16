@@ -9,4 +9,8 @@ class QuizQuestionsController < BaseQuestionsController
         @quiz.questions.first
       end
   end
+
+  def results
+
+  end
 end
