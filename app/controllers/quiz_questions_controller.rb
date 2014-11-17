@@ -37,6 +37,11 @@ class QuizQuestionsController < BaseQuestionsController
     super
   end
 
+  # Move this to a separate QuizController?
+  def quiz_results
+
+  end
+
   protected
 
   def set_question_number

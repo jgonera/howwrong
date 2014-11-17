@@ -45,5 +45,15 @@ RSpec.describe "quiz page" do
     it "shows a link to quiz results" do
       expect(page).to have_link "Done", href: quiz_results_path(quiz)
     end
+
+    context "when viewing quiz results", focus: true do
+      before :each do
+        click_link "Done"
+      end
+
+      it "says that the quiz is completed" do
+        expect(page).to have_content "Quiz completed"
+      end
+    end
   end
 end
