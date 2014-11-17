@@ -1,7 +1,7 @@
 require "features/shared_examples/shared_examples_for_results_page"
 
 RSpec.describe "quiz page" do
-  let!(:quiz) { create :quiz }
+  let(:quiz) { create :quiz }
 
   before :each do
     visit quiz_path(quiz)
@@ -18,7 +18,7 @@ RSpec.describe "quiz page" do
     expect(page).to_not have_content quiz.questions[1].text
   end
 
-  context "when vote submitted" do
+  context "when vote is submitted" do
     let(:answer) { quiz.questions.first.answers.first }
 
     before :each do
@@ -30,6 +30,20 @@ RSpec.describe "quiz page" do
 
     it "shows a link to quiz's next question" do
       expect(page).to have_link "Next question", href: quiz_question_path(quiz, 2)
+    end
+  end
+
+  context "when last question is answered" do
+    before :each do
+      choose quiz.questions[0].answers.first.label
+      click_button "Submit"
+      click_link "Next question"
+      choose quiz.questions[1].answers.last.label
+      click_button "Submit"
+    end
+
+    it "shows a link to quiz results" do
+      expect(page).to have_link "Done", href: quiz_results_path(quiz)
     end
   end
 end

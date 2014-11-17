@@ -73,7 +73,14 @@ RSpec.describe QuizQuestionsController do
 
       it "assigns link to next question" do
         get :results, quiz_id: quiz.slug, n: 1
+        expect(assigns[:next_label]).to eq "Next question"
         expect(assigns[:next_path]).to eq quiz_question_path(quiz, 2)
+      end
+
+      it "assigns link to quiz results if it's the last question" do
+        get :results, quiz_id: quiz.slug, n: quiz.questions.count
+        expect(assigns[:next_label]).to eq "Done"
+        expect(assigns[:next_path]).to eq quiz_results_path(quiz)
       end
     end
   end

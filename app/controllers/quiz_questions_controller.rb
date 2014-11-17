@@ -22,7 +22,17 @@ class QuizQuestionsController < BaseQuestionsController
   def results
     @quiz = Quiz.friendly.find(params[:quiz_id])
     @question = @quiz.questions[@question_index]
-    @next_path = quiz_question_path(@quiz, @question_number + 1)
+
+    # This is more efficient than questions.count because questions are already
+    # cached after fetching the current question
+    @next_question = @quiz.questions[@question_index + 1]
+    if @next_question
+      @next_label = "Next question"
+      @next_path = quiz_question_path(@quiz, @question_number + 1)
+    else
+      @next_label = "Done"
+      @next_path = quiz_results_path(@quiz)
+    end
 
     super
   end
@@ -30,7 +40,7 @@ class QuizQuestionsController < BaseQuestionsController
   protected
 
   def set_question_number
-    # use Integer instead of #to_i to raise an exception if string is not a
+    # Use Integer instead of #to_i to raise an exception if string is not a
     # number
     @question_number = params[:n] ? Integer(params[:n]) : 1
     @question_index = @question_number - 1

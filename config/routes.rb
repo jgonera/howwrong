@@ -11,10 +11,11 @@ Rails.application.routes.draw do
   patch 'questions/:id/vote', to: 'questions#vote', as: :vote_question
   get 'questions/:id/results', to: 'questions#results', as: :results_questions
 
-  get 'quizzes/:quiz_id', to: 'quiz_questions#show', constraints: { id: /\d+/ }, as: :quiz
-  get 'quizzes/:quiz_id/:n', to: 'quiz_questions#show', constraints: { id: /\d+/ }, as: :quiz_question
-  patch 'quizzes/:quiz_id/:n/vote', to: 'quiz_questions#vote', constraints: { id: /\d+/ }, as: :vote_quiz_question
-  get 'quizzes/:quiz_id/:n/results', to: 'quiz_questions#results', constraints: { id: /\d+/ }, as: :results_quiz_question
+  get 'quizzes/:quiz_id', to: 'quiz_questions#show', as: :quiz
+  get 'quizzes/:quiz_id/:n', to: 'quiz_questions#show', constraints: { n: /\d+/ }, as: :quiz_question
+  patch 'quizzes/:quiz_id/:n/vote', to: 'quiz_questions#vote', constraints: { n: /\d+/ }, as: :vote_quiz_question
+  get 'quizzes/:quiz_id/:n/results', to: 'quiz_questions#results', constraints: { n: /\d+/ }, as: :results_quiz_question
+  get 'quizzes/:quiz_id/results', to: 'quiz_questions#quiz_results', as: :quiz_results
 
   get 'about', to: 'pages#about'
   get 'ask', to: 'pages#ask'
