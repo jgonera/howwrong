@@ -22,7 +22,7 @@ class QuizQuestionsController < BaseQuestionsController
   def results
     @quiz = Quiz.friendly.find(params[:quiz_id])
     @question = @quiz.questions[@question_index]
-    @next_question_path = quiz_question_path(@quiz, @question_number + 1)
+    @next_path = quiz_question_path(@quiz, @question_number + 1)
 
     super
   end

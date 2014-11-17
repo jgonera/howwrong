@@ -7,7 +7,7 @@ class QuestionsController < BaseQuestionsController
       render 'archive'
     else
       @other_questions = Question.random(exclude: @question.id)
-      set_next_question_path
+      set_next_path
       render 'show'
     end
   end
@@ -21,7 +21,7 @@ class QuestionsController < BaseQuestionsController
     redirect_to action: 'results' if session[:voted].has_key? @question.id
     @title = @question.text
     @other_questions = Question.random(exclude: @question.id)
-    set_next_question_path
+    set_next_path
   end
 
   def vote
@@ -45,7 +45,7 @@ class QuestionsController < BaseQuestionsController
       u: short_url
     }.to_query
     @other_questions = Question.random(exclude: @question.id)
-    set_next_question_path
+    set_next_path
   end
 
   def short
@@ -54,10 +54,10 @@ class QuestionsController < BaseQuestionsController
 
   protected
 
-  def set_next_question_path
+  def set_next_path
     exclude = session[:voted].keys
     exclude << @question.id
     next_question = Question.random(1, exclude: exclude).first
-    @next_question_path = next_question.nil? ? "/archive" : question_path(next_question)
+    @next_path = next_question.nil? ? "/archive" : question_path(next_question)
   end
 end
