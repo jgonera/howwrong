@@ -20,3 +20,9 @@ $ bin/rake db:setup
 ```bash
 $ bin/rake
 ```
+
+Or faster (but doesn't migrate DB):
+
+```bash
+$ bin/rspec
+```
