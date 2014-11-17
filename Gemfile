@@ -1,5 +1,3 @@
-#ruby=ruby-2.1.3
-#ruby-gemset=howwrong
 ruby '2.1.3'
 source 'https://rubygems.org'
 
