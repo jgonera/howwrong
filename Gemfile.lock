@@ -244,6 +244,7 @@ DEPENDENCIES
   pg (~> 0.17.1)
   puma (~> 2.9.0)
   rails (= 4.1.5)
+  rake
   rspec-rails (~> 3.0.2)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

@@ -61,15 +61,19 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.4.1'
   gem 'selenium-webdriver', '~> 2.42.0'
   gem 'database_cleaner', '~> 1.3.0'
+  # required for Travis CI per http://docs.travis-ci.com/user/languages/ruby/
+  gem 'rake'
 end
 
 # So apparently Heroku doesn't gzip stuff by default anymore
 # https://devcenter.heroku.com/articles/http-routing#gzipped-responses
 gem 'heroku-deflater', group: :production
-gem 'puma', '~> 2.9.0'
-gem 'foreman', '~> 0.75.0'
 
-gem 'newrelic_rpm'
+group :development, :production do
+  gem 'puma', '~> 2.9.0'
+  gem 'foreman', '~> 0.75.0'
+  gem 'newrelic_rpm'
+end
 
 gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
