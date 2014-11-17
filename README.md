@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/jgonera/howwrong.png?label=ready&title=Ready)](https://waffle.io/jgonera/howwrong)
 # How Wrong You Are
 
 ## Development setup
