@@ -46,7 +46,7 @@ RSpec.describe "quiz page" do
       expect(page).to have_link "Done", href: quiz_results_path(quiz)
     end
 
-    context "when viewing quiz results", focus: true do
+    context "when viewing quiz results" do
       before :each do
         click_link "Done"
       end
