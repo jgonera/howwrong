@@ -1,5 +1,8 @@
 class QuizQuestionsController < BaseQuestionsController
   before_action do
+    @quiz = Quiz.friendly.find(params[:quiz_id])
+    @title = @quiz.title
+
     # Use Integer instead of #to_i to raise an exception if string is not a
     # number
     @question_number = params[:n] ? Integer(params[:n]) : 1
@@ -7,8 +10,6 @@ class QuizQuestionsController < BaseQuestionsController
   end
 
   def show
-    @quiz = Quiz.friendly.find(params[:quiz_id])
-
     @question =
       if @question_index
         @quiz.questions[@question_index]
@@ -21,14 +22,12 @@ class QuizQuestionsController < BaseQuestionsController
   end
 
   def vote
-    @quiz = Quiz.friendly.find(params[:quiz_id])
     @question = @quiz.questions[@question_index]
 
     super
   end
 
   def results
-    @quiz = Quiz.friendly.find(params[:quiz_id])
     @question = @quiz.questions[@question_index]
 
     # This is more efficient than questions.count because questions are already
