@@ -3,10 +3,6 @@ class BaseQuestionsController < ApplicationController
     session[:voted] ||= {}
   end
 
-  def show
-    redirect_to action: 'results' if session[:voted].has_key? @question.id
-  end
-
   def vote
     unless session[:voted].has_key?(@question.id)
       answer = @question.answers.find(params[:answer_id])

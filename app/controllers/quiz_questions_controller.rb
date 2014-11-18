@@ -16,7 +16,8 @@ class QuizQuestionsController < BaseQuestionsController
         @quiz.questions.first
       end
 
-    super
+    # Specify n in case it's not there (default quiz route)
+    redirect_to action: 'results', n: @question_number if session[:voted].has_key? @question.id
   end
 
   def vote
