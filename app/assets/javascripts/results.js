@@ -28,7 +28,9 @@
     this.setChart();
     this.renderRows();
 
-    d3.select(window).on("resize", this.rescale.bind(this));
+    d3.select(window).on("resize", function() {
+      self.rescale();
+    });
   }
 
   Graph.prototype.rescale = function() {
