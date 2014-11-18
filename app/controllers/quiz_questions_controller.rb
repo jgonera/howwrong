@@ -15,6 +15,8 @@ class QuizQuestionsController < BaseQuestionsController
       else
         @quiz.questions.first
       end
+
+    super
   end
 
   def vote

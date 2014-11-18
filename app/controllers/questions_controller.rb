@@ -18,7 +18,9 @@ class QuestionsController < BaseQuestionsController
 
   def show
     @question = Question.friendly.find params[:id]
-    redirect_to action: 'results' if session[:voted].has_key? @question.id
+
+    super
+
     @title = @question.text
     @other_questions = Question.random(exclude: @question.id)
     set_next_path

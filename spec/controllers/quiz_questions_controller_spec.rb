@@ -20,6 +20,13 @@ RSpec.describe QuizQuestionsController do
       expect(assigns(:quiz)).to eq quiz
       expect(assigns(:question)).to eq quiz.questions[1]
     end
+
+    it "redirects to results if question answered" do
+      session[:voted] = { question.id => answer.id }
+      get :show, quiz_id: quiz.slug, n: 1
+
+      expect(response).to redirect_to action: :results, quiz_id: quiz.slug, n: 1
+    end
   end
 
   describe "POST vote" do
