@@ -1,5 +1,10 @@
 class QuizQuestionsController < BaseQuestionsController
-  before_filter :set_question_number
+  before_action do
+    # Use Integer instead of #to_i to raise an exception if string is not a
+    # number
+    @question_number = params[:n] ? Integer(params[:n]) : 1
+    @question_index = @question_number - 1
+  end
 
   def show
     @quiz = Quiz.friendly.find(params[:quiz_id])
@@ -40,14 +45,5 @@ class QuizQuestionsController < BaseQuestionsController
   # Move this to a separate QuizController?
   def quiz_results
 
-  end
-
-  protected
-
-  def set_question_number
-    # Use Integer instead of #to_i to raise an exception if string is not a
-    # number
-    @question_number = params[:n] ? Integer(params[:n]) : 1
-    @question_index = @question_number - 1
   end
 end
