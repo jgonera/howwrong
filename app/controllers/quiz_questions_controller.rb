@@ -19,6 +19,10 @@ class QuizQuestionsController < BaseQuestionsController
 
     # Specify n in case it's not there (default quiz route)
     redirect_to action: 'results', n: @question_number if session[:voted].has_key? @question.id
+
+    # Use #length because questions are already fetched and #count would run
+    # a separate SQL query
+    @questions_left = @quiz.questions.length - @question_index
   end
 
   def vote
@@ -30,8 +34,10 @@ class QuizQuestionsController < BaseQuestionsController
   def results
     @question = @quiz.questions[@question_index]
 
-    # This is more efficient than questions.count because questions are already
-    # cached after fetching the current question
+    # Use #length because questions are already fetched and #count would run
+    # a separate SQL query
+    @questions_left = @quiz.questions.length - @question_number
+
     @next_question = @quiz.questions[@question_index + 1]
     if @next_question
       @next_label = "Next question"

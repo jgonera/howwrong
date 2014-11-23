@@ -1,5 +1,7 @@
 a.button.uppercase.icon.next href=@next_path = @next_label
 
+= "#{pluralize(@questions_left, 'question')} left"
+
 dl class="question"
   dt Question
   dd

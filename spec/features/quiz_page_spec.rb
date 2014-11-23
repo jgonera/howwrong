@@ -18,6 +18,10 @@ RSpec.describe "quiz page" do
     expect(page).to_not have_content quiz.questions[1].text
   end
 
+  it "shows how many questions are left" do
+    expect(page).to have_content "2 questions left"
+  end
+
   context "when vote is submitted" do
     let(:answer) { quiz.questions.first.answers.first }
 
@@ -30,6 +34,10 @@ RSpec.describe "quiz page" do
 
     it "shows a link to quiz's next question" do
       expect(page).to have_link "Next question", href: quiz_question_path(quiz, 2)
+    end
+
+    it "shows how many questions are left" do
+      expect(page).to have_content "1 question left"
     end
   end
 
