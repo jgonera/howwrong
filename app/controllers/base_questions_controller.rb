@@ -19,7 +19,6 @@ class BaseQuestionsController < ApplicationController
   def results
     redirect_to action: 'show' unless session[:voted].has_key?(@question.id)
 
-    @title = @question.text
     @vote_answer_id = session[:voted][@question.id]
     @is_wrong = @vote_answer_id != @question.answers.correct.id
     @options = {

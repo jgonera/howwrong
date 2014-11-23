@@ -7,18 +7,45 @@ RSpec.describe QuizQuestionsController do
   let(:another_answer) { another_question.answers.first }
 
   describe "GET show" do
-    it "assigns quiz and its first question if question id not present" do
-      get :show, quiz_id: quiz.slug
+    context "when question number is not specified" do
+      before :each do
+        get :show, quiz_id: quiz.slug
+      end
 
-      expect(assigns(:quiz)).to eq quiz
-      expect(assigns(:question)).to eq quiz.questions.first
+      it "assigns question numbers" do
+        expect(assigns(:question_number)).to eq 1
+        expect(assigns(:question_index)).to eq 0
+        expect(assigns(:questions_left)).to eq quiz.questions.length
+      end
+
+      it "assigns quiz and its first question" do
+        expect(assigns(:quiz)).to eq quiz
+        expect(assigns(:question)).to eq quiz.questions.first
+      end
     end
 
-    it "assigns quiz and given question if question number present" do
-      get :show, quiz_id: quiz.slug, n: 2
+    context "when question number is specified" do
+      before :each do
+        get :show, quiz_id: quiz.slug, n: 2
+      end
 
-      expect(assigns(:quiz)).to eq quiz
-      expect(assigns(:question)).to eq quiz.questions[1]
+      it "assigns question numbers" do
+        expect(assigns(:question_number)).to eq 2
+        expect(assigns(:question_index)).to eq 1
+        expect(assigns(:questions_left)).to eq quiz.questions.length - 1
+      end
+
+      it "assigns quiz and given question" do
+        expect(assigns(:quiz)).to eq quiz
+        expect(assigns(:question)).to eq quiz.questions[1]
+      end
+    end
+
+    it "redirects to results if question answered" do
+      session[:voted] = { question.id => answer.id }
+      get :show, quiz_id: quiz.slug
+
+      expect(response).to redirect_to action: :results, quiz_id: quiz.slug, n: 1
     end
   end
 
@@ -59,6 +86,13 @@ RSpec.describe QuizQuestionsController do
     context "when vote made" do
       before :each do
         session[:voted] = { question.id => answer.id }
+      end
+
+      it "assigns question numbers" do
+        get :results, quiz_id: quiz.slug, n: 1
+        expect(assigns(:question_number)).to eq 1
+        expect(assigns(:question_index)).to eq 0
+        expect(assigns(:questions_left)).to eq quiz.questions.length - 1
       end
 
       it "shows results if vote made" do

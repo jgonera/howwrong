@@ -32,6 +32,7 @@ class QuestionsController < BaseQuestionsController
 
   def results
     @question = Question.friendly.find(params[:id])
+    @title = @question.text
 
     super
 
