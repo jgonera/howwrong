@@ -1,6 +1,9 @@
 a.button.uppercase.icon.next href=@next_path = @next_label
 
-= "#{pluralize(@questions_left, 'question')} left"
+- if @questions_left != 0
+  = "#{pluralize(@questions_left, 'question')} left"
+- else
+  a href=quiz_results_path(@quiz) See quiz results
 
 dl class="question"
   dt Question

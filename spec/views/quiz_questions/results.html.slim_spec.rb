@@ -20,4 +20,19 @@ RSpec.describe "quiz_questions/results.html.slim" do
   it "shows how many questions are left" do
     expect(rendered).to have_content "#{questions_left} question left"
   end
+
+  context "when no questions left" do
+    before :each do
+      assign :questions_left, 0
+      render
+    end
+
+    it "doesn't say 0 questions left" do
+      expect(rendered).not_to have_content "0 questions left"
+    end
+
+    it "shows a link to quiz results if no questions left" do
+      expect(rendered).to have_link "See quiz results", href: quiz_results_path(quiz)
+    end
+  end
 end
