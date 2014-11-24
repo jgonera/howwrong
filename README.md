@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/jgonera/howwrong.svg?branch=master)](https://travis-ci.org/jgonera/howwrong)
-[![Stories in backlog](https://badge.waffle.io/jgonera/howwrong.png?label=backlog&title=Backlog)](https://waffle.io/jgonera/howwrong)
 [![Ready stories](https://badge.waffle.io/jgonera/howwrong.png?label=ready&title=Ready)](https://waffle.io/jgonera/howwrong)
 [![Stories in progress](https://badge.waffle.io/jgonera/howwrong.png?label=in%20progress&title=In%20Progress)](https://waffle.io/jgonera/howwrong)
 
