@@ -62,6 +62,10 @@ RSpec.describe "quiz page" do
       it "says that the quiz is completed" do
         expect(page).to have_content "Quiz completed"
       end
+
+      it "shows the score" do
+        expect(page).to have_content "Your score 50%"
+      end
     end
   end
 end

@@ -7,6 +7,9 @@ class QuizQuestionsController < BaseQuestionsController
     # number
     @question_number = params[:n] ? Integer(params[:n]) : 1
     @question_index = @question_number - 1
+
+    session[:quizzes] ||= {}
+    session[:quizzes][@quiz.id] ||= { correct_count: 0, voted: {} }
   end
 
   def show
@@ -17,16 +20,24 @@ class QuizQuestionsController < BaseQuestionsController
         @quiz.questions.first
       end
 
-    # Specify n in case it's not there (default quiz route)
-    redirect_to action: 'results', n: @question_number if session[:voted].has_key? @question.id
-
     # Use #length because questions are already fetched and #count would run
     # a separate SQL query
     @questions_left = @quiz.questions.length - @question_index
+
+    # Specify n in case it's not there (default quiz route)
+    if session[:quizzes][@quiz.id][:voted].has_key?(@question.id)
+      redirect_to action: 'results', n: @question_number
+    end
   end
 
   def vote
     @question = @quiz.questions[@question_index]
+    answer_id = params[:answer_id].to_i
+
+    unless session[:quizzes][@quiz.id][:voted].has_key?(@question.id)
+      session[:quizzes][@quiz.id][:voted][@question.id] = true
+      session[:quizzes][@quiz.id][:correct_count] += 1 if answer_id == @question.answers.correct.id
+    end
 
     super
   end
@@ -52,6 +63,14 @@ class QuizQuestionsController < BaseQuestionsController
 
   # Move this to a separate QuizController?
   def quiz_results
+    questions_count = @quiz.questions.count
 
+    if session[:quizzes][@quiz.id][:voted].length < questions_count
+      redirect_to action: 'show'
+      return
+    end
+
+    @score = session[:quizzes][@quiz.id][:correct_count] / questions_count.to_f
+    @score = (@score * 100).round
   end
 end

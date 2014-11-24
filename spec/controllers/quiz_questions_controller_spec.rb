@@ -42,7 +42,7 @@ RSpec.describe QuizQuestionsController do
     end
 
     it "redirects to results if question answered" do
-      session[:voted] = { question.id => answer.id }
+      post :vote, quiz_id: quiz.slug, n: 1, answer_id: answer.id
       get :show, quiz_id: quiz.slug
 
       expect(response).to redirect_to action: :results, quiz_id: quiz.slug, n: 1
@@ -69,11 +69,24 @@ RSpec.describe QuizQuestionsController do
       expect(another_answer.votes).to eq 0
     end
 
-    # this one not DRYable?
+    # following not DRYable?
     it "redirects to proper results page" do
       post :vote, quiz_id: quiz.slug, n: 1, answer_id: answer.id
 
       expect(response).to redirect_to action: :results, quiz_id: quiz.slug, n: 1
+    end
+
+    it "increments correct answers for quiz in session if answer is correct" do
+      post :vote, quiz_id: quiz.slug, n: 1, answer_id: question.answers.correct.id
+
+      expect(session[:quizzes][quiz.id][:correct_count]).to eq 1
+    end
+
+    it "doesn't increment correct answers for quiz if question already voted on" do
+      post :vote, quiz_id: quiz.slug, n: 1, answer_id: question.answers.wrong.first.id
+      post :vote, quiz_id: quiz.slug, n: 1, answer_id: question.answers.correct.id
+
+      expect(session[:quizzes][quiz.id][:correct_count]).to eq 0
     end
   end
 
@@ -116,6 +129,23 @@ RSpec.describe QuizQuestionsController do
         expect(assigns[:next_label]).to eq "Done"
         expect(assigns[:next_path]).to eq quiz_results_path(quiz)
       end
+    end
+  end
+
+  describe "GET quiz_results" do
+    it "assigns score" do
+      post :vote, quiz_id: quiz.slug, n: 1, answer_id: quiz.questions[0].answers.wrong.first.id
+      post :vote, quiz_id: quiz.slug, n: 2, answer_id: quiz.questions[1].answers.correct.id
+      get :quiz_results, quiz_id: quiz.slug
+
+      expect(assigns[:score]).to eq 50
+    end
+
+    it "redirects to the quiz if all questions not answered" do
+      post :vote, quiz_id: quiz.slug, n: 1, answer_id: quiz.questions[0].answers.wrong.first.id
+      get :quiz_results, quiz_id: quiz.slug
+
+      expect(response).to redirect_to action: :show
     end
   end
 end
