@@ -17,6 +17,14 @@ Rails.application.routes.draw do
   get 'quiz/:quiz_id/:n/results', to: 'quiz_questions#results', constraints: { n: /\d+/ }, as: :results_quiz_question
   get 'quiz/:quiz_id/results', to: 'quiz_questions#quiz_results', as: :quiz_results
 
+  scope 'embed' do
+    get 'quiz/:quiz_id', to: 'embedded_quiz_questions#show', as: :embedded_quiz
+    get 'quiz/:quiz_id/:n', to: 'embedded_quiz_questions#show', constraints: { n: /\d+/ }, as: :embedded_quiz_question
+    patch 'quiz/:quiz_id/:n/vote', to: 'embedded_quiz_questions#vote', constraints: { n: /\d+/ }, as: :embedded_vote_quiz_question
+    get 'quiz/:quiz_id/:n/results', to: 'embedded_quiz_questions#results', constraints: { n: /\d+/ }, as: :embedded_results_quiz_question
+    get 'quiz/:quiz_id/results', to: 'embedded_quiz_questions#quiz_results', as: :embedded_quiz_results
+  end
+
   get 'about', to: 'pages#about'
   get 'ask', to: 'pages#ask'
   get 'archive', to: 'questions#archive'

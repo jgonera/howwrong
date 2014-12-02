@@ -1,0 +1,3 @@
+class EmbeddedQuizQuestionsController < QuizQuestionsController
+
+end
