@@ -1,0 +1,19 @@
+- content_for :main do
+  div#main
+    div.content
+      nav
+        h1#logo
+          a href="/"
+            span
+              ' HOW
+            span
+              em
+                ' WRONG
+            span
+              ' YOU
+            span
+              ' ARE
+
+      section = yield
+
+= render template: "layouts/base"

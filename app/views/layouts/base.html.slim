@@ -1,0 +1,32 @@
+doctype html
+html
+  head
+    meta charset="UTF-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    link href='http://fonts.googleapis.com/css?family=Open+Sans:700,600' rel='stylesheet' type='text/css'
+    title = @title
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = favicon_link_tag 'favicon.png'
+    = favicon_link_tag 'touch-icon-ipad.png', rel: 'apple-touch-icon', type: 'image/png', sizes: '76x76'
+    = favicon_link_tag 'touch-icon-iphone-retina.png', rel: 'apple-touch-icon', type: 'image/png', sizes: '120x120'
+    = favicon_link_tag 'touch-icon-ipad-retina.png', rel: 'apple-touch-icon', type: 'image/png', sizes: '152x152'
+
+  body
+    javascript:
+      document.body.className += ' js'
+
+    = yield :main
+
+    javascript:
+      var howwrong = { options: #{@options.to_json.html_safe} };
+    = javascript_include_tag "application", async: Rails.env.production?
+
+    - if Rails.env.production?
+      javascript:
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-50475707-1', 'howwrongyouare.org');
+        ga('send', 'pageview');
