@@ -14,7 +14,7 @@ RSpec.describe "quiz_questions/show.html.slim" do
 
   it "renders form with correct link" do
     expect(rendered).
-      to have_selector "form[action='#{vote_quiz_question_path(quiz, question_number)}']"
+      to have_selector "form[action='#{path_for(action: "vote", quiz_id: quiz, n: question_number)}']"
   end
 
   it "shows how many questions are left" do
