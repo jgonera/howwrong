@@ -87,6 +87,32 @@ RSpec.shared_examples "questions controller" do
 
       expect(session[:quizzes][quiz.id][:correct_count]).to eq 0
     end
+
+    it "doesn't register score if quiz not finished" do
+      expect_any_instance_of(Quiz).not_to receive(:register_score!)
+
+      post :vote, quiz_id: quiz.slug, n: 1, answer_id: question.answers.correct.id
+    end
+
+    context "when voting on the last question" do
+      before :each do
+        post :vote, quiz_id: quiz.slug, n: 1, answer_id: quiz.questions[0].answers.wrong.first.id
+      end
+
+      it "updaes quiz's average_score" do
+        expect {
+          post :vote, quiz_id: quiz.slug, n: 2, answer_id: quiz.questions[1].answers.correct.id
+          quiz.reload
+        }.to change { quiz.average_score }
+      end
+
+      it "updaes quiz's times_taken" do
+        expect {
+          post :vote, quiz_id: quiz.slug, n: 2, answer_id: quiz.questions[1].answers.correct.id
+          quiz.reload
+        }.to change { quiz.times_taken }
+      end
+    end
   end
 
   describe "GET results" do
@@ -132,12 +158,23 @@ RSpec.shared_examples "questions controller" do
   end
 
   describe "GET quiz_results" do
-    it "assigns score" do
-      post :vote, quiz_id: quiz.slug, n: 1, answer_id: quiz.questions[0].answers.wrong.first.id
-      post :vote, quiz_id: quiz.slug, n: 2, answer_id: quiz.questions[1].answers.correct.id
-      get :quiz_results, quiz_id: quiz.slug
+    context "when all questions answered" do
+      before :each do
+        post :vote, quiz_id: quiz.slug, n: 1, answer_id: quiz.questions[0].answers.wrong.first.id
+        post :vote, quiz_id: quiz.slug, n: 2, answer_id: quiz.questions[1].answers.correct.id
 
-      expect(assigns[:score]).to eq 50
+        get :quiz_results, quiz_id: quiz.slug
+      end
+
+      it "assigns score" do
+        expect(assigns[:score]).to eq 50
+      end
+
+      it "assigns average_score" do
+        quiz.reload
+
+        expect(assigns[:average_score]).to eq quiz.average_score.round
+      end
     end
 
     it "redirects to the quiz if all questions not answered" do

@@ -57,8 +57,13 @@ RSpec.shared_examples "quiz" do
         expect(page).to have_content "Quiz completed"
       end
 
-      it "shows the score" do
+      it "shows score" do
         expect(page).to have_content "Your score 50%"
+      end
+
+      it "shows average score" do
+        average_score = (quiz.times_taken * quiz.average_score + 50) / (quiz.times_taken + 1)
+        expect(page).to have_content "Average score #{average_score.round}%"
       end
     end
   end

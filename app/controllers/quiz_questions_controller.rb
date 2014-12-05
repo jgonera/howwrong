@@ -37,6 +37,10 @@ class QuizQuestionsController < BaseQuestionsController
     unless session[:quizzes][@quiz.id][:voted].has_key?(@question.id)
       session[:quizzes][@quiz.id][:voted][@question.id] = true
       session[:quizzes][@quiz.id][:correct_count] += 1 if answer_id == @question.answers.correct.id
+
+      if session[:quizzes][@quiz.id][:voted].length == @quiz.questions.length
+        @quiz.register_score!(get_score)
+      end
     end
 
     super
@@ -63,14 +67,18 @@ class QuizQuestionsController < BaseQuestionsController
 
   # Move this to a separate QuizController?
   def quiz_results
-    questions_count = @quiz.questions.count
-
-    if session[:quizzes][@quiz.id][:voted].length < questions_count
+    if session[:quizzes][@quiz.id][:voted].length < @quiz.questions.count
       redirect_to action: 'show'
       return
     end
 
-    @score = session[:quizzes][@quiz.id][:correct_count] / questions_count.to_f
-    @score = (@score * 100).round
+    @score = get_score.round
+    @average_score = @quiz.average_score.round
+  end
+
+  private
+
+  def get_score
+    session[:quizzes][@quiz.id][:correct_count].to_f / @quiz.questions.count * 100
   end
 end

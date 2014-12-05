@@ -36,6 +36,8 @@ FactoryGirl.define do
 
   factory :quiz do
     title "Super fun quiz"
+    average_score 80
+    times_taken 2
 
     after :create do |quiz|
       create_list :question, 2, quizzes: [quiz]
