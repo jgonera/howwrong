@@ -3,7 +3,7 @@
     div.content
       nav
         h1#logo
-          a href="/"
+          a href="/" target="_blank"
             span
               ' HOW
             span
@@ -16,4 +16,4 @@
 
       section = yield
 
-= render template: "layouts/base"
+= render template: "layouts/base", locals: { body_class: "embedded" }

@@ -1,3 +1,4 @@
+h1 = @quiz.title
 = "#{pluralize(@questions_left, 'question')} left"
 
 - vote_path = path_for(action: "vote", quiz_id: @quiz, n: @question_number)

@@ -1,0 +1,13 @@
+.embedded {
+  nav {
+    width: 100%;
+  }
+  h1#logo {
+    width: 100%;
+    text-align: right;
+    span{
+      display: inline-block;
+      margin: 3px;
+    }
+  }
+}
