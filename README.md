@@ -18,6 +18,12 @@ Then run:
 $ bin/rake db:setup
 ```
 
+To start server:
+
+```bash
+$ bin/rails s
+```
+
 ## Running tests
 
 ```bash
@@ -29,3 +35,5 @@ Or faster (but doesn't migrate DB):
 ```bash
 $ bin/rspec
 ```
+
+
