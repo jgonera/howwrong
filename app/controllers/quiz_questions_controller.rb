@@ -74,6 +74,14 @@ class QuizQuestionsController < BaseQuestionsController
 
     @score = get_score.round
     @average_score = @quiz.average_score.round
+    @how_wrong =
+      if (@score - @average_score).abs <= 5
+        "You're average"
+      elsif @score < @average_score
+        "You're way below average"
+      elsif @score > @average_score
+        "You're better than average"
+      end
   end
 
   private

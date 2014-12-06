@@ -162,18 +162,42 @@ RSpec.shared_examples "questions controller" do
       before :each do
         post :vote, quiz_id: quiz.slug, n: 1, answer_id: quiz.questions[0].answers.wrong.first.id
         post :vote, quiz_id: quiz.slug, n: 2, answer_id: quiz.questions[1].answers.correct.id
-
-        get :quiz_results, quiz_id: quiz.slug
+        quiz.reload
       end
 
       it "assigns score" do
+        get :quiz_results, quiz_id: quiz.slug
+
         expect(assigns[:score]).to eq 50
       end
 
       it "assigns average_score" do
-        quiz.reload
+        get :quiz_results, quiz_id: quiz.slug
 
         expect(assigns[:average_score]).to eq quiz.average_score.round
+      end
+
+      # TODO: This is crap, refactor those specs as a part of #24 to avoid stubbing
+      # a private method
+      it "assigns below average how_wrong if score lower than average_score by > 5% points" do
+        allow(controller).to receive(:get_score).and_return(quiz.average_score - 6)
+        get :quiz_results, quiz_id: quiz.slug
+
+        expect(assigns[:how_wrong]).to eq "You're way below average"
+      end
+
+      it "assigns below average how_wrong if score within 5% points of average_score" do
+        allow(controller).to receive(:get_score).and_return(quiz.average_score - 3)
+        get :quiz_results, quiz_id: quiz.slug
+
+        expect(assigns[:how_wrong]).to eq "You're average"
+      end
+
+      it "assigns above average how_wrong if score higher than average_score by > 5% points" do
+        allow(controller).to receive(:get_score).and_return(quiz.average_score + 6)
+        get :quiz_results, quiz_id: quiz.slug
+
+        expect(assigns[:how_wrong]).to eq "You're better than average"
       end
     end
 

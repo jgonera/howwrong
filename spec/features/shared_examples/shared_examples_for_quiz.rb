@@ -65,6 +65,10 @@ RSpec.shared_examples "quiz" do
         average_score = (quiz.times_taken * quiz.average_score + 50) / (quiz.times_taken + 1)
         expect(page).to have_content "Average score #{average_score.round}%"
       end
+
+      it "shows how wrong the user is" do
+        expect(page).to have_content "How wrong? You're way below average"
+      end
     end
   end
 end
