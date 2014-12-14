@@ -1,3 +1,6 @@
+- content_for :head do
+  = stylesheet_link_tag "embedded", media: "all", "data-turbolinks-track" => true
+
 - content_for :main do
   div#main
     div.content
