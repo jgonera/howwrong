@@ -2,7 +2,6 @@
 @import "variables";
 @import "mixins";
 @import "reset";
-@import "questions";
 
 $nav-margin: 220px;
 $top-margin: 30px;
@@ -447,5 +446,218 @@ nav {
         margin-top: 20px;
       }
     }
+  }
+}
+
+.button.uppercase.vote {
+  font-size: 14px;
+  color: #e6e6e6;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  padding: 11px 12px;
+  text-align: center;
+  @include background-image(linear-gradient(to bottom, #888DB8 0%, #4655AA 1px));
+  border: 1px solid #353551;
+
+  &, * {
+    cursor: pointer;
+  }
+
+  &:active {
+    outline: 0;
+    @include background-image(linear-gradient(to bottom, #222222 0%, #4655AA 1px));
+  }
+
+}
+
+#choices {
+  padding-top: 10px;
+}
+
+.js {
+  form button, form input, table.results{
+    display: none;
+  }
+}
+
+dt, .content h2, .label-title {
+  text-transform: uppercase;
+  color: $light-color;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+}
+
+dt {
+  margin: 30px 0 5px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+h2 {
+  margin-bottom: 5px;
+}
+
+#footer h2 {
+  margin-bottom: 15px;
+}
+
+.chart {
+  position: relative;
+  padding-top: 5px;
+
+  rect {
+    fill: transparent;
+  }
+
+  .bar {
+    fill: $bar-color;
+    @include transition(fill .3s);
+
+    &.vote {
+      fill: $red-color;
+    }
+    &.correct {
+      fill: $green-color;
+    }
+  }
+
+  text {
+    fill: $text-color;
+    font-family: Georgia, serif;
+    font-size: 20px;
+  }
+
+  line {
+    stroke: #6b656e;
+    stroke-width: 1;
+  }
+
+  .tooltip {
+    top: 0;
+    width: 167px;
+    padding-left: 32px;
+    background-position: 4px 8px;
+    background-repeat: no-repeat;
+    margin-left: 10px;
+
+    .label {
+      color: $grey-color;
+      width: 120px;
+    }
+
+    .votePercentage {
+      font-size: 28px;
+      padding: 4px 0;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      position: absolute;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-right: 8px solid $dark-color;
+      left: -8px;
+      top: 7px;
+    }
+
+    &.tick {
+      border-bottom: 4px solid $green-color;
+    }
+
+    &.cross {
+      border-bottom: 4px solid $red-color;
+    }
+  }
+}
+
+.answer {
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
+  margin-top: 30px;
+
+  dt {
+    display: inline-block;
+    padding: 2px 25px 0 0;
+    background: no-repeat 100% 0;
+  }
+
+  a {
+    display: block;
+    font-size: 15px;
+  }
+}
+
+dl#other {
+  margin-top: 30px;
+
+  .howwrong p {
+    margin-top: -8px;
+    font-size: 48px;
+  }
+}
+
+// desktop
+@media all and (min-width: $desktop-mobile-width) {
+  .mobile {
+    // don't use display: none because it breaks getBBox() in Firefox
+    // FIXME: this is unreliable
+    visibility: hidden !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+
+  .button.vote {
+    width: 180px;
+    margin-right: 10px;
+  }
+
+  h1.question {
+    font-size: 48px;
+    line-height: 1.35;
+  }
+
+  dl.question {
+    width: 75%;
+  }
+
+  .chart {
+    max-width: 600px;
+
+    text {
+      text-anchor: end;
+    }
+  }
+}
+
+// mobile
+@media all and (max-width: $desktop-mobile-width) {
+  .desktop {
+    // don't use display: none because it breaks getBBox() in Firefox
+    // FIXME: this is unreliable
+    visibility: hidden !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+
+  .button.vote {
+    width: 48%;
+
+    &:nth-child(2n+1) {
+      margin-right: 4%;
+    }
+  }
+
+  h1.question {
+    font-size: 30px;
   }
 }
