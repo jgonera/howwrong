@@ -3,3 +3,141 @@
 @import "mixins";
 @import "reset";
 
+
+.js {
+  form button, form input, table.results{
+    display: none;
+  }
+}
+
+body {
+  background: $alt-dark-color;
+}
+
+body, input {
+  color: $text-color;
+  font-family: Georgia, serif;
+}
+
+::-moz-selection {
+  @include selection;
+}
+
+::selection {
+  @include selection;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.icon {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+
+  &.tick {
+    background-image: inline-svg("tick.svg");
+  }
+
+  &.cross {
+    background-image: inline-svg("cross.svg");
+  }
+
+  &.facebook {
+    background-image: inline-svg("facebook.svg");
+  }
+
+  &.twitter {
+    background-image: inline-svg("twitter.svg");
+  }
+
+  &.link {
+    background-image: inline-svg("link.svg");
+  }
+
+  &.next {
+    background-image: inline-svg("next.svg");
+    background-position: right 10px top 50%;
+    padding-right: 32px;
+  }
+}
+
+#main {
+  background: $bg-color;
+}
+
+.button {
+  @include box-sizing(border-box);
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 3px;
+  background: $dark-color no-repeat 50% 50%;
+  padding: 17px 19px;
+  @include transition(box-shadow .25s, color .25s);
+
+  &.uppercase {
+    font-family: 'Open Sans', sans-serif;
+    color: $grey-color;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+
+  &.vote {
+    font-size: 14px;
+    color: #e6e6e6;
+    margin-bottom: 10px;
+    padding: 11px 12px;
+    text-align: center;
+    @include background-image(linear-gradient(to bottom, #888DB8 0%, #4655AA 1px));
+    border: 1px solid #353551;
+
+    &, * {
+      cursor: pointer;
+    }
+
+    &:active {
+      outline: 0;
+      @include background-image(linear-gradient(to bottom, #222222 0%, #4655AA 1px));
+    }
+  }
+
+  &:hover, &:focus {
+    text-decoration: none;
+    color: $text-color;
+    box-shadow: inset 0px -4px 0 $link-color;
+  }
+
+  &:active {
+    outline: 0;
+    @include background-image(linear-gradient(to bottom, #000 0, transparent 2px));
+  }
+}
+
+
+// desktop
+@media all and (min-width: $desktop-mobile-width) {
+  .button.vote {
+    width: 180px;
+    margin-right: 10px;
+  }
+}
+
+
+// mobile
+@media all and (max-width: $desktop-mobile-width) {
+  .button.vote {
+    width: 48%;
+
+    &:nth-child(2n+1) {
+      margin-right: 4%;
+    }
+  }
+}
