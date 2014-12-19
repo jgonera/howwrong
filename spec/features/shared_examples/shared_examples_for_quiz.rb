@@ -24,7 +24,7 @@ RSpec.shared_examples "quiz" do
       click_button "Submit"
     end
 
-    it_behaves_like "results"
+    include_examples "results"
 
     it "shows a link to quiz's next question" do
       expect(page).to have_link "Next question", href: path_to_next_question

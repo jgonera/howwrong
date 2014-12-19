@@ -1,7 +1,7 @@
 require "features/shared_examples/shared_examples_for_question"
 
 RSpec.describe "question" do
-  it_behaves_like "question" do
+  include_examples "question" do
     let!(:question) { create :question }
 
     before :each do

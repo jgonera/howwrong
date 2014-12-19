@@ -21,7 +21,7 @@ RSpec.shared_examples "question" do
       click_button "Submit"
     end
 
-    it_behaves_like "results"
+    include_examples "results"
 
     it "gives feedback in results" do
       expect(page).to have_selector 'dd', text: answer.feedback.text
