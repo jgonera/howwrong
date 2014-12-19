@@ -1,7 +1,7 @@
-require "features/shared_examples/shared_examples_for_question_page"
+require "features/shared_examples/shared_examples_for_question"
 
-RSpec.describe "home page" do
-  it_behaves_like "question page" do
+RSpec.describe "home" do
+  it_behaves_like "question" do
     let!(:question) { create :question, :featured }
 
     before :each do

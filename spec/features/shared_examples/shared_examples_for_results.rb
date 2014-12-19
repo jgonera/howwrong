@@ -1,4 +1,4 @@
-RSpec.shared_examples "results page" do
+RSpec.shared_examples "results" do
   it "increments answer's vote count" do
     answer.reload
     expect(answer.votes).to eq 1

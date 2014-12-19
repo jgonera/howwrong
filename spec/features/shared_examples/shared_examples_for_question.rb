@@ -1,6 +1,6 @@
-require "features/shared_examples/shared_examples_for_results_page"
+require "features/shared_examples/shared_examples_for_results"
 
-RSpec.shared_examples "question page" do
+RSpec.shared_examples "question" do
   let(:answer) { question.answers.first }
   let!(:another_question) { create :question }
 
@@ -21,7 +21,7 @@ RSpec.shared_examples "question page" do
       click_button "Submit"
     end
 
-    it_behaves_like "results page"
+    it_behaves_like "results"
 
     it "gives feedback in results" do
       expect(page).to have_selector 'dd', text: answer.feedback.text

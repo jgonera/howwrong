@@ -1,4 +1,4 @@
-require "features/shared_examples/shared_examples_for_results_page"
+require "features/shared_examples/shared_examples_for_results"
 
 RSpec.shared_examples "quiz" do
   it "shows the first question" do
@@ -24,7 +24,7 @@ RSpec.shared_examples "quiz" do
       click_button "Submit"
     end
 
-    it_behaves_like "results page"
+    it_behaves_like "results"
 
     it "shows a link to quiz's next question" do
       expect(page).to have_link "Next question", href: path_to_next_question
