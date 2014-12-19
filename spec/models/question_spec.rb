@@ -1,3 +1,5 @@
+require "rails_helper"
+
 RSpec.describe Question do
   subject { Question.create text: "O rly?" }
 

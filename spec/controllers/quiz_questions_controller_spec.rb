@@ -1,3 +1,4 @@
+require "rails_helper"
 require "controllers/shared_examples/shared_examples_for_questions_controller"
 
 RSpec.describe QuizQuestionsController do

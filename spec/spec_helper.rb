@@ -16,7 +16,6 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 # Move this to specific spec files if you have specs that test non-Rails code
-require 'rails_helper'
 require 'capybara/rspec'
 
 RSpec.configure do |config|

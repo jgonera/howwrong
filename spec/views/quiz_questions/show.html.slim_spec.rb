@@ -1,3 +1,5 @@
+require "rails_helper"
+
 RSpec.describe "quiz_questions/show.html.slim" do
   let(:quiz) { create(:quiz) }
   let(:question) { quiz.questions.first }

@@ -1,3 +1,4 @@
+require "rails_helper"
 require "features/shared_examples/shared_examples_for_quiz"
 
 RSpec.describe "embedded quiz" do

@@ -1,3 +1,5 @@
+require "rails_helper"
+
 RSpec.describe Quiz do
   subject(:quiz) { Quiz.create(average_score: 80, times_taken: 2) }
 
