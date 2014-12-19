@@ -56,7 +56,6 @@ end
 
 group :development, :production do
   gem 'puma', '~> 2.10.2'
-  gem 'foreman', '~> 0.75.0'
 end
 
 group :development do
