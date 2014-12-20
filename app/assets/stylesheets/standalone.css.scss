@@ -359,27 +359,6 @@
 
   // old questions.css
 
-  #choices {
-    padding-top: 10px;
-  }
-
-  dt, .content h2, .label-title {
-    text-transform: uppercase;
-    color: $light-color;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.02em;
-    font-weight: 600;
-  }
-
-  dt {
-    margin: 30px 0 5px;
-
-    &:first-child {
-      margin-top: 0;
-    }
-  }
-
   h2 {
     margin-bottom: 5px;
   }
@@ -498,11 +477,6 @@
       left: 0 !important;
     }
 
-    h1.question {
-      font-size: 48px;
-      line-height: 1.35;
-    }
-
     dl.question {
       width: 75%;
     }
@@ -525,10 +499,6 @@
       position: absolute !important;
       top: 0 !important;
       left: 0 !important;
-    }
-
-    h1.question {
-      font-size: 30px;
     }
   }
 }
