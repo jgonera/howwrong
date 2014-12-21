@@ -83,6 +83,10 @@ a {
   background: $bg-color;
 }
 
+.content {
+  line-height: 1.475;
+}
+
 .button {
   @include box-sizing(border-box);
   display: inline-block;
@@ -163,8 +167,8 @@ nav {
     font-weight: bold;
   }
 
-  .progress-bar {
-    width: 33%;
+  h2 {
+    padding-bottom: 10px;
   }
 }
 
@@ -199,6 +203,10 @@ nav {
       font-size: 22px;
       letter-spacing: 0.04em;
     }
+
+    .progress-bar {
+      width: 40%;
+    }
   }
 }
 
@@ -215,10 +223,14 @@ nav {
   h1.question {
     font-size: 30px;
   }
+  nav {
+    .progress-bar {
+      width: 100%;
+    }
 
-  #logo {
-    font-size: 18px;
-    position: relative;
-    text-align: center;
+    #logo {
+      font-size: 18px;
+      position: relative;
+    }
   }
 }

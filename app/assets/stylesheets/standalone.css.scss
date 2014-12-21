@@ -9,7 +9,6 @@
   .content {
     position: relative;
     font-size: 24px;
-    line-height: 1.475;
 
     section > p {
       margin-bottom: 20px;
@@ -472,6 +471,10 @@
 
   // mobile
   @media all and (max-width: $desktop-mobile-width) {
+    #logo {
+      text-align: center;
+    }
+
     .desktop {
       // don't use display: none because it breaks getBBox() in Firefox
       // FIXME: this is unreliable

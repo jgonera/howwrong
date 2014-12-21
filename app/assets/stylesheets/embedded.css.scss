@@ -9,10 +9,31 @@ $side-margin: 20px;
 
   nav {
     background-color: $dark-color;
-    padding: 5px $side-margin;
+    padding: 10px $side-margin;
   }
 
-  #logo {
-    float: right;
+  // desktop
+  @media all and (min-width: $desktop-mobile-width) {
+    #logo {
+      float: right;
+    }
+
+    nav {
+      .label-title {
+        padding: 10px 0;
+      }
+    }
+  }
+
+  // mobile
+  @media all and (max-width: $desktop-mobile-width) {
+    nav {
+      .label-title {
+        padding: 10px 0;
+      }
+      h1 {
+        padding-bottom: 15px;
+      }
+    }
   }
 }
