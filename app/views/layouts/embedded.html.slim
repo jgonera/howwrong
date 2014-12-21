@@ -17,6 +17,8 @@
             span
               ' ARE
 
+        = yield :nav
+
       section = yield
 
 = render template: "layouts/base", locals: { body_class: "embedded" }

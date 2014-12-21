@@ -1,9 +1,11 @@
-a.button.uppercase.icon.next href=@next_path = @next_label
+- content_for :nav do
+  - if @questions_left != 0
+    = "#{pluralize(@questions_left, 'question')} left"
+  - else
+    a href=quiz_results_path(@quiz) See quiz results
 
-- if @questions_left != 0
-  = "#{pluralize(@questions_left, 'question')} left"
-- else
-  a href=quiz_results_path(@quiz) See quiz results
+
+a.button.uppercase.icon.next href=@next_path = @next_label
 
 dl class="question"
   dt Question
