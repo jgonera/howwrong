@@ -5,12 +5,14 @@ RSpec.describe "quiz_questions/show.html.slim" do
   let(:question) { quiz.questions.first }
   let(:question_number) { 1 }
   let(:questions_left) { 2 }
+  let(:questions_count) { 2 }
 
   before :each do
     assign :quiz, quiz
     assign :question, question
     assign :question_number, question_number
     assign :questions_left, questions_left
+    assign :questions_count, questions_count
     render
   end
 
@@ -20,6 +22,6 @@ RSpec.describe "quiz_questions/show.html.slim" do
   end
 
   it "shows how many questions are left" do
-    expect(rendered).to have_content "#{questions_left} questions left"
+    expect(view.content_for(:nav)).to have_content "#{questions_left} questions left"
   end
 end
