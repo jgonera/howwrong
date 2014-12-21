@@ -22,7 +22,8 @@ class QuizQuestionsController < BaseQuestionsController
 
     # Use #length because questions are already fetched and #count would run
     # a separate SQL query
-    @questions_left = @quiz.questions.length - @question_index
+    @questions_count = @quiz.questions.length
+    @questions_left = @questions_count - @question_index
 
     # Specify n in case it's not there (default quiz route)
     if session[:quizzes][@quiz.id][:voted].has_key?(@question.id)
@@ -51,7 +52,8 @@ class QuizQuestionsController < BaseQuestionsController
 
     # Use #length because questions are already fetched and #count would run
     # a separate SQL query
-    @questions_left = @quiz.questions.length - @question_number
+    @questions_count = @quiz.questions.length
+    @questions_left = @questions_count - @question_number
 
     @next_question = @quiz.questions[@question_index + 1]
     if @next_question

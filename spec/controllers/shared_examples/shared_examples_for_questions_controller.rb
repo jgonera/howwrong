@@ -15,6 +15,7 @@ RSpec.shared_examples "questions controller" do
         expect(assigns(:question_number)).to eq 1
         expect(assigns(:question_index)).to eq 0
         expect(assigns(:questions_left)).to eq quiz.questions.length
+        expect(assigns(:questions_count)).to eq quiz.questions.length
       end
 
       it "assigns quiz and its first question" do
@@ -32,6 +33,7 @@ RSpec.shared_examples "questions controller" do
         expect(assigns(:question_number)).to eq 2
         expect(assigns(:question_index)).to eq 1
         expect(assigns(:questions_left)).to eq quiz.questions.length - 1
+        expect(assigns(:questions_count)).to eq quiz.questions.length
       end
 
       it "assigns quiz and given question" do

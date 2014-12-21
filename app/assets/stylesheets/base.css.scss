@@ -28,7 +28,7 @@ body, input {
 }
 
 a {
-  color: $link-color;
+  color: $action-color;
   text-decoration: none;
 
   &:hover {
@@ -64,6 +64,18 @@ a {
     background-image: inline-svg("next.svg");
     background-position: right 10px top 50%;
     padding-right: 32px;
+  }
+}
+
+.progress-bar {
+  height: 5px;
+  background-color: $bar-color;
+  border-radius: 2px;
+
+  div {
+    height: 100%;
+    background-color: $action-color;
+    border-radius: 2px;
   }
 }
 
@@ -112,7 +124,7 @@ a {
   &:hover, &:focus {
     text-decoration: none;
     color: $text-color;
-    box-shadow: inset 0px -4px 0 $link-color;
+    box-shadow: inset 0px -4px 0 $action-color;
   }
 
   &:active {
@@ -149,6 +161,10 @@ nav {
 
   #logo, h2 {
     font-weight: bold;
+  }
+
+  .progress-bar {
+    width: 33%;
   }
 }
 

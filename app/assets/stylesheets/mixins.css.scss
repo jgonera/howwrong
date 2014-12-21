@@ -2,6 +2,6 @@
 
 @mixin selection {
   // WebKit doesn't accept colors which are fully opaque
-  background: transparentize($link-color, .5);
+  background: transparentize($action-color, .5);
   color: $text-color;
 }

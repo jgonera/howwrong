@@ -1,5 +1,7 @@
 - content_for :nav do
   h2 = @quiz.title
+  div.progress-bar
+    div style="width: #{(100.0 * (@questions_count - @questions_left) / @questions_count).round}%;"
   p.label-title = "#{pluralize(@questions_left, 'question')} left"
 
 - vote_path = path_for(action: "vote", quiz_id: @quiz, n: @question_number)
