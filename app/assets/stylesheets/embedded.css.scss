@@ -1,5 +1,18 @@
+@import "variables";
+
+$side-margin: 20px;
+
 .embedded {
-  #main {
-    padding: 20px;
+  section {
+    margin: $side-margin;
+  }
+
+  nav {
+    background-color: $dark-color;
+    padding: 5px $side-margin;
+  }
+
+  #logo {
+    float: right;
   }
 }

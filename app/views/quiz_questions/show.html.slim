@@ -1,5 +1,6 @@
 - content_for :nav do
-  = "#{pluralize(@questions_left, 'question')} left"
+  h2 = @quiz.title
+  p.label-title = "#{pluralize(@questions_left, 'question')} left"
 
 - vote_path = path_for(action: "vote", quiz_id: @quiz, n: @question_number)
 = render partial: "shared/question", locals: { vote_path: vote_path }

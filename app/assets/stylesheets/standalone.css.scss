@@ -31,30 +31,9 @@
   }
 
   nav {
-    font-family: 'Open Sans', sans-serif;
-    line-height: 1;
-
     li {
       .button {
         display: block;
-      }
-    }
-  }
-
-  #logo {
-    font-weight: bold;
-
-    em {
-      color: $red-color;
-    }
-
-    a {
-      display: block;
-      background-color: $dark-color;
-      color: $text-color;
-
-      &:hover, &:focus {
-        text-decoration: none;
       }
     }
   }
@@ -149,6 +128,13 @@
 
   }
 
+  #logo {
+    a {
+      background-color: $dark-color;
+      display: block;
+    }
+  }
+
   // desktop
   @media all and (min-width: $desktop-mobile-width) {
     .content {
@@ -184,9 +170,7 @@
     }
 
     #logo {
-      font-size: 22px;
       width: 158px;
-      letter-spacing: 0.04em;
 
       a {
         padding: 10px 5px;
@@ -323,10 +307,6 @@
     }
 
     #logo {
-      font-size: 18px;
-      position: relative;
-      text-align: center;
-
       a {
         padding: 15px ($hamburger-width/1.5) 15px $hamburger-width;
       }

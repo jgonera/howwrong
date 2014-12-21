@@ -121,7 +121,7 @@ a {
   }
 }
 
-dt, .content h2, .label-title {
+dt, .section h2, .label-title {
   text-transform: uppercase;
   color: $light-color;
   font-family: 'Open Sans', sans-serif;
@@ -142,6 +142,29 @@ dt {
   padding-top: 10px;
 }
 
+nav {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1;
+  text-transform: uppercase;
+
+  #logo, h2 {
+    font-weight: bold;
+  }
+}
+
+#logo {
+  em {
+    color: $red-color;
+  }
+
+  a {
+    color: $text-color;
+
+    &:hover, &:focus {
+      text-decoration: none;
+    }
+  }
+}
 
 // desktop
 @media all and (min-width: $desktop-mobile-width) {
@@ -154,8 +177,14 @@ dt {
     font-size: 48px;
     line-height: 1.35;
   }
-}
 
+  nav {
+    #logo, h2 {
+      font-size: 22px;
+      letter-spacing: 0.04em;
+    }
+  }
+}
 
 // mobile
 @media all and (max-width: $desktop-mobile-width) {
@@ -169,5 +198,11 @@ dt {
 
   h1.question {
     font-size: 30px;
+  }
+
+  #logo {
+    font-size: 18px;
+    position: relative;
+    text-align: center;
   }
 }
