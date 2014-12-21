@@ -1,0 +1,7 @@
+h2 = @quiz.title
+- if @questions_left != 0
+  div.progress-bar
+    div style="width: #{(100.0 * (@questions_count - @questions_left) / @questions_count).round}%;"
+  p.label-title = "#{pluralize(@questions_left, 'question')} left"
+- else
+  a.label-title href=quiz_results_path(@quiz) See quiz results

@@ -1,8 +1,5 @@
 - content_for :nav do
-  h2 = @quiz.title
-  div.progress-bar
-    div style="width: #{(100.0 * (@questions_count - @questions_left) / @questions_count).round}%;"
-  p.label-title = "#{pluralize(@questions_left, 'question')} left"
+  = render partial: "header"
 
 - vote_path = path_for(action: "vote", quiz_id: @quiz, n: @question_number)
 = render partial: "shared/question", locals: { vote_path: vote_path }
