@@ -371,6 +371,14 @@
 
   // mobile
   @media all and (max-width: $desktop-mobile-width) {
+    .chart {
+      max-width: 600px;
+
+      text {
+        text-anchor: end;
+      }
+    }
+
     .wide {
       // don't use display: none because it breaks getBBox() in Firefox
       // FIXME: this is unreliable
