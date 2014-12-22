@@ -101,26 +101,6 @@
     }
   }
 
-  .tooltip {
-    position: absolute;
-    @include box-sizing(border-box);
-    padding: 10px;
-    z-index: 100;
-    background: $dark-color;
-    color: $text-color;
-    visibility: hidden;
-    opacity: 0;
-
-    @include transition(opacity .3s, visibility 0s .3s);
-
-    &.visible {
-      visibility: visible;
-      opacity: 1;
-
-      @include transition(opacity .3s);
-    }
-  }
-
   .moiz-juliusz {
     display: block;
     margin: 3em 0 1em 0;
@@ -346,78 +326,6 @@
     margin-bottom: 15px;
   }
 
-  .chart {
-    position: relative;
-    padding-top: 5px;
-
-    rect {
-      fill: transparent;
-    }
-
-    .bar {
-      fill: $bar-color;
-      @include transition(fill .3s);
-
-      &.vote {
-        fill: $red-color;
-      }
-      &.correct {
-        fill: $green-color;
-      }
-    }
-
-    text {
-      fill: $text-color;
-      font-family: Georgia, serif;
-      font-size: 20px;
-    }
-
-    line {
-      stroke: #6b656e;
-      stroke-width: 1;
-    }
-
-    .tooltip {
-      top: 0;
-      width: 167px;
-      padding-left: 32px;
-      background-position: 4px 8px;
-      background-repeat: no-repeat;
-      margin-left: 10px;
-
-      .label {
-        color: $grey-color;
-        width: 120px;
-      }
-
-      .votePercentage {
-        font-size: 28px;
-        padding: 4px 0;
-      }
-
-      &:before {
-        content: '';
-        display: block;
-        width: 0;
-        height: 0;
-        position: absolute;
-        border-top: 8px solid transparent;
-        border-bottom: 8px solid transparent;
-        border-right: 8px solid $dark-color;
-        left: -8px;
-        top: 7px;
-      }
-
-      &.tick {
-        border-bottom: 4px solid $green-color;
-      }
-
-      &.cross {
-        border-bottom: 4px solid $red-color;
-      }
-    }
-  }
-
   .answer {
     display: inline-block;
     vertical-align: top;
@@ -459,22 +367,10 @@
     dl.question {
       width: 75%;
     }
-
-    .chart {
-      max-width: 600px;
-
-      text {
-        text-anchor: end;
-      }
-    }
   }
 
   // mobile
   @media all and (max-width: $desktop-mobile-width) {
-    #logo {
-      text-align: center;
-    }
-
     .desktop {
       // don't use display: none because it breaks getBBox() in Firefox
       // FIXME: this is unreliable
@@ -482,6 +378,10 @@
       position: absolute !important;
       top: 0 !important;
       left: 0 !important;
+    }
+
+    #logo {
+      text-align: center;
     }
   }
 }
