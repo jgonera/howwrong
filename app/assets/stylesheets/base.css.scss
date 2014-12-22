@@ -186,6 +186,22 @@ nav {
   }
 }
 
+  .answer {
+    margin-top: 30px;
+
+    dt {
+      display: inline-block;
+      padding: 2px 25px 0 0;
+      background-repeat: no-repeat;
+      background-position: 100% 0;
+    }
+
+    a {
+      display: block;
+      font-size: 15px;
+    }
+  }
+
 .chart {
   position: relative;
   padding-top: 5px;
