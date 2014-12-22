@@ -21,6 +21,18 @@ $side-margin: 20px;
     left: 0 !important;
   }
 
+  .column {
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+  }
+
+  .next {
+    position: fixed;
+    bottom: 30px;
+    right: 0;
+  }
+
   // desktop
   @media all and (min-width: $desktop-mobile-width) {
     #logo {
