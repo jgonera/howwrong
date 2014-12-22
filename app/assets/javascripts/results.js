@@ -1,7 +1,7 @@
 (function() {
   var tooltip = d3.select(".chart")
     .append("div")
-    .attr("class", "tooltip wide icon")
+    .attr("class", "tooltip icon")
     .on("mouseover", function() {
       tooltip.classed("visible", true);
     })
