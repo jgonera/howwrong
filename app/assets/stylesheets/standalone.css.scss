@@ -355,7 +355,7 @@
 
   // desktop
   @media all and (min-width: $desktop-mobile-width) {
-    .mobile {
+    .narrow {
       // don't use display: none because it breaks getBBox() in Firefox
       // FIXME: this is unreliable
       visibility: hidden !important;
@@ -371,7 +371,7 @@
 
   // mobile
   @media all and (max-width: $desktop-mobile-width) {
-    .desktop {
+    .wide {
       // don't use display: none because it breaks getBBox() in Firefox
       // FIXME: this is unreliable
       visibility: hidden !important;

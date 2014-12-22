@@ -1,7 +1,7 @@
 (function() {
   var tooltip = d3.select(".chart")
     .append("div")
-    .attr("class", "tooltip desktop icon")
+    .attr("class", "tooltip wide icon")
     .on("mouseover", function() {
       tooltip.classed("visible", true);
     })
@@ -37,11 +37,11 @@
     this.width = parseInt(this.container.style("width"), 10);
     this.chart.attr("width", this.width);
 
-    this.setScale("desktop");
-    this.setScale("mobile");
+    this.setScale("wide");
+    this.setScale("narrow");
 
-    this.animateBars("desktop");
-    this.animateBars("mobile");
+    this.animateBars("wide");
+    this.animateBars("narrow");
   };
 
   Graph.prototype.setChart = function() {
@@ -61,22 +61,22 @@
         return "translate(0," + y +")";
       });
 
-    this.renderBars("desktop");
-    this.renderBars("mobile");
+    this.renderBars("wide");
+    this.renderBars("narrow");
 
-    this.renderLabels("desktop");
-    this.renderLabels("mobile");
+    this.renderLabels("wide");
+    this.renderLabels("narrow");
 
     this.rescale();
 
-    this.renderLine("desktop");
-    this.renderLine("mobile");
+    this.renderLine("wide");
+    this.renderLine("narrow");
 
     this.renderBullshit();
 
     this.rows.on("mouseover", function(d, i) {
         tooltip
-          .style("left", self.scale.desktop(d.votes) + self.barOffset + "px")
+          .style("left", self.scale.wide(d.votes) + self.barOffset + "px")
           .style("top", i * (self.barHeight + self.barGap) + self.barHeight/2 + "px")
           .classed("visible", true)
           .classed("tick", d.is_correct)
@@ -108,7 +108,7 @@
       .attr("dy", "1.25em")
       .text(function(d) { return d.label; });
 
-    if (type === "desktop") {
+    if (type === "wide") {
       this.barOffset = Math.max.apply(null, labels[0].map(function(label) {
         return Math.ceil(label.getBBox().width);
       })) + this.labelGap;
@@ -120,14 +120,14 @@
   Graph.prototype.setScale = function(type) {
     this.scale[type] = d3.scale.linear()
       .domain([0, d3.max(this.data.answers, function(answer) { return answer.votes; })])
-      .range([0, type === "desktop" ? this.width - this.barOffset : this.width]);
+      .range([0, type === "wide" ? this.width - this.barOffset : this.width]);
   };
 
   Graph.prototype.animateBars = function(type) {
     var self = this;
 
     this.bars[type]
-      .attr("x", type === "desktop" ? this.barOffset : 0)
+      .attr("x", type === "wide" ? this.barOffset : 0)
       .transition()
         .delay(function(d, i) { return i * 50; })
         .duration(1000)
@@ -137,9 +137,9 @@
   Graph.prototype.renderLine = function(type) {
     this.chart.append("line")
       .classed(type, true)
-      .attr("x1", type === "desktop" ? this.barOffset : 0)
+      .attr("x1", type === "wide" ? this.barOffset : 0)
       .attr("y1", 0)
-      .attr("x2", type === "desktop" ? this.barOffset : 0)
+      .attr("x2", type === "wide" ? this.barOffset : 0)
       .attr("y2", this.height);
   };
 
