@@ -11,7 +11,7 @@
 }
 
 body {
-  background: $alt-dark-color;
+  background: $bg-color;
 }
 
 body, input {
@@ -77,10 +77,6 @@ a {
     background-color: $action-color;
     border-radius: 2px;
   }
-}
-
-#main {
-  background: $bg-color;
 }
 
 .content {

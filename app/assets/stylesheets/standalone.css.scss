@@ -6,6 +6,12 @@
   $nav-margin: 220px;
   $top-margin: 30px;
 
+  background: $alt-dark-color;
+
+  #main {
+    background: $bg-color;
+  }
+
   .content {
     position: relative;
     font-size: 24px;
