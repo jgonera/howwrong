@@ -7,7 +7,7 @@ dl
     = form_for @question, url: vote_path, html: { class: "vote-form" } do
       div id="choices"
         - for answer in @question.answers do
-          div.button.uppercase.vote role="button" tabindex="0"
+          div.button.uppercase.action role="button" tabindex="0"
             label
               input type="radio" name="answer_id" value=answer.id
               = answer.label
