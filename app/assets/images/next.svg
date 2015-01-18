@@ -1,11 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="15px" height="20px" viewBox="0 0 15 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-    <title>Triangle</title>
-    <description>Created with Sketch (http://www.bohemiancoding.com/sketch)</description>
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="Triangle" sketch:type="MSArtboardGroup" fill="#D2D1D2" opacity="0.8">
-            <path d="M-1.77214553,5.71918645 L6.80688137,13.8362658 L6.80688137,5.71918645 L-1.77214553,5.71918645 Z" id="Rectangle-16-copy" sketch:type="MSShapeGroup" transform="translate(2.517368, 9.777726) rotate(-315.000000) translate(-2.517368, -9.777726) "></path>
-        </g>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-629.6 394.6 6 12"
+	 enable-background="new -629.6 394.6 6 12" xml:space="preserve">
+<title>Triangle</title>
+<description>Created with Sketch (http://www.bohemiancoding.com/sketch)</description>
+<g id="Page-1" sketch:type="MSPage">
+	<g id="Triangle" sketch:type="MSArtboardGroup" opacity="0.8">
+		<path id="Rectangle-16-copy" sketch:type="MSShapeGroup" fill="#D2D1D2" d="M-629.6,394.6v12l6-6L-629.6,394.6z"/>
+	</g>
+</g>
 </svg>
