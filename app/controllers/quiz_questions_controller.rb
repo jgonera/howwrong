@@ -24,6 +24,7 @@ class QuizQuestionsController < BaseQuestionsController
     # a separate SQL query
     @questions_count = @quiz.questions.length
     @questions_left = @questions_count - @question_index
+    @percentage_completed = (100.0 * (@questions_count - @questions_left) / @questions_count).round
 
     # Specify n in case it's not there (default quiz route)
     if session[:quizzes][@quiz.id][:voted].has_key?(@question.id)
@@ -54,6 +55,7 @@ class QuizQuestionsController < BaseQuestionsController
     # a separate SQL query
     @questions_count = @quiz.questions.length
     @questions_left = @questions_count - @question_number
+    @percentage_completed = (100.0 * (@questions_count - @questions_left) / @questions_count).round
 
     @next_question = @quiz.questions[@question_index + 1]
     if @next_question
@@ -69,6 +71,9 @@ class QuizQuestionsController < BaseQuestionsController
 
   # Move this to a separate QuizController?
   def quiz_results
+
+    @percentage_completed = 100
+
     if session[:quizzes][@quiz.id][:voted].length < @quiz.questions.count
       redirect_to action: 'show'
       return
