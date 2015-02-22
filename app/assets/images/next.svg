@@ -1,14 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-629.6 394.6 6 12"
-	 enable-background="new -629.6 394.6 6 12" xml:space="preserve">
-<title>Triangle</title>
-<description>Created with Sketch (http://www.bohemiancoding.com/sketch)</description>
-<g id="Page-1" sketch:type="MSPage">
-	<g id="Triangle" sketch:type="MSArtboardGroup" opacity="0.8">
-		<path id="Rectangle-16-copy" sketch:type="MSShapeGroup" fill="#D2D1D2" d="M-629.6,394.6v12l6-6L-629.6,394.6z"/>
-	</g>
-</g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-629.6 394.6 6 12"><title>Triangle</title><g><g opacity=".8"><path d="M-629.6 394.6v12l6-6-6-6z" fill="#d2d1d2"/></g></g></svg>

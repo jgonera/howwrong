@@ -60,10 +60,15 @@ a {
     background-image: inline-svg("link.svg");
   }
 
-  &.next {
+  &.next::after {
+    content: "";
+    display: block;
+    float: right;
+    width: 6px;
+    height: 12px;
+    margin: 0 -2px 0 10px;
     background-image: inline-svg("next.svg");
-    background-position: right 10px top 50%;
-    padding-right: 32px;
+    background-size: 6px auto;
   }
 }
 
@@ -105,8 +110,6 @@ a {
   &.action {
     font-size: 14px;
     color: #e6e6e6;
-    margin-bottom: 10px;
-    padding: 11px 12px;
     text-align: center;
     @include background-image(linear-gradient(to bottom, #888DB8 0%, #4655AA 1px));
     border: 1px solid #353551;
@@ -152,6 +155,11 @@ dt {
 
 #choices {
   padding-top: 10px;
+
+  .button {
+    margin-bottom: 10px;
+    padding: 11px 12px;
+  }
 }
 
 nav {
@@ -292,9 +300,11 @@ nav {
 
 // desktop
 @media all and (min-width: $desktop-mobile-width) {
-  .button.action {
-    width: 180px;
-    margin-right: 10px;
+  #choices {
+    .button {
+      width: 180px;
+      margin-right: 10px;
+    }
   }
 
   h1.question {
@@ -316,11 +326,13 @@ nav {
 
 // mobile
 @media all and (max-width: $desktop-mobile-width) {
-  .button.action {
-    width: 48%;
+  #choices {
+    .button {
+      width: 48%;
 
-    &:nth-child(2n+1) {
-      margin-right: 4%;
+      &:nth-child(2n+1) {
+        margin-right: 4%;
+      }
     }
   }
 
