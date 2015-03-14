@@ -38,4 +38,17 @@ RSpec.describe Howwrong::VoteStore do
       expect(vote_store.has_answer_for?(question_id)).to eql(false)
     end
   end
+
+  describe "#voted_questions" do
+    it "returns an empty list if no votes" do
+      expect(vote_store.voted_questions).to eql([])
+    end
+
+    it "returns ids of voted questions" do
+      vote_store.vote(1, 10)
+      vote_store.vote(5, 3)
+
+      expect(vote_store.voted_questions).to eql([1, 5])
+    end
+  end
 end

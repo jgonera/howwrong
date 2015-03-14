@@ -1,6 +1,6 @@
 class QuestionsController < BaseQuestionsController
   def index
-    @question = Question.featured.where.not(id: session[:voted].keys).last
+    @question = Question.featured.where.not(id: @vote_store.voted_questions).last
 
     if @question.nil?
       @questions = Question.all
@@ -18,7 +18,7 @@ class QuestionsController < BaseQuestionsController
 
   def show
     @question = Question.friendly.find params[:id]
-    redirect_to action: 'results' if session[:voted].has_key? @question.id
+    redirect_to action: 'results' if @vote_store.has_answer_for?(@question.id)
     @title = @question.text
     @other_questions = Question.random(exclude: @question.id)
     set_next_path
@@ -56,8 +56,7 @@ class QuestionsController < BaseQuestionsController
   protected
 
   def set_next_path
-    exclude = session[:voted].keys
-    exclude << @question.id
+    exclude = @vote_store.voted_questions + [@question.id]
     next_question = Question.random(1, exclude: exclude).first
     @next_path = next_question.nil? ? "/archive" : question_path(next_question)
   end
