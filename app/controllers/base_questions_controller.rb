@@ -1,13 +1,15 @@
+require "vote_store"
+
 class BaseQuestionsController < ApplicationController
   before_action do
-    session[:voted] ||= {}
+    @vote_store = Howwrong::VoteStore.new(session[:voted] ||= {})
   end
 
   def vote
-    unless session[:voted].has_key?(@question.id)
+    unless @vote_store.has_answer_for?(@question.id)
       answer = @question.answers.find(params[:answer_id])
       answer.increment!(:votes)
-      session[:voted][@question.id] = answer.id
+      @vote_store.vote(@question.id, answer.id)
     end
 
     redirect_to action: 'results'
@@ -17,12 +19,12 @@ class BaseQuestionsController < ApplicationController
   end
 
   def results
-    unless session[:voted].has_key?(@question.id)
+    unless @vote_store.has_answer_for?(@question.id)
       redirect_to action: 'show'
       return
     end
 
-    @vote_answer_id = session[:voted][@question.id]
+    @vote_answer_id = @vote_store.answer_for(@question.id)
     @is_wrong = @vote_answer_id != @question.answers.correct.id
     @options = {
       answers: @question.answers,
