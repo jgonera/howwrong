@@ -13,7 +13,7 @@ module Howwrong
     end
 
     def has_answer_for?(question_id)
-      @hash[question_id] != nil
+      answer_for(question_id) != nil
     end
 
     def voted_questions

@@ -56,8 +56,14 @@ RSpec.shared_examples "questions controller" do
     end
 
     context "when vote made" do
+      let(:vote_store) { double("VoteStore") }
       before :each do
-        session[:voted] = { question.id => answer.id }
+        allow(Howwrong::VoteStore).to receive(:new) { vote_store }
+        allow(vote_store).to receive(:answer_for).
+          with(question.id) { answer.id }
+        allow(vote_store).to receive(:has_answer_for?).
+          with(question.id) { true }
+        allow(vote_store).to receive(:voted_questions) { [question.id] }
       end
 
       it "shows results if vote made" do
