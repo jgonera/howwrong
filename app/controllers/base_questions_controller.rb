@@ -2,7 +2,7 @@ require "vote_store"
 
 class BaseQuestionsController < ApplicationController
   before_action do
-    @vote_store = Howwrong::VoteStore.new(session[:voted] ||= {})
+    @vote_store = VoteStore.new(session[:voted] ||= {})
   end
 
   def vote

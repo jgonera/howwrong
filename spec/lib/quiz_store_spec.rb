@@ -1,12 +1,12 @@
 require "spec_helper"
 require "quiz_store"
 
-RSpec.describe Howwrong::QuizStore do
+RSpec.describe QuizStore do
   let(:hash) { {} }
   let(:quiz) { instance_double("Quiz") }
   let(:quiz_id) { 789 }
   let(:questions) { double("questions", count: 2) }
-  let(:quiz_store) { Howwrong::QuizStore.new(hash, quiz) }
+  let(:quiz_store) { QuizStore.new(hash, quiz) }
 
   before :each do
     allow(quiz).to receive(:id) { quiz_id }
@@ -46,7 +46,7 @@ RSpec.describe Howwrong::QuizStore do
 
       expect {
         quiz_store.vote(678, false)
-      }.to raise_error(Howwrong::QuizStore::AllVotedError)
+      }.to raise_error(QuizStore::AllVotedError)
     end
   end
 

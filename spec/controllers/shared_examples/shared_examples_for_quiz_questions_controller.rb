@@ -108,10 +108,10 @@ RSpec.shared_examples "quiz questions controller" do
   end
 
   describe "GET quiz_results" do
-    let(:quiz_store) { instance_double("Howwrong::QuizStore") }
+    let(:quiz_store) { instance_double("QuizStore") }
 
     before :each do
-      allow(Howwrong::QuizStore).to receive(:new).with({}, quiz) { quiz_store }
+      allow(QuizStore).to receive(:new).with({}, quiz) { quiz_store }
     end
 
     context "when all questions answered" do

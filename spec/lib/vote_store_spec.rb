@@ -1,9 +1,9 @@
 require "spec_helper"
 require "vote_store"
 
-RSpec.describe Howwrong::VoteStore do
+RSpec.describe VoteStore do
   let(:hash) { {} }
-  let(:vote_store) { Howwrong::VoteStore.new(hash) }
+  let(:vote_store) { VoteStore.new(hash) }
   let(:question_id) { 1 }
   let(:answer_id) { 2 }
 

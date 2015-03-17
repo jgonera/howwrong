@@ -58,7 +58,7 @@ RSpec.shared_examples "questions controller" do
     context "when vote made" do
       let(:vote_store) { double("VoteStore") }
       before :each do
-        allow(Howwrong::VoteStore).to receive(:new) { vote_store }
+        allow(VoteStore).to receive(:new) { vote_store }
         allow(vote_store).to receive(:answer_for).
           with(question.id) { answer.id }
         allow(vote_store).to receive(:has_answer_for?).

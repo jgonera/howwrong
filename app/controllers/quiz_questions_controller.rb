@@ -11,7 +11,7 @@ class QuizQuestionsController < BaseQuestionsController
     @question_index = @question_number - 1
 
     session[:quizzes] ||= {}
-    @quiz_store = Howwrong::QuizStore.new(session[:quizzes], @quiz)
+    @quiz_store = QuizStore.new(session[:quizzes], @quiz)
   end
 
   def show
