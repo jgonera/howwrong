@@ -9,7 +9,7 @@ RSpec.describe "quiz_questions/results.html.slim" do
   before :each do
     assign :quiz, quiz
     assign :question, question
-    assign :vote_answer_id, question.answers.first
+    assign :vote_answer_id, question.answers.first.id
     assign :next_path, "/test"
     assign :next_label, "Test"
     assign :questions_left, questions_left
