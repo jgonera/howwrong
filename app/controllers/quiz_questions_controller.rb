@@ -1,3 +1,5 @@
+require "quiz_store"
+
 class QuizQuestionsController < BaseQuestionsController
   before_action do
     @quiz = Quiz.friendly.find(params[:quiz_id])
@@ -9,7 +11,7 @@ class QuizQuestionsController < BaseQuestionsController
     @question_index = @question_number - 1
 
     session[:quizzes] ||= {}
-    session[:quizzes][@quiz.id] ||= { correct_count: 0, voted: {} }
+    @quiz_store = Howwrong::QuizStore.new(session[:quizzes], @quiz)
   end
 
   def show
@@ -26,7 +28,7 @@ class QuizQuestionsController < BaseQuestionsController
     @questions_left = @questions_count - @question_index
 
     # Specify n in case it's not there (default quiz route)
-    if session[:quizzes][@quiz.id][:voted].has_key?(@question.id)
+    if @quiz_store.voted_for?(@question.id)
       redirect_to action: 'results', n: @question_number
     end
   end
@@ -35,12 +37,12 @@ class QuizQuestionsController < BaseQuestionsController
     @question = @quiz.questions[@question_index]
     answer_id = params[:answer_id].to_i
 
-    unless session[:quizzes][@quiz.id][:voted].has_key?(@question.id)
-      session[:quizzes][@quiz.id][:voted][@question.id] = true
-      session[:quizzes][@quiz.id][:correct_count] += 1 if answer_id == @question.answers.correct.id
+    unless @quiz_store.voted_for?(@question.id)
+      is_correct = answer_id == @question.answers.correct.id
+      @quiz_store.vote(@question.id, is_correct)
 
-      if session[:quizzes][@quiz.id][:voted].length == @quiz.questions.length
-        @quiz.register_score!(get_score)
+      if @quiz_store.all_voted?
+        @quiz.register_score!(@quiz_store.score)
       end
     end
 
@@ -69,12 +71,9 @@ class QuizQuestionsController < BaseQuestionsController
 
   # Move this to a separate QuizController?
   def quiz_results
-    if session[:quizzes][@quiz.id][:voted].length < @quiz.questions.count
-      redirect_to action: 'show'
-      return
-    end
+    return redirect_to(action: 'show') unless @quiz_store.all_voted?
 
-    @score = get_score.round
+    @score = @quiz_store.score.round
     @average_score = @quiz.average_score.round
     @how_wrong =
       if (@score - @average_score).abs <= 5
@@ -84,11 +83,5 @@ class QuizQuestionsController < BaseQuestionsController
       elsif @score > @average_score
         "You're better than average"
       end
-  end
-
-  private
-
-  def get_score
-    session[:quizzes][@quiz.id][:correct_count].to_f / @quiz.questions.count * 100
   end
 end

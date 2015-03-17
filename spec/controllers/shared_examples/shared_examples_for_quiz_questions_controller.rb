@@ -108,17 +108,24 @@ RSpec.shared_examples "quiz questions controller" do
   end
 
   describe "GET quiz_results" do
+    let(:quiz_store) { instance_double("Howwrong::QuizStore") }
+
+    before :each do
+      allow(Howwrong::QuizStore).to receive(:new).with({}, quiz) { quiz_store }
+    end
+
     context "when all questions answered" do
+      let(:score) { 56 }
+
       before :each do
-        post :vote, params.merge(answer_id: question.answers.wrong.first.id)
-        post :vote, another_params.merge(answer_id: another_question.answers.correct.id)
-        quiz.reload
+        allow(quiz_store).to receive(:all_voted?) { true }
+        allow(quiz_store).to receive(:score) { score }
       end
 
       it "assigns score" do
         get :quiz_results, quiz_id: quiz.slug
 
-        expect(assigns[:score]).to eq 50
+        expect(assigns[:score]).to eq score
       end
 
       it "assigns average_score" do
@@ -127,35 +134,47 @@ RSpec.shared_examples "quiz questions controller" do
         expect(assigns[:average_score]).to eq quiz.average_score.round
       end
 
-      # TODO: This is crap, refactor those specs as a part of #24 to avoid stubbing
-      # a private method
-      it "assigns below average how_wrong if score lower than average_score by > 5% points" do
-        allow(controller).to receive(:get_score).and_return(quiz.average_score - 6)
-        get :quiz_results, quiz_id: quiz.slug
+      context "when score lower than average_score by > 5% points" do
+        let(:score) { quiz.average_score - 6 }
 
-        expect(assigns[:how_wrong]).to eq "You're way below average"
+        it "assigns below average how_wrong" do
+          get :quiz_results, quiz_id: quiz.slug
+
+          expect(assigns[:how_wrong]).to eq "You're way below average"
+        end
       end
 
-      it "assigns below average how_wrong if score within 5% points of average_score" do
-        allow(controller).to receive(:get_score).and_return(quiz.average_score - 3)
-        get :quiz_results, quiz_id: quiz.slug
+      context "when score within 5% points of average_score" do
+        let(:score) { quiz.average_score - 3 }
 
-        expect(assigns[:how_wrong]).to eq "You're average"
+        it "assigns below average how_wrong" do
+          get :quiz_results, quiz_id: quiz.slug
+
+          expect(assigns[:how_wrong]).to eq "You're average"
+        end
       end
 
-      it "assigns above average how_wrong if score higher than average_score by > 5% points" do
-        allow(controller).to receive(:get_score).and_return(quiz.average_score + 6)
-        get :quiz_results, quiz_id: quiz.slug
+      context "score higher than average_score by > 5% points" do
+        let(:score) { quiz.average_score + 6 }
 
-        expect(assigns[:how_wrong]).to eq "You're better than average"
+        it "assigns above average how_wrong" do
+          get :quiz_results, quiz_id: quiz.slug
+
+          expect(assigns[:how_wrong]).to eq "You're better than average"
+        end
       end
     end
 
-    it "redirects to the quiz if all questions not answered" do
-      post :vote, params.merge(answer_id: question.answers.wrong.first.id)
-      get :quiz_results, quiz_id: quiz.slug
+    context "when not all questions answered" do
+      before :each do
+        allow(quiz_store).to receive(:all_voted?) { false }
+      end
 
-      expect(response).to redirect_to action: :show
+      it "redirects to the quiz" do
+        get :quiz_results, quiz_id: quiz.slug
+
+        expect(response).to redirect_to action: :show
+      end
     end
   end
 end
