@@ -1,20 +1,20 @@
 ruby '2.1.3'
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.8'
+gem 'rails', '4.2.0'
 
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 0.17.1'
+gem 'pg', '~> 0.18.1'
 
 # Slugs
-gem 'friendly_id', '~> 5.0.4'
+gem 'friendly_id', '~> 5.1.0'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0.0'
-gem 'bourbon', '~> 4.0.2'
+gem 'sass-rails', '~> 5.0.1'
+gem 'bourbon', '~> 4.2.1'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 2.6.0'
+gem 'uglifier', '>= 2.7.1'
 
 # Use CoffeeScript for .js.coffee assets and views
 #gem 'coffee-rails', '~> 4.0.0'
@@ -44,7 +44,7 @@ gem 'uglifier', '>= 2.6.0'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'slim-rails', '~> 3.0.0'
+gem 'slim-rails', '~> 3.0.1'
 
 gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
@@ -55,7 +55,7 @@ group :development, :test do
 end
 
 group :development, :production do
-  gem 'puma', '~> 2.10.2'
+  gem 'puma', '~> 2.11.1'
 end
 
 group :development do
@@ -63,15 +63,16 @@ group :development do
   # background. Read more: https://github.com/jonleighton/spring
   gem 'spring'
   gem 'spring-commands-rspec'
+  gem 'web-console', '~> 2.0'
 end
 
 group :test do
-  gem 'rspec-rails', '~> 3.1.0'
+  gem 'rspec-rails', '~> 3.2.1'
   gem 'capybara', '~> 2.4.4'
-  gem 'poltergeist', '~> 1.5.1'
+  gem 'poltergeist', '~> 1.6.0'
   gem 'factory_girl_rails', '~> 4.5.0'
-  gem 'selenium-webdriver', '~> 2.44.0'
-  gem 'database_cleaner', '~> 1.3.0'
+  gem 'selenium-webdriver', '~> 2.45.0'
+  gem 'database_cleaner', '~> 1.4.1'
   # required for Travis CI per http://docs.travis-ci.com/user/languages/ruby/
   gem 'rake'
 end
