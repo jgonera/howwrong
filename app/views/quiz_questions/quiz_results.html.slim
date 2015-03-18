@@ -1,4 +1,20 @@
-' Quiz completed
-= "Your score #{@score}%"
-= "Average score #{@average_score}%"
-= "How wrong? #{@how_wrong}"
+- content_for :nav do
+  h2 = @quiz.title
+  div.progress-bar
+    div style="width: 100%;"
+  p.label-title Quiz completed
+
+div.column
+  dl
+    dt Your score
+    dd.exclamation = "#{@score}%"
+    dt How wrong?
+    dd = @how_wrong
+div.column
+  dl
+    dt Average score
+    dd.exclamation = "#{@average_score}%"
+    dt Share your score
+    dd
+      a.social.icon.twitter href=@twitter_url target="_blank" Share on Twitter
+      a.social.icon.facebook href=@facebook_url target="_blank" Share on Facebook

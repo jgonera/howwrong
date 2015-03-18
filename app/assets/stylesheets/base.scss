@@ -86,6 +86,20 @@ a {
 
 .content {
   line-height: 1.475;
+
+  .social {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+    text-indent: -9999px;
+    overflow: hidden;
+    vertical-align: top;
+
+    &:first-of-type {
+      margin-left: -5px;
+    }
+  }
 }
 
 .button {
@@ -153,6 +167,11 @@ dt {
   }
 }
 
+.exclamation {
+  font-size: 48px;
+  line-height: 1;
+}
+
 #choices {
   padding-top: 10px;
 
@@ -190,21 +209,21 @@ nav {
   }
 }
 
-  .answer {
-    margin-top: 30px;
+.answer {
+  margin-top: 30px;
 
-    dt {
-      display: inline-block;
-      padding: 2px 25px 0 0;
-      background-repeat: no-repeat;
-      background-position: 100% 0;
-    }
-
-    a {
-      display: block;
-      font-size: 15px;
-    }
+  dt {
+    display: inline-block;
+    padding: 2px 25px 0 0;
+    background-repeat: no-repeat;
+    background-position: 100% 0;
   }
+
+  a {
+    display: block;
+    font-size: 15px;
+  }
+}
 
 .chart {
   position: relative;

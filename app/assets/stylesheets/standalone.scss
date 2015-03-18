@@ -19,20 +19,6 @@
     section > p {
       margin-bottom: 20px;
     }
-
-    .social {
-      display: inline-block;
-      width: 32px;
-      height: 32px;
-      margin-right: 10px;
-      text-indent: -9999px;
-      overflow: hidden;
-      vertical-align: top;
-
-      &:first-of-type {
-        margin-left: -5px;
-      }
-    }
   }
 
   nav {
@@ -341,9 +327,8 @@
   dl#other {
     margin-top: 30px;
 
-    .howwrong p {
-      margin-top: -8px;
-      font-size: 48px;
+    .howwrong .icon {
+      margin-top: 8px;
     }
   }
 

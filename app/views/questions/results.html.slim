@@ -14,7 +14,7 @@ dl.answer
 dl id="other"
   dt How Wrong?
   dd.howwrong
-    p = @question.answers.find(@vote_answer_id).feedback.text
+    p.exclamation = @question.answers.find(@vote_answer_id).feedback.text
     a.social.icon.twitter href=@twitter_url target="_blank" Share on Twitter
     a.social.icon.facebook href=@facebook_url target="_blank" Share on Facebook
   dt How Others Answered
