@@ -5,15 +5,4 @@ class ApplicationController < ActionController::Base
 
   include ApplicationHelper
   layout "standalone"
-
-  def render(*args)
-    if @title.nil?
-      @title = ""
-    else
-      @title += " · "
-    end
-    @title += "How Wrong You Are"
-
-    super
-  end
 end
