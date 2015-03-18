@@ -40,25 +40,22 @@ $side-margin: 20px;
     right: 0;
   }
 
+  nav {
+    .label-title {
+      padding: 10px 0;
+    }
+  }
+
   // desktop
   @media all and (min-width: $desktop-mobile-width) {
     #logo {
       float: right;
-    }
-
-    nav {
-      .label-title {
-        padding: 10px 0;
-      }
     }
   }
 
   // mobile
   @media all and (max-width: $desktop-mobile-width) {
     nav {
-      .label-title {
-        padding: 10px 0;
-      }
       h1 {
         padding-bottom: 15px;
       }
