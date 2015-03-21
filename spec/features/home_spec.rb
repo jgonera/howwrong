@@ -1,14 +1,17 @@
 require "rails_helper"
 require "features/shared_examples/shared_examples_for_question"
+require "features/shared_examples/shared_examples_for_standalone_question"
 
 RSpec.describe "home" do
-  include_examples "question" do
-    let!(:question) { create :question, :featured }
+  let!(:question) { create :question, :featured }
+  let!(:another_question) { create :question }
 
-    before :each do
-      visit '/'
-    end
+  before :each do
+    visit '/'
   end
+
+  include_examples "question"
+  include_examples "standalone question"
 
   it "displays other questions" do
     expect(page).to have_selector 'li', text: another_question.text

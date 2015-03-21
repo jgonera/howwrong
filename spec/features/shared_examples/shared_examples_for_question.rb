@@ -2,7 +2,6 @@ require "features/shared_examples/shared_examples_for_results"
 
 RSpec.shared_examples "question" do
   let(:answer) { question.answers.first }
-  let!(:another_question) { create :question }
 
   it "allows single click voting if JavaScript enabled", js: true do
     find('label', text: answer.label.upcase).click

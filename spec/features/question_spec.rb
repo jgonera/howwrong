@@ -1,17 +1,15 @@
 require "rails_helper"
 require "features/shared_examples/shared_examples_for_question"
+require "features/shared_examples/shared_examples_for_standalone_question"
 
 RSpec.describe "question" do
-  include_examples "question" do
-    let(:question) { create :question }
+  let(:question) { create :question }
+  let!(:another_question) { create :question }
 
-    before :each do
-      visit question_path(question)
-    end
+  before :each do
+    visit question_path(question)
   end
 
-  it "displays other questions" do
-    expect(page).to have_selector 'li', text: another_question.text
-    expect(page).to_not have_selector 'li', text: question.text
-  end
+  include_examples "question"
+  include_examples "standalone question"
 end
