@@ -10,11 +10,6 @@ RSpec.shared_examples "question" do
     expect(answer.votes).to eq 1
   end
 
-  it "displays other questions" do
-    expect(page).to have_selector 'li', text: another_question.text
-    expect(page).to_not have_selector 'li', text: question.text
-  end
-
   context "when vote submitted" do
     before :each do
       choose answer.label

@@ -6,12 +6,7 @@ RSpec.describe "question" do
     let(:question) { create :question }
 
     before :each do
-      visit question_path(question)
+      visit embedded_question_path(question)
     end
-  end
-
-  it "displays other questions" do
-    expect(page).to have_selector 'li', text: another_question.text
-    expect(page).to_not have_selector 'li', text: question.text
   end
 end

@@ -10,6 +10,11 @@ RSpec.describe "home" do
     end
   end
 
+  it "displays other questions" do
+    expect(page).to have_selector 'li', text: another_question.text
+    expect(page).to_not have_selector 'li', text: question.text
+  end
+
   context "when featured question present" do
     let!(:question) { create :question }
     let!(:featured_question) { create :question, :featured }
