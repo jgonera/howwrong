@@ -2,6 +2,8 @@
 @import "variables";
 @import "mixins";
 
+$desktop-mobile-width: 60em;
+
 .standalone {
   $nav-margin: 220px;
   $top-margin: 30px;
@@ -354,6 +356,29 @@
     dl.question {
       width: 75%;
     }
+
+    #choices {
+      .button {
+        width: 180px;
+        margin-right: 10px;
+      }
+    }
+
+    h1.question {
+      font-size: 48px;
+      line-height: 1.35;
+    }
+
+    nav {
+      #logo, h2 {
+        font-size: 22px;
+        letter-spacing: 0.04em;
+      }
+
+      .progress-bar {
+        width: 40%;
+      }
+    }
   }
 
   // mobile
@@ -370,5 +395,31 @@
     #logo {
       text-align: center;
     }
+
+    #choices {
+      .button {
+        width: 48%;
+
+        &:nth-child(2n+1) {
+          margin-right: 4%;
+        }
+      }
+    }
+
+    h1.question {
+      font-size: 30px;
+    }
+
+    nav {
+      .progress-bar {
+        width: 100%;
+      }
+
+      #logo {
+        font-size: 18px;
+        position: relative;
+      }
+    }
   }
 }
+
