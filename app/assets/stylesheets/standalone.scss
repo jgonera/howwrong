@@ -255,8 +255,6 @@ $desktop-mobile-width: 60em;
       z-index: 1;
       top: 5em;
       right: 0;
-      overflow: hidden;
-      white-space: nowrap;
 
       @include transition(opacity .25s);
     }
