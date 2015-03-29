@@ -94,7 +94,13 @@ class QuizQuestionsController < BaseQuestionsController
   private
 
   def set_share_urls
-    @share_url = url_for(action: "show", quiz_id: @quiz.slug)
+    @share_url = url_for(action: "show", quiz_id: @quiz.slug, n: nil)
+    @embed_url = url_for(
+      controller: "embedded_quiz_questions",
+      action: "show",
+      quiz_id: @quiz.slug,
+      n: nil
+    )
     @share_twitter_url = "https://twitter.com/intent/tweet?" + {
       url: @share_url,
       via: "howwrongyouare"

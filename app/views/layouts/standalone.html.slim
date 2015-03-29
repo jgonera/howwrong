@@ -37,7 +37,7 @@
                   textarea=@share_url
                   h2 Embed
                   textarea
-                    = @share_url
+                    = %{<iframe src="#{@embed_url}" style="width: 100%; height: 500px; border: none;"></iframe>}
 
 
   footer
