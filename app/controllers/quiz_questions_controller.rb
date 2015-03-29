@@ -27,6 +27,8 @@ class QuizQuestionsController < BaseQuestionsController
     @questions_count = @quiz.questions.length
     @questions_left = @questions_count - @question_index
 
+    set_share_urls
+
     # Specify n in case it's not there (default quiz route)
     if @quiz_store.voted_for?(@question.id)
       redirect_to action: 'results', n: @question_number
@@ -66,6 +68,8 @@ class QuizQuestionsController < BaseQuestionsController
       @next_path = path_for(action: "quiz_results", quiz_id: @quiz)
     end
 
+    set_share_urls
+
     super
   end
 
@@ -83,5 +87,20 @@ class QuizQuestionsController < BaseQuestionsController
       elsif @score > @average_score
         "You're better than average"
       end
+
+    set_share_urls
+  end
+
+  private
+
+  def set_share_urls
+    @share_url = url_for(action: "show", quiz_id: @quiz.slug)
+    @share_twitter_url = "https://twitter.com/intent/tweet?" + {
+      url: @share_url,
+      via: "howwrongyouare"
+    }.to_query
+    @share_facebook_url = "https://www.facebook.com/share.php?" + {
+      u: @share_url
+    }.to_query
   end
 end

@@ -25,14 +25,15 @@
       section
         = yield :nav
         = yield
-        aside.share
-          ul
-            li: a.button.icon.twitter href="https://twitter.com/intent/tweet?url=http%3A//#{request.host_with_port}" target="_blank" Tweet
-            li: a.button.icon.facebook href="https://www.facebook.com/share.php?u=http%3A//#{request.host_with_port}" target="_blank" Facebook
-            li.link
-              button.button.icon.link
-              div.tooltip
-                input type="text" value="http://#{request.host_with_port}"
+        - if @share_url
+          aside.share
+            ul
+              li: a.button.icon.twitter href=@share_twitter_url target="_blank" Tweet
+              li: a.button.icon.facebook href=@share_facebook_url target="_blank" Facebook
+              li.link
+                button.button.icon.link
+                div.tooltip
+                  input type="text" value=@share_url
 
 
   footer

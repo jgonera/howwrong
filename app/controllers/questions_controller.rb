@@ -8,6 +8,7 @@ class QuestionsController < BaseQuestionsController
     else
       @other_questions = Question.random(exclude: @question.id)
       set_next_path
+      set_share_urls
       render 'show'
     end
   end
@@ -22,6 +23,7 @@ class QuestionsController < BaseQuestionsController
     @title = @question.text
     @other_questions = Question.random(exclude: @question.id)
     set_next_path
+    set_share_urls
   end
 
   def vote
@@ -47,17 +49,29 @@ class QuestionsController < BaseQuestionsController
     }.to_query
     @other_questions = Question.random(exclude: @question.id)
     set_next_path
+    set_share_urls
   end
 
   def short
     redirect_to action: 'show', id: Question.find(params[:id]).slug
   end
 
-  protected
+  private
 
   def set_next_path
     exclude = @vote_store.voted_questions + [@question.id]
     next_question = Question.random(1, exclude: exclude).first
     @next_path = next_question.nil? ? "/archive" : question_path(next_question)
+  end
+
+  def set_share_urls
+    @share_url = url_for(action: "show", id: @question.slug)
+    @share_twitter_url = "https://twitter.com/intent/tweet?" + {
+      url: @share_url,
+      via: "howwrongyouare"
+    }.to_query
+    @share_facebook_url = "https://www.facebook.com/share.php?" + {
+      u: @share_url
+    }.to_query
   end
 end
