@@ -25,6 +25,15 @@
       section
         = yield :nav
         = yield
+        aside.share
+          ul
+            li: a.button.icon.twitter href="https://twitter.com/intent/tweet?url=http%3A//#{request.host_with_port}" target="_blank" Tweet
+            li: a.button.icon.facebook href="https://www.facebook.com/share.php?u=http%3A//#{request.host_with_port}" target="_blank" Facebook
+            li.link
+              button.button.icon.link
+              div.tooltip
+                input type="text" value="http://#{request.host_with_port}"
+
 
   div#footer
     div.content
@@ -33,15 +42,7 @@
           h2 Other questions
           = render partial: 'questions/list', locals: {questions: @other_questions}
 
-      section.share
-        h2 Share the love
-        ul
-          li: a.button.icon.twitter href="https://twitter.com/intent/tweet?url=http%3A//#{request.host_with_port}" target="_blank" Tweet
-          li: a.button.icon.facebook href="https://www.facebook.com/share.php?u=http%3A//#{request.host_with_port}" target="_blank" Facebook
-          li.link
-            button.button.icon.link
-            div.tooltip
-              input type="text" value="http://#{request.host_with_port}"
+      section
         p.label-title
           ' This work is under
           a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/" CC-BY-NC-SA 3.0

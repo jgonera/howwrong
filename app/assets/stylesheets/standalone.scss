@@ -31,51 +31,51 @@ $desktop-mobile-width: 60em;
     }
   }
 
+  .share {
+    li {
+      display: inline-block;
+      overflow: hidden;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      a, button {
+        text-indent: -9999px;
+        height: 54px;
+        cursor: pointer;
+      }
+    }
+
+    .tooltip {
+      width: 100%;
+      bottom: -6px;
+      right: 0;
+
+      &:before {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid $dark-color;
+        top: -8px;
+        right: 15px;
+      }
+
+      input {
+        width: 100%;
+        font-size: 15px;
+        background: transparent;
+      }
+    }
+  }
+
   #footer {
     .label-title {
       font-size: 10px;
-    }
-
-    .share {
-      li {
-        display: inline-block;
-        overflow: hidden;
-
-        &:last-child {
-          margin-right: 0;
-        }
-
-        a, button {
-          text-indent: -9999px;
-          height: 54px;
-          cursor: pointer;
-        }
-      }
-
-      .tooltip {
-        width: 100%;
-        bottom: -6px;
-        right: 0;
-
-        &:before {
-          content: '';
-          display: block;
-          width: 0;
-          height: 0;
-          position: absolute;
-          border-left: 8px solid transparent;
-          border-right: 8px solid transparent;
-          border-bottom: 8px solid $dark-color;
-          top: -8px;
-          right: 15px;
-        }
-
-        input {
-          width: 100%;
-          font-size: 15px;
-          background: transparent;
-        }
-      }
     }
   }
 
@@ -155,27 +155,24 @@ $desktop-mobile-width: 60em;
       }
     }
 
+
+    .share {
+      margin: $top-margin 0 0 0;
+
+      li {
+        margin-right: 10px;
+
+        a, button {
+          width: 46px;
+        }
+      }
+    }
+
     #footer {
       padding: 40px 0px 40px;
 
       .content {
         border-top: 3px solid $light-color;
-      }
-
-      .share {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 158px;
-        margin: $top-margin 0 0 0;
-
-        li {
-          margin-right: 10px;
-
-          a, button {
-            width: 46px;
-          }
-        }
       }
     }
 
@@ -283,26 +280,20 @@ $desktop-mobile-width: 60em;
       }
     }
 
-    #footer {
-      .share {
-        li {
-          width: 48%;
+    .share {
+      li {
+        width: 48%;
 
-          a {
-            width: 100%;
-          }
-
-          &:nth-child(2n+1) {
-            margin-right: 4%;
-          }
-
-          &.link {
-            display: none;
-          }
+        a {
+          width: 100%;
         }
 
-        p {
-          margin-top: 20px;
+        &:nth-child(2n+1) {
+          margin-right: 4%;
+        }
+
+        &.link {
+          display: none;
         }
       }
     }
