@@ -33,7 +33,11 @@
               li.link
                 button.button.icon.link
                 div.tooltip
-                  input type="text" value=@share_url
+                  h2 Share
+                  textarea=@share_url
+                  h2 Embed
+                  textarea
+                    = @share_url
 
 
   footer
