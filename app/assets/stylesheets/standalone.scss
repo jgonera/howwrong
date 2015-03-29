@@ -134,7 +134,7 @@ $desktop-mobile-width: 60em;
 
     .button.next {
       position: absolute;
-      top: 0;
+      top: 20px;
       right: 0;
     }
 
@@ -332,6 +332,12 @@ $desktop-mobile-width: 60em;
     }
   }
 
+  .quiz-header {
+    background-color: $dark-color;
+    margin: -30px -15px 25px;
+    padding: 15px;
+  }
+
   // desktop
   @media all and (min-width: $desktop-mobile-width) {
     .chart {
@@ -367,15 +373,8 @@ $desktop-mobile-width: 60em;
       line-height: 1.35;
     }
 
-    nav {
-      #logo, h2 {
-        font-size: 22px;
-        letter-spacing: 0.04em;
-      }
-
-      .progress-bar {
-        width: 40%;
-      }
+    .progress-bar {
+      width: 40%;
     }
   }
 
@@ -408,11 +407,11 @@ $desktop-mobile-width: 60em;
       font-size: 30px;
     }
 
-    nav {
-      .progress-bar {
-        width: 100%;
-      }
+    .progress-bar {
+      width: 100%;
+    }
 
+    nav {
       #logo {
         font-size: 18px;
         position: relative;

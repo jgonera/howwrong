@@ -181,14 +181,20 @@ dt {
   }
 }
 
-nav {
+.big-title {
   font-family: 'Open Sans', sans-serif;
-  line-height: 1;
   text-transform: uppercase;
+  font-weight: bold;
+  font-size: 22px;
+  letter-spacing: 0.04em;
+}
 
-  #logo, h2 {
-    font-weight: bold;
-  }
+.quiz-title {
+  padding-bottom: 8px;
+}
+
+nav {
+  line-height: 1;
 
   h2 {
     padding-bottom: 10px;
