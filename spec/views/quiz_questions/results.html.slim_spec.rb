@@ -14,6 +14,7 @@ RSpec.describe "quiz_questions/results.html.slim" do
     assign :next_label, "Test"
     assign :questions_left, questions_left
     assign :questions_count, questions_count
+    assign :progress_label, "Test label"
     render
   end
 
@@ -26,17 +27,14 @@ RSpec.describe "quiz_questions/results.html.slim" do
   end
 
   context "when no questions left" do
-    before :each do
-      assign :questions_left, 0
-      render
-    end
+    let(:questions_left) { 0 }
 
     it "doesn't say 0 questions left" do
       expect(view.content_for(:nav)).not_to have_content "0 questions left"
     end
 
-    it "shows a link to quiz results if no questions left" do
-      expect(view.content_for(:nav)).to have_link "See quiz results", href: "/test"
+    it "shows a link to quiz results" do
+      expect(view.content_for(:nav)).to have_link "Test label", href: "/test"
     end
   end
 end
