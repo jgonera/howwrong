@@ -2,12 +2,12 @@
   = render partial: "header"
 
 div.column
-  dl
-    dt Your score
-    dd.exclamation = "#{@score}%"
-    dt How wrong?
-    dd = @how_wrong
+  h2 Your score
+  p.exclamation = "#{@score}%"
+
+  h2 How wrong?
+  p = @how_wrong
+
 div.column
-  dl
-    dt Average score
-    dd.exclamation = "#{@average_score}%"
+  h2 Average score
+  p.exclamation = "#{@average_score}%"

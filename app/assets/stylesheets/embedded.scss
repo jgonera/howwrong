@@ -2,12 +2,11 @@
 @import "variables";
 
 $desktop-mobile-width: 38em;
-
 $side-margin: 20px;
 
 .embedded {
   section {
-    margin: $side-margin;
+    margin: 0 $side-margin;
   }
 
   nav {
