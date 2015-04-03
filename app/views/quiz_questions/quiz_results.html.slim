@@ -1,8 +1,5 @@
 - content_for :nav do
-  h2 = @quiz.title
-  div.progress-bar
-    div style="width: 100%;"
-  p.label-title Quiz completed
+  = render partial: "header"
 
 div.column
   dl

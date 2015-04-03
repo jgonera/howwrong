@@ -65,6 +65,7 @@ class QuizQuestionsController < BaseQuestionsController
       @next_path = path_for(action: "show", quiz_id: @quiz, n: @question_number + 1)
     else
       @next_label = "Done"
+      @progress_label = "See quiz results"
       @next_path = path_for(action: "quiz_results", quiz_id: @quiz)
     end
 
@@ -77,6 +78,10 @@ class QuizQuestionsController < BaseQuestionsController
   def quiz_results
     return redirect_to(action: 'show') unless @quiz_store.all_voted?
 
+    @progress_label = "Quiz completed"
+
+    @questions_count = @quiz.questions.length
+    @questions_left = 0
     @score = @quiz_store.score.round
     @average_score = @quiz.average_score.round
     @how_wrong =

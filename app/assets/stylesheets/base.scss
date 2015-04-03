@@ -121,8 +121,8 @@ a {
     line-height: 1;
   }
 
+
   &.action {
-    font-size: 14px;
     color: #e6e6e6;
     text-align: center;
     @include background-image(linear-gradient(to bottom, #888DB8 0%, #4655AA 1px));
@@ -181,14 +181,20 @@ dt {
   }
 }
 
-nav {
+.big-title {
   font-family: 'Open Sans', sans-serif;
-  line-height: 1;
   text-transform: uppercase;
+  font-weight: bold;
+  font-size: 22px;
+  letter-spacing: 0.04em;
+}
 
-  #logo, h2 {
-    font-weight: bold;
-  }
+.quiz-title {
+  padding-bottom: 8px;
+}
+
+nav {
+  line-height: 1;
 
   h2 {
     padding-bottom: 10px;
