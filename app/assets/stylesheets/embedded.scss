@@ -90,6 +90,11 @@ $side-margin: 20px;
 
   // mobile
   @media all and (max-width: $desktop-mobile-width) {
+    /* Add padding so that Next button doesn't cover content */
+    #main {
+      padding-bottom: 5em;
+    }
+
     nav {
       h1 {
         padding-bottom: 15px;
