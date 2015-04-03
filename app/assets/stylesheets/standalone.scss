@@ -17,10 +17,6 @@ $desktop-mobile-width: 60em;
   .content {
     position: relative;
     font-size: 24px;
-
-    section > p {
-      margin-bottom: 20px;
-    }
   }
 
   nav {
@@ -56,7 +52,6 @@ $desktop-mobile-width: 60em;
   .moiz-juliusz {
     display: block;
     margin: 3em 0 1em 0;
-
   }
 
   #logo {
@@ -64,6 +59,10 @@ $desktop-mobile-width: 60em;
       background-color: $dark-color;
       display: block;
     }
+  }
+
+  .column {
+    margin-top: $top-margin;
   }
 
   // desktop
@@ -266,20 +265,6 @@ $desktop-mobile-width: 60em;
     margin-bottom: 15px;
   }
 
-  .answer {
-    display: inline-block;
-    vertical-align: top;
-    width: 50%;
-  }
-
-  dl#other {
-    margin-top: 30px;
-
-    .howwrong .icon {
-      margin-top: 8px;
-    }
-  }
-
   // desktop
   @media all and (min-width: $desktop-mobile-width) {
     .chart {
@@ -310,7 +295,7 @@ $desktop-mobile-width: 60em;
       }
     }
 
-    h1.question {
+    p.question {
       font-size: 48px;
       line-height: 1.35;
     }
@@ -323,6 +308,18 @@ $desktop-mobile-width: 60em;
 
       .progress-bar {
         width: 40%;
+      }
+    }
+
+    .column {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+      padding-right: 20px;
+      @include box-sizing(border-box);
+
+      &:last-child {
+        padding-right: 0;
       }
     }
   }
@@ -365,6 +362,10 @@ $desktop-mobile-width: 60em;
         font-size: 18px;
         position: relative;
       }
+    }
+
+    .column {
+      width: 70%;
     }
   }
 }
