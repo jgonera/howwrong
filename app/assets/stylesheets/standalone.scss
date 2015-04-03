@@ -3,6 +3,7 @@
 @import "mixins";
 
 $desktop-mobile-width: 60em;
+$content-margin: 15px;
 
 .standalone {
   $nav-margin: 220px;
@@ -134,8 +135,11 @@ $desktop-mobile-width: 60em;
 
     .button.next {
       position: absolute;
-      top: 20px;
+      top: 0px;
       right: 0;
+      &.header {
+        top: 20px;
+      }
     }
 
     #hamburger {
@@ -256,6 +260,10 @@ $desktop-mobile-width: 60em;
       top: 5em;
       right: 0;
 
+      &.header {
+        top: 6.5em;
+      }
+
       @include transition(opacity .25s);
     }
 
@@ -334,8 +342,8 @@ $desktop-mobile-width: 60em;
 
   .quiz-header {
     background-color: $dark-color;
-    margin: -30px -15px 25px;
-    padding: 15px;
+    margin: (-$top-margin) (-$content-margin) 25px;
+    padding: $content-margin;
   }
 
   // desktop
@@ -408,7 +416,7 @@ $desktop-mobile-width: 60em;
     }
 
     .progress-bar {
-      width: 100%;
+      width: 60%;
     }
 
     nav {
