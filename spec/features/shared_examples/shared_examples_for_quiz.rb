@@ -2,7 +2,7 @@ require "features/shared_examples/shared_examples_for_results"
 
 RSpec.shared_examples "quiz" do
   it "shows the first question" do
-    expect(page).to have_selector "h1", text: quiz.questions.first.text
+    expect(page).to have_content quiz.questions.first.text
     quiz.questions.first.answers.each do |answer|
       expect(page).to have_content answer.label
     end

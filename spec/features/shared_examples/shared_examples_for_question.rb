@@ -18,7 +18,7 @@ RSpec.shared_examples "question" do
     include_examples "results"
 
     it "gives feedback in results" do
-      expect(page).to have_selector 'dd', text: answer.feedback.text
+      expect(page).to have_content answer.feedback.text
     end
   end
 end
