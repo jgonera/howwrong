@@ -66,13 +66,20 @@ $content-margin: 15px;
       }
 
       textarea {
-        width: 100%;
+        width: 97%;
         height: 3em;
-        font-size: 15px;
         background: transparent;
         outline: none;
         border: none;
         resize: none;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        background-color: $bg-color;
+        line-height: 16px;
+        padding: 5px;
+        border-radius: 2px;
       }
     }
   }
