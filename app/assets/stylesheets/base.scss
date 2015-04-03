@@ -163,7 +163,7 @@ dt, section h2, .label-title {
 dt, section h2 {
   margin: 30px 0 5px;
 
-  &:first-child {
+  &:first-of-type {
     margin-top: 0;
   }
 }
@@ -271,9 +271,7 @@ nav {
 }
 
 .answer {
-  margin-top: 30px;
-
-  dt {
+  h2 {
     display: inline-block;
     padding: 2px 25px 0 0;
     background-repeat: no-repeat;

@@ -36,6 +36,10 @@ $side-margin: 20px;
     }
   }
 
+  .column {
+    margin-top: $top-margin;
+  }
+
   // desktop
   @media all and (min-width: $desktop-mobile-width) {
     #logo {

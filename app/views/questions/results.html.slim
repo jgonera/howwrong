@@ -1,26 +1,25 @@
 a.button.uppercase.icon.next href=@next_path Next question
-dl class="question"
-  dt Question
-  dd
-    h1 = @question.text
-dl.answer
-  dt.icon.tick Correct Answer
-  dd
+
+h2 Question
+p = @question.text
+
+div.column.answer
+  h2.icon.tick Correct Answer
+  p
     = @question.answers.correct.label
     a href=@question.source_url = @question.source
-dl.answer
-  dt class="#{@is_wrong ? 'icon cross' : 'icon tick'}" Your Answer
-  dd = @question.answers.find(@vote_answer_id).label
-dl id="other"
-  dt How Wrong?
-  dd.howwrong
-    p.exclamation = @question.answers.find(@vote_answer_id).feedback.text
 
-  dt How Others Answered
-  dd
-    table class="results"
-      - for answer in @question.answers do
-        tr class=((answer.is_correct ? 'correct' : '') + ' ' + (answer.id == @vote_answer_id ? 'vote' : ''))
-          td = answer.label
-          td = answer.votes
-    div.chart
+div.column.answer
+  h2 class="#{@is_wrong ? 'icon cross' : 'icon tick'}" Your Answer
+  p = @question.answers.find(@vote_answer_id).label
+
+h2 How Wrong?
+p.exclamation = @question.answers.find(@vote_answer_id).feedback.text
+
+h2 How Others Answered
+table class="results"
+  - for answer in @question.answers do
+    tr class=((answer.is_correct ? 'correct' : '') + ' ' + (answer.id == @vote_answer_id ? 'vote' : ''))
+      td = answer.label
+      td = answer.votes
+div.chart
