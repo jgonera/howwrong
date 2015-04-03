@@ -88,12 +88,14 @@ class QuizQuestionsController < BaseQuestionsController
         "You're better than average"
       end
 
-    set_share_urls
+    share_text = "I just scored #{@score}% on #{@quiz.title}"
+    set_share_urls("Share your score", share_text)
   end
 
   private
 
-  def set_share_urls
+  def set_share_urls(title = "Share", text = "")
+    @share_title = title
     @share_url = url_for(action: "show", quiz_id: @quiz.slug, n: nil)
     @embed_url = url_for(
       controller: "embedded_quiz_questions",
@@ -102,6 +104,7 @@ class QuizQuestionsController < BaseQuestionsController
       n: nil
     )
     @share_twitter_url = "https://twitter.com/intent/tweet?" + {
+      text: text,
       url: @share_url,
       via: "howwrongyouare"
     }.to_query
