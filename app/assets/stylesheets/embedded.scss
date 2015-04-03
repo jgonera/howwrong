@@ -65,6 +65,16 @@ $side-margin: 20px;
       }
     }
 
+    .share {
+      li {
+        margin-right: 10px;
+
+        a, button {
+          width: 46px;
+        }
+      }
+    }
+
     .column {
       display: inline-block;
       vertical-align: top;
@@ -107,6 +117,24 @@ $side-margin: 20px;
 
     h1.question {
       font-size: 30px;
+    }
+
+    .share {
+      li {
+        width: 48%;
+
+        a {
+          width: 100%;
+        }
+
+        &:nth-child(2n+1) {
+          margin-right: 4%;
+        }
+
+        &.link {
+          display: none;
+        }
+      }
     }
 
     .column {
