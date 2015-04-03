@@ -19,6 +19,13 @@
 
         = yield :nav
 
-      section = yield
+      section
+        = yield
+        - if @share_title
+          aside.share
+            h2.label-title = @share_title
+            ul
+              li: a.button.icon.twitter href=@share_twitter_url target="_blank" Tweet
+              li: a.button.icon.facebook href=@share_facebook_url target="_blank" Facebook
 
 = render template: "layouts/base", locals: { body_class: "embedded" }

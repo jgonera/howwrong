@@ -32,58 +32,6 @@ $content-margin: 15px;
     }
   }
 
-  .share {
-    li {
-      display: inline-block;
-      overflow: hidden;
-
-      &:last-child {
-        margin-right: 0;
-      }
-
-      a, button {
-        text-indent: -9999px;
-        height: 54px;
-        cursor: pointer;
-      }
-    }
-
-    .tooltip {
-      width: 400px;
-      margin-top: 10px;
-
-      &:before {
-        content: '';
-        display: block;
-        width: 0;
-        height: 0;
-        position: absolute;
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
-        border-bottom: 8px solid $dark-color;
-        top: -8px;
-        left: 15px;
-      }
-
-      textarea {
-        width: 97%;
-        height: 3em;
-        background: transparent;
-        outline: none;
-        border: none;
-        resize: none;
-        font-family: 'Open Sans', sans-serif;
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: 0.02em;
-        background-color: $bg-color;
-        line-height: 16px;
-        padding: 5px;
-        border-radius: 2px;
-      }
-    }
-  }
-
   footer {
     .label-title {
       font-size: 10px;
@@ -168,7 +116,6 @@ $content-margin: 15px;
         margin: 12px;
       }
     }
-
 
     .share {
       margin: $top-margin 0 0 0;
