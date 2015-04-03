@@ -1,7 +1,7 @@
 ruby '2.1.3'
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.1'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18.1'
@@ -10,8 +10,8 @@ gem 'pg', '~> 0.18.1'
 gem 'friendly_id', '~> 5.1.0'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0.1'
-gem 'bourbon', '~> 4.2.1'
+gem 'sass-rails', '~> 5.0.3'
+gem 'bourbon', '~> 4.2.2'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 2.7.1'
