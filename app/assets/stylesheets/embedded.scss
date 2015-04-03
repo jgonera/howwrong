@@ -6,7 +6,7 @@ $side-margin: 20px;
 
 .embedded {
   section {
-    margin: 0 $side-margin;
+    margin: $side-margin;
   }
 
   nav {
@@ -52,7 +52,7 @@ $side-margin: 20px;
       }
     }
 
-    h1.question {
+    p.question {
       font-size: 48px;
       line-height: 1.35;
     }
@@ -123,7 +123,7 @@ $side-margin: 20px;
       }
     }
 
-    h1.question {
+    p.question {
       font-size: 30px;
     }
 
