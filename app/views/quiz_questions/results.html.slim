@@ -3,27 +3,23 @@
 
 a.button.uppercase.icon.next.action href=@next_path = @next_label
 
-div class="column"
-  dl class="question"
-    dt Question
-    dd
-      h1 = @question.text
-  dl.answer
-    dt.icon.tick Correct Answer
-    dd
-      = @question.answers.correct.label
-      a href=@question.source_url = @question.source
-  dl.answer
-    dt class="#{@is_wrong ? 'icon cross' : 'icon tick'}" Your Answer
-    dd = @question.answers.find(@vote_answer_id).label
+div.column.answer
+  h2 Question
+  p = @question.text
 
-div class="column"
-  dl id="other"
-    dt How Others Answered
-    dd
-      table class="results"
-        - for answer in @question.answers do
-          tr class=((answer.is_correct ? 'correct' : '') + ' ' + (answer.id == @vote_answer_id ? 'vote' : ''))
-            td = answer.label
-            td = answer.votes
-      div.chart
+  h2.icon.tick Correct Answer
+  p
+    = @question.answers.correct.label
+    a href=@question.source_url = @question.source
+
+  h2 class="#{@is_wrong ? 'icon cross' : 'icon tick'}" Your Answer
+  p = @question.answers.find(@vote_answer_id).label
+
+div.column
+  h2 How Others Answered
+  table.results
+    - for answer in @question.answers do
+      tr class=((answer.is_correct ? 'correct' : '') + ' ' + (answer.id == @vote_answer_id ? 'vote' : ''))
+        td = answer.label
+        td = answer.votes
+  div.chart
