@@ -3,15 +3,16 @@ a.button.uppercase.icon.next href=@next_path Next question
 h2 Question
 p = @question.text
 
-div.column.answer
-  h2.icon.tick Correct Answer
-  p
-    = @question.answers.correct.label
-    a href=@question.source_url = @question.source
+div.row
+  div.column.answer
+    h2.icon.tick Correct Answer
+    p
+      = @question.answers.correct.label
+      a href=@question.source_url = @question.source
 
-div.column.answer
-  h2 class="#{@is_wrong ? 'icon cross' : 'icon tick'}" Your Answer
-  p = @question.answers.find(@vote_answer_id).label
+  div.column.answer
+    h2 class="#{@is_wrong ? 'icon cross' : 'icon tick'}" Your Answer
+    p = @question.answers.find(@vote_answer_id).label
 
 h2 How Wrong?
 p.exclamation = @question.answers.find(@vote_answer_id).feedback.text

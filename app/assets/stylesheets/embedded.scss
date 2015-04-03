@@ -35,10 +35,6 @@ $side-margin: 20px;
     }
   }
 
-  .column {
-    margin-top: $top-margin;
-  }
-
   // desktop
   @media all and (min-width: $desktop-mobile-width) {
     #logo {
@@ -78,6 +74,10 @@ $side-margin: 20px;
       }
     }
 
+    .row {
+      margin-top: $side-margin;
+    }
+
     .column {
       display: inline-block;
       vertical-align: top;
@@ -95,7 +95,7 @@ $side-margin: 20px;
   @media all and (max-width: $desktop-mobile-width) {
     /* Add padding so that Next button doesn't cover content */
     #main {
-      padding-bottom: 5em;
+      padding-bottom: 6em;
     }
 
     nav {
@@ -147,6 +147,7 @@ $side-margin: 20px;
 
     .column {
       width: 70%;
+      margin-top: $side-margin;
     }
   }
 }

@@ -1,13 +1,14 @@
 - content_for :nav do
   = render partial: "header"
 
-div.column
-  h2 Your score
-  p.exclamation = "#{@score}%"
+div.row
+  div.column
+    h2 Your score
+    p.exclamation = "#{@score}%"
 
-  h2 How wrong?
-  p = @how_wrong
+    h2 How wrong?
+    p = @how_wrong
 
-div.column
-  h2 Average score
-  p.exclamation = "#{@average_score}%"
+  div.column
+    h2 Average score
+    p.exclamation = "#{@average_score}%"

@@ -61,10 +61,6 @@ $content-margin: 15px;
     }
   }
 
-  .column {
-    margin-top: $top-margin;
-  }
-
   // desktop
   @media all and (min-width: $desktop-mobile-width) {
     .content {
@@ -272,7 +268,7 @@ $content-margin: 15px;
 
   .quiz-header {
     background-color: $dark-color;
-    margin: (-$top-margin) (-$content-margin) 25px;
+    margin: (-$top-margin) (-$content-margin) $top-margin;
     padding: $content-margin;
   }
 
@@ -309,6 +305,10 @@ $content-margin: 15px;
 
     .progress-bar {
       width: 40%;
+    }
+
+    .row {
+      margin-top: $top-margin;
     }
 
     .column {
@@ -366,6 +366,7 @@ $content-margin: 15px;
 
     .column {
       width: 70%;
+      margin-top: $top-margin;
     }
   }
 }
