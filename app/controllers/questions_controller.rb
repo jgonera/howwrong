@@ -38,18 +38,15 @@ class QuestionsController < BaseQuestionsController
 
     super
 
-    short_url = short_question_url @question.id
-    @twitter_url = "https://twitter.com/intent/tweet?" + {
-      text: @is_wrong ? "I was wrong about #{@question.topic}" : "I was right about #{@question.topic}",
-      url: short_url,
-      via: "howwrongyouare"
-    }.to_query
-    @facebook_url = "https://www.facebook.com/share.php?" + {
-      u: short_url
-    }.to_query
-    @other_questions = Question.random(exclude: @question.id)
     set_next_path
-    set_share_urls
+
+    share_text =
+      if @is_wrong
+        "I was wrong about #{@question.topic}"
+      else
+        "I was right about #{@question.topic}"
+      end
+    set_share_urls("Share your score", share_text)
   end
 
   def short
@@ -64,7 +61,8 @@ class QuestionsController < BaseQuestionsController
     @next_path = next_question.nil? ? "/archive" : question_path(next_question)
   end
 
-  def set_share_urls
+  def set_share_urls(title = "Share", text = "")
+    @share_title = title
     @share_url = url_for(action: "show", id: @question.slug)
     @embed_url = url_for(
       controller: "embedded_questions",
@@ -72,6 +70,7 @@ class QuestionsController < BaseQuestionsController
       id: @question.slug
     )
     @share_twitter_url = "https://twitter.com/intent/tweet?" + {
+      text: text,
       url: @share_url,
       via: "howwrongyouare"
     }.to_query
