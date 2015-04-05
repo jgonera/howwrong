@@ -3,290 +3,282 @@ $desktop-mobile-width: 60em;
 @import "base";
 
 $content-margin: 15px;
+$nav-margin: 220px;
 
-.standalone {
-  $nav-margin: 220px;
-
+body {
   background: $alt-dark-color;
+}
 
-  #main {
-    background: $bg-color;
+#main {
+  background: $bg-color;
+}
+
+.content {
+  position: relative;
+  font-size: 24px;
+}
+
+nav {
+  li {
+    .button {
+      display: block;
+    }
+  }
+}
+
+footer {
+  .label-title {
+    font-size: 10px;
+  }
+}
+
+.moiz-juliusz {
+  display: block;
+  margin: 3em 0 1em 0;
+}
+
+#logo {
+  a {
+    background-color: $dark-color;
+    display: block;
+  }
+}
+
+// desktop
+@media all and (min-width: $desktop-mobile-width) {
+  .content {
+    padding: $top-margin 0 0 $nav-margin;
+    margin: 0 auto;
+    width: 760px;
   }
 
-  .content {
-    position: relative;
-    font-size: 24px;
+  #main {
+    min-height: 330px;
+    padding-bottom: 50px;
   }
 
   nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+
     li {
-      .button {
-        display: block;
+      display: block;
+      margin: 10px 0;
+    }
+  }
+
+  .button.next {
+    position: absolute;
+    top: 0px;
+    right: 0;
+    &.header {
+      top: 20px;
+    }
+  }
+
+  #hamburger {
+    display: none;
+  }
+
+  #logo {
+    width: 158px;
+
+    a {
+      padding: 10px 5px;
+    }
+
+    span {
+      display: block;
+      margin: 12px;
+    }
+  }
+
+  .share {
+    li {
+      margin-right: 10px;
+
+      a, button {
+        width: 46px;
       }
     }
   }
 
   footer {
-    .label-title {
-      font-size: 10px;
+    padding: 40px 0px 40px;
+
+    .content {
+      border-top: 3px solid $light-color;
+    }
+  }
+}
+
+// mobile
+@media all and (max-width: $desktop-mobile-width) {
+  $hamburger-width: 54px;
+
+  body {
+    // prevent font scaling in mobile Safari
+    -webkit-text-size-adjust: none;
+  }
+
+  :focus {
+    outline: 0;
+  }
+
+  #main {
+    padding-bottom: 30px;
+  }
+
+  .content {
+    section {
+      padding: 40px 15px 0;
     }
   }
 
-  .moiz-juliusz {
-    display: block;
-    margin: 3em 0 1em 0;
+  nav {
+    ul {
+      max-height: 0;
+      overflow: hidden;
+      // needed to cover next button when nav open
+      position: relative;
+      z-index: 2;
+      background: $bg-color;
+
+      @include transition(max-height .25s);
+
+      &.visible {
+        max-height: 6em;
+      }
+
+      li {
+        margin-top: 2px;
+        text-align: center;
+      }
+    }
+  }
+
+  .button.next {
+    position: fixed;
+    z-index: 1;
+    top: 5em;
+    right: 0;
+
+    &.header {
+      top: 6.5em;
+    }
+
+    @include transition(opacity .25s);
+  }
+
+  #hamburger {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $hamburger-width;
+    height: 100%;
+    text-indent: -9999px;
+    background: inline-svg("hamburger.svg") no-repeat 50% 50%;
+    opacity: .8;
   }
 
   #logo {
     a {
-      background-color: $dark-color;
-      display: block;
+      padding: 15px ($hamburger-width/1.5) 15px $hamburger-width;
     }
   }
 
-  // desktop
-  @media all and (min-width: $desktop-mobile-width) {
-    .content {
-      padding: $top-margin 0 0 $nav-margin;
-      margin: 0 auto;
-      width: 760px;
-    }
-
-    #main {
-      min-height: 330px;
-      padding-bottom: 50px;
-    }
-
-    nav {
-      position: absolute;
-      top: 0;
-      left: 0;
-
-      li {
-        display: block;
-        margin: 10px 0;
-      }
-    }
-
-    .button.next {
-      position: absolute;
-      top: 0px;
-      right: 0;
-      &.header {
-        top: 20px;
-      }
-    }
-
-    #hamburger {
-      display: none;
-    }
-
-    #logo {
-      width: 158px;
+  .share {
+    li {
+      width: 48%;
 
       a {
-        padding: 10px 5px;
+        width: 100%;
       }
 
-      span {
-        display: block;
-        margin: 12px;
+      &:nth-child(2n+1) {
+        margin-right: 4%;
       }
-    }
 
-    .share {
-      li {
-        margin-right: 10px;
-
-        a, button {
-          width: 46px;
-        }
-      }
-    }
-
-    footer {
-      padding: 40px 0px 40px;
-
-      .content {
-        border-top: 3px solid $light-color;
+      &.link {
+        display: none;
       }
     }
   }
+}
 
-  // mobile
-  @media all and (max-width: $desktop-mobile-width) {
-    $hamburger-width: 54px;
+// old questions.css
 
-    & {
-      // prevent font scaling in mobile Safari
-      -webkit-text-size-adjust: none;
+h2 {
+  margin-bottom: 5px;
+}
+
+footer h2 {
+  margin-bottom: 15px;
+}
+
+.quiz-header {
+  background-color: $dark-color;
+  margin: (-$top-margin) (-$content-margin) $top-margin;
+  padding: $content-margin;
+}
+
+// desktop
+@media all and (min-width: $desktop-mobile-width) {
+  .chart {
+    max-width: 600px;
+
+    text {
+      text-anchor: end;
     }
+  }
 
-    :focus {
-      outline: 0;
-    }
+  .narrow {
+    // don't use display: none because it breaks getBBox() in Firefox
+    // FIXME: this is unreliable
+    visibility: hidden !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
 
-    #main {
-      padding-bottom: 30px;
-    }
+  .progress-bar {
+    width: 40%;
+  }
 
-    .content {
-      section {
-        padding: 40px 15px 0;
-      }
-    }
+  .row {
+    margin-top: $top-margin;
+  }
+}
 
-    nav {
-      ul {
-        max-height: 0;
-        overflow: hidden;
-        // needed to cover next button when nav open
-        position: relative;
-        z-index: 2;
-        background: $bg-color;
+// mobile
+@media all and (max-width: $desktop-mobile-width) {
+  .wide {
+    // don't use display: none because it breaks getBBox() in Firefox
+    // FIXME: this is unreliable
+    visibility: hidden !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
 
-        @include transition(max-height .25s);
+  #logo {
+    text-align: center;
+  }
 
-        &.visible {
-          max-height: 6em;
-        }
+  .progress-bar {
+    width: 60%;
+  }
 
-        li {
-          margin-top: 2px;
-          text-align: center;
-        }
-      }
-    }
-
-    .button.next {
-      position: fixed;
-      z-index: 1;
-      top: 5em;
-      right: 0;
-
-      &.header {
-        top: 6.5em;
-      }
-
-      @include transition(opacity .25s);
-    }
-
-    .scrolled .button.next {
-      width: 0;
-      text-indent: -9999px;
-      opacity: .8;
-      padding-left: 10px;
-    }
-
-    #hamburger {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: $hamburger-width;
-      height: 100%;
-      text-indent: -9999px;
-      background: inline-svg("hamburger.svg") no-repeat 50% 50%;
-      opacity: .8;
-    }
-
+  nav {
     #logo {
-      a {
-        padding: 15px ($hamburger-width/1.5) 15px $hamburger-width;
-      }
-    }
-
-    .share {
-      li {
-        width: 48%;
-
-        a {
-          width: 100%;
-        }
-
-        &:nth-child(2n+1) {
-          margin-right: 4%;
-        }
-
-        &.link {
-          display: none;
-        }
-      }
+      font-size: 18px;
+      position: relative;
     }
   }
 
-  // old questions.css
-
-  h2 {
-    margin-bottom: 5px;
-  }
-
-  footer h2 {
-    margin-bottom: 15px;
-  }
-
-  .quiz-header {
-    background-color: $dark-color;
-    margin: (-$top-margin) (-$content-margin) $top-margin;
-    padding: $content-margin;
-  }
-
-  // desktop
-  @media all and (min-width: $desktop-mobile-width) {
-    .chart {
-      max-width: 600px;
-
-      text {
-        text-anchor: end;
-      }
-    }
-
-    .narrow {
-      // don't use display: none because it breaks getBBox() in Firefox
-      // FIXME: this is unreliable
-      visibility: hidden !important;
-      position: absolute !important;
-      top: 0 !important;
-      left: 0 !important;
-    }
-
-    .progress-bar {
-      width: 40%;
-    }
-
-    .row {
-      margin-top: $top-margin;
-    }
-  }
-
-  // mobile
-  @media all and (max-width: $desktop-mobile-width) {
-    .wide {
-      // don't use display: none because it breaks getBBox() in Firefox
-      // FIXME: this is unreliable
-      visibility: hidden !important;
-      position: absolute !important;
-      top: 0 !important;
-      left: 0 !important;
-    }
-
-    #logo {
-      text-align: center;
-    }
-
-    .progress-bar {
-      width: 60%;
-    }
-
-    nav {
-      #logo {
-        font-size: 18px;
-        position: relative;
-      }
-    }
-
-    .column {
-      margin-top: $top-margin;
-    }
+  .column {
+    margin-top: $top-margin;
   }
 }
 

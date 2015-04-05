@@ -474,4 +474,11 @@ nav {
   .column {
     width: 70%;
   }
+
+  .scrolled .button.next {
+    width: 0;
+    text-indent: -9999px;
+    opacity: .8;
+    padding-left: 25px;
+  }
 }

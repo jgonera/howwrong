@@ -4,111 +4,109 @@ $desktop-mobile-width: 38em;
 
 $side-margin: 20px;
 
-.embedded {
-  section {
-    margin: $side-margin;
+section {
+  margin: $side-margin;
+}
+
+nav {
+  background-color: $dark-color;
+  padding: 15px $side-margin;
+}
+
+.wide {
+  // don't use display: none because it breaks getBBox() in Firefox
+  // FIXME: this is unreliable
+  visibility: hidden !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+.next {
+  position: fixed;
+  bottom: 30px;
+  right: 0;
+}
+
+nav {
+  .label-title {
+    padding: 10px 0;
+  }
+}
+
+// desktop
+@media all and (min-width: $desktop-mobile-width) {
+  #logo {
+    float: right;
   }
 
   nav {
-    background-color: $dark-color;
-    padding: 15px $side-margin;
-  }
+    #logo, h2 {
+      font-size: 22px;
+      letter-spacing: 0.04em;
+    }
 
-  .wide {
-    // don't use display: none because it breaks getBBox() in Firefox
-    // FIXME: this is unreliable
-    visibility: hidden !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-  }
-
-  .next {
-    position: fixed;
-    bottom: 30px;
-    right: 0;
-  }
-
-  nav {
-    .label-title {
-      padding: 10px 0;
+    .progress-bar {
+      width: 40%;
     }
   }
 
-  // desktop
-  @media all and (min-width: $desktop-mobile-width) {
+  .share {
+    li {
+      margin-right: 10px;
+
+      a, button {
+        width: 46px;
+      }
+    }
+  }
+
+  .row {
+    margin-top: $side-margin;
+  }
+}
+
+// mobile
+@media all and (max-width: $desktop-mobile-width) {
+  /* Add padding so that Next button doesn't cover content */
+  #main {
+    padding-bottom: 6em;
+  }
+
+  nav {
+    h1 {
+      padding-bottom: 15px;
+    }
+
+    .progress-bar {
+      width: 100%;
+    }
+
     #logo {
-      float: right;
-    }
-
-    nav {
-      #logo, h2 {
-        font-size: 22px;
-        letter-spacing: 0.04em;
-      }
-
-      .progress-bar {
-        width: 40%;
-      }
-    }
-
-    .share {
-      li {
-        margin-right: 10px;
-
-        a, button {
-          width: 46px;
-        }
-      }
-    }
-
-    .row {
-      margin-top: $side-margin;
+      font-size: 18px;
+      position: relative;
     }
   }
 
-  // mobile
-  @media all and (max-width: $desktop-mobile-width) {
-    /* Add padding so that Next button doesn't cover content */
-    #main {
-      padding-bottom: 6em;
-    }
+  .share {
+    li {
+      width: 48%;
 
-    nav {
-      h1 {
-        padding-bottom: 15px;
-      }
-
-      .progress-bar {
+      a {
         width: 100%;
       }
 
-      #logo {
-        font-size: 18px;
-        position: relative;
+      &:nth-child(2n+1) {
+        margin-right: 4%;
+      }
+
+      &.link {
+        display: none;
       }
     }
+  }
 
-    .share {
-      li {
-        width: 48%;
-
-        a {
-          width: 100%;
-        }
-
-        &:nth-child(2n+1) {
-          margin-right: 4%;
-        }
-
-        &.link {
-          display: none;
-        }
-      }
-    }
-
-    .column {
-      margin-top: $side-margin;
-    }
+  .column {
+    margin-top: $side-margin;
   }
 }
