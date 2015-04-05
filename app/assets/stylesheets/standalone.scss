@@ -32,22 +32,6 @@ $content-margin: 15px;
     }
   }
 
-  .questions {
-    li {
-      font-size: 20px;
-      margin-bottom: 15px;
-    }
-
-    a {
-      display: block;
-      position: relative;
-      background: $dark-color;
-      padding: 22px;
-      color: $text-color;
-      height: 100%;
-    }
-  }
-
   .moiz-juliusz {
     display: block;
     margin: 3em 0 1em 0;
@@ -125,31 +109,6 @@ $content-margin: 15px;
 
       .content {
         border-top: 3px solid $light-color;
-      }
-    }
-
-    .questions {
-      li {
-        display: inline-block;
-        vertical-align: top;
-        height: 297px;
-        width: 240px;
-        margin-right: 20px;
-
-        h4 {
-          overflow: hidden;
-          height: 230px;
-        }
-
-        &:nth-child(3n) {
-          margin-right: 0;
-        }
-
-        span {
-          position: absolute;
-          bottom: 22px;
-          color: $grey-color;
-        }
       }
     }
   }

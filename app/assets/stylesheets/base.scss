@@ -379,6 +379,22 @@ nav {
   }
 }
 
+.card-list {
+  li {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  a {
+    display: block;
+    position: relative;
+    background: $dark-color;
+    padding: 22px;
+    color: $text-color;
+    height: 100%;
+  }
+}
+
 // desktop
 @media all and (min-width: $desktop-mobile-width) {
   #choices {
@@ -402,6 +418,38 @@ nav {
 
     &:last-child {
       padding-right: 0;
+    }
+  }
+
+  .card-list {
+    &.questions h4 {
+      height: 230px;
+    }
+
+    &.quizzes h4 {
+      height: 115px;
+    }
+
+    li {
+      display: inline-block;
+      vertical-align: top;
+      width: 240px;
+      margin-right: 20px;
+
+      h4 {
+        overflow: hidden;
+        margin-bottom: 1em;
+      }
+
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+
+      span {
+        position: absolute;
+        bottom: 22px;
+        color: $grey-color;
+      }
     }
   }
 }
