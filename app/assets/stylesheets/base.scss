@@ -128,6 +128,7 @@ a {
     text-align: center;
     @include background-image(linear-gradient(to bottom, #888DB8 0%, #4655AA 1px));
     border: 1px solid #353551;
+    font-size: 14px;
 
     &, * {
       cursor: pointer;
