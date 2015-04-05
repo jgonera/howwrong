@@ -28,4 +28,11 @@
               li: a.button.icon.twitter href=@share_twitter_url target="_blank" Tweet
               li: a.button.icon.facebook href=@share_facebook_url target="_blank" Facebook
 
+  - if @other_quizzes
+    footer
+      div.content
+        section
+          h2 Other quizzes
+          = render partial: 'shared/quiz_list', locals: { quizzes: @other_quizzes }
+
 = render template: "layouts/base", locals: { body_class: "embedded" }

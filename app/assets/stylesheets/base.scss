@@ -3,7 +3,6 @@
 @import "mixins";
 @import "reset";
 
-
 .js {
   form button, form input, table.results{
     display: none;
@@ -381,3 +380,98 @@ nav {
   }
 }
 
+.card-list {
+  li {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  a {
+    display: block;
+    position: relative;
+    background: $dark-color;
+    padding: 22px;
+    color: $text-color;
+    height: 100%;
+  }
+}
+
+// desktop
+@media all and (min-width: $desktop-mobile-width) {
+  #choices {
+    .button {
+      width: 180px;
+      margin-right: 10px;
+    }
+  }
+
+  p.question {
+    font-size: 48px;
+    line-height: 1.35;
+  }
+
+  .column {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    padding-right: 20px;
+    @include box-sizing(border-box);
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+
+  .card-list {
+    &.questions h4 {
+      height: 230px;
+    }
+
+    &.quizzes h4 {
+      height: 115px;
+    }
+
+    li {
+      display: inline-block;
+      vertical-align: top;
+      width: 240px;
+      margin-right: 20px;
+
+      h4 {
+        overflow: hidden;
+        margin-bottom: 1em;
+      }
+
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+
+      span {
+        position: absolute;
+        bottom: 22px;
+        color: $grey-color;
+      }
+    }
+  }
+}
+
+// mobile
+@media all and (max-width: $desktop-mobile-width) {
+  #choices {
+    .button {
+      width: 48%;
+
+      &:nth-child(2n+1) {
+        margin-right: 4%;
+      }
+    }
+  }
+
+  p.question {
+    font-size: 30px;
+  }
+
+  .column {
+    width: 70%;
+  }
+}

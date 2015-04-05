@@ -66,3 +66,8 @@ question3.answers.create [
 quiz = Quiz.create(title: "Awesome quiz")
 quiz.questions << question2 << question3
 
+quiz = Quiz.create(title: "Awesome quiz 2")
+quiz.questions << question2 << question3
+
+quiz = Quiz.create(title: "Awesome quiz 3")
+quiz.questions << question2 << question3

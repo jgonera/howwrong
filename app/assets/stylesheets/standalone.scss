@@ -1,8 +1,7 @@
-@import "bourbon";
-@import "variables";
-@import "mixins";
-
+// Needs to be before @import "base";
 $desktop-mobile-width: 60em;
+@import "base";
+
 $content-margin: 15px;
 
 .standalone {
@@ -30,22 +29,6 @@ $content-margin: 15px;
   footer {
     .label-title {
       font-size: 10px;
-    }
-  }
-
-  .questions {
-    li {
-      font-size: 20px;
-      margin-bottom: 15px;
-    }
-
-    a {
-      display: block;
-      position: relative;
-      background: $dark-color;
-      padding: 22px;
-      color: $text-color;
-      height: 100%;
     }
   }
 
@@ -126,31 +109,6 @@ $content-margin: 15px;
 
       .content {
         border-top: 3px solid $light-color;
-      }
-    }
-
-    .questions {
-      li {
-        display: inline-block;
-        vertical-align: top;
-        height: 297px;
-        width: 240px;
-        margin-right: 20px;
-
-        h4 {
-          overflow: hidden;
-          height: 230px;
-        }
-
-        &:nth-child(3n) {
-          margin-right: 0;
-        }
-
-        span {
-          position: absolute;
-          bottom: 22px;
-          color: $grey-color;
-        }
       }
     }
   }
@@ -291,36 +249,12 @@ $content-margin: 15px;
       left: 0 !important;
     }
 
-    #choices {
-      .button {
-        width: 180px;
-        margin-right: 10px;
-      }
-    }
-
-    p.question {
-      font-size: 48px;
-      line-height: 1.35;
-    }
-
     .progress-bar {
       width: 40%;
     }
 
     .row {
       margin-top: $top-margin;
-    }
-
-    .column {
-      display: inline-block;
-      vertical-align: top;
-      width: 50%;
-      padding-right: 20px;
-      @include box-sizing(border-box);
-
-      &:last-child {
-        padding-right: 0;
-      }
     }
   }
 
@@ -339,20 +273,6 @@ $content-margin: 15px;
       text-align: center;
     }
 
-    #choices {
-      .button {
-        width: 48%;
-
-        &:nth-child(2n+1) {
-          margin-right: 4%;
-        }
-      }
-    }
-
-    p.question {
-      font-size: 30px;
-    }
-
     .progress-bar {
       width: 60%;
     }
@@ -365,7 +285,6 @@ $content-margin: 15px;
     }
 
     .column {
-      width: 70%;
       margin-top: $top-margin;
     }
   }

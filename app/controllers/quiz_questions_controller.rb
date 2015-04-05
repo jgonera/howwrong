@@ -93,6 +93,8 @@ class QuizQuestionsController < BaseQuestionsController
         "You're better than average"
       end
 
+    @other_quizzes = Quiz.random(exclude: @quiz)
+
     share_text = "I just scored #{@score}% on #{@quiz.title}"
     set_share_urls("Share your score", share_text)
   end

@@ -49,25 +49,47 @@ RSpec.shared_examples "quiz" do
     end
 
     context "when viewing quiz results" do
-      before :each do
-        click_link "Done"
-      end
-
       it "says that the quiz is completed" do
+        click_link "Done"
+
         expect(page).to have_content "Quiz completed"
       end
 
       it "shows score" do
+        click_link "Done"
+
         expect(page).to have_content "Your score50%"
       end
 
       it "shows average score" do
+        click_link "Done"
+
         average_score = (quiz.times_taken * quiz.average_score + 50) / (quiz.times_taken + 1)
         expect(page).to have_content "Average score#{average_score.round}%"
       end
 
       it "shows how wrong the user is" do
+        click_link "Done"
+
         expect(page).to have_content "How wrong?You're way below average"
+      end
+
+      context "when there are other quizzes" do
+        let!(:other_quizzes) do
+          [
+            create(:quiz),
+            create(:quiz),
+            create(:quiz),
+          ]
+        end
+
+        it "shows other quizzes in the footer", focus: true do
+          click_link "Done"
+
+          expect(page).to have_content other_quizzes[0].title
+          expect(page).to have_content other_quizzes[1].title
+          expect(page).to have_content other_quizzes[2].title
+        end
       end
     end
   end

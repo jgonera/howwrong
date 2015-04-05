@@ -35,7 +35,7 @@ FactoryGirl.define do
   end
 
   factory :quiz do
-    title "Super fun quiz"
+    sequence(:title) { |n| "Super fun quiz #{n}" }
     average_score 80
     times_taken 2
 
