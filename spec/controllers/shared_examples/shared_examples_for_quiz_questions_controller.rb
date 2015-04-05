@@ -95,7 +95,7 @@ RSpec.shared_examples "quiz questions controller" do
 
       it "assigns link to next question" do
         get :results, params
-        expect(assigns[:next_label]).to eq "Next question"
+        expect(assigns[:next_label]).to eq "Next"
         expect(assigns[:next_path]).to eq path_to_next_question
       end
 
