@@ -27,7 +27,7 @@ RSpec.shared_examples "quiz" do
     include_examples "results"
 
     it "shows a link to quiz's next question" do
-      expect(page).to have_link "Next question", href: path_to_next_question
+      expect(page).to have_link "Next", href: path_to_next_question
     end
 
     it "shows how many questions are left" do
@@ -39,7 +39,7 @@ RSpec.shared_examples "quiz" do
     before :each do
       choose quiz.questions[0].answers.first.label
       click_button "Submit"
-      click_link "Next question"
+      click_link "Next"
       choose quiz.questions[1].answers.last.label
       click_button "Submit"
     end

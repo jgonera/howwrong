@@ -61,7 +61,7 @@ class QuizQuestionsController < BaseQuestionsController
 
     @next_question = @quiz.questions[@question_index + 1]
     if @next_question
-      @next_label = "Next question"
+      @next_label = "Next"
       @next_path = path_for(action: "show", quiz_id: @quiz, n: @question_number + 1)
     else
       @next_label = "Done"
