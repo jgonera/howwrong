@@ -41,18 +41,6 @@ $side-margin: 20px;
       float: right;
     }
 
-    #choices {
-      .button {
-        width: 180px;
-        margin-right: 10px;
-      }
-    }
-
-    p.question {
-      font-size: 48px;
-      line-height: 1.35;
-    }
-
     nav {
       #logo, h2 {
         font-size: 22px;
@@ -76,18 +64,6 @@ $side-margin: 20px;
 
     .row {
       margin-top: $side-margin;
-    }
-
-    .column {
-      display: inline-block;
-      vertical-align: top;
-      width: 50%;
-      padding-right: 20px;
-      @include box-sizing(border-box);
-
-      &:last-child {
-        padding-right: 0;
-      }
     }
   }
 
@@ -113,20 +89,6 @@ $side-margin: 20px;
       }
     }
 
-    #choices {
-      .button {
-        width: 48%;
-
-        &:nth-child(2n+1) {
-          margin-right: 4%;
-        }
-      }
-    }
-
-    p.question {
-      font-size: 30px;
-    }
-
     .share {
       li {
         width: 48%;
@@ -146,7 +108,6 @@ $side-margin: 20px;
     }
 
     .column {
-      width: 70%;
       margin-top: $side-margin;
     }
   }

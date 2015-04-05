@@ -3,7 +3,6 @@
 @import "mixins";
 @import "reset";
 
-
 .js {
   form button, form input, table.results{
     display: none;
@@ -380,3 +379,50 @@ nav {
   }
 }
 
+// desktop
+@media all and (min-width: $desktop-mobile-width) {
+  #choices {
+    .button {
+      width: 180px;
+      margin-right: 10px;
+    }
+  }
+
+  p.question {
+    font-size: 48px;
+    line-height: 1.35;
+  }
+
+  .column {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    padding-right: 20px;
+    @include box-sizing(border-box);
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+}
+
+// mobile
+@media all and (max-width: $desktop-mobile-width) {
+  #choices {
+    .button {
+      width: 48%;
+
+      &:nth-child(2n+1) {
+        margin-right: 4%;
+      }
+    }
+  }
+
+  p.question {
+    font-size: 30px;
+  }
+
+  .column {
+    width: 70%;
+  }
+}
