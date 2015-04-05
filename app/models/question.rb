@@ -10,6 +10,7 @@ class Question < ActiveRecord::Base
 
   scope :featured, -> { where(is_featured: true) }
 
+  # TODO: Create a mixin to share with Quiz
   def self.random(n = 3, exclude: nil)
     # e.g. if we want to choose 1 out of 3, we have 3 offsets to choose from
     # if we want 2 out of 3, we have 2 offsets

@@ -116,10 +116,18 @@ RSpec.shared_examples "quiz questions controller" do
 
     context "when all questions answered" do
       let(:score) { 56 }
+      let(:other_quizzes) do
+        [
+          double("Quiz"),
+          double("Quiz"),
+          double("Quiz"),
+        ]
+      end
 
       before :each do
         allow(quiz_store).to receive(:all_voted?) { true }
         allow(quiz_store).to receive(:score) { score }
+        allow(Quiz).to receive(:random).with(exclude: quiz) { other_quizzes }
       end
 
       it "assigns score" do
@@ -132,6 +140,12 @@ RSpec.shared_examples "quiz questions controller" do
         get :quiz_results, quiz_id: quiz.slug
 
         expect(assigns[:average_score]).to eq quiz.average_score.round
+      end
+
+      it "assigns other_quizzes", focus: true do
+        get :quiz_results, quiz_id: quiz.slug
+
+        expect(assigns[:other_quizzes]).to match_array other_quizzes
       end
 
       context "when score lower than average_score by > 5% points" do

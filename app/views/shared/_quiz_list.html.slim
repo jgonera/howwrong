@@ -1,0 +1,8 @@
+ul.questions
+  - for quiz in quizzes do
+    li
+      a.button href=quiz_path(quiz)
+        h4 = quiz.title
+        span.label-title
+          | Taken 
+          = pluralize(quiz.times_taken, "time")
