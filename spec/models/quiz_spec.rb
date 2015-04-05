@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Quiz do
   subject(:quiz) { Quiz.create(average_score: 80, times_taken: 2) }
 
-  describe '.random', focus: true do
+  describe '.random' do
     let!(:quiz_0) { create(:quiz) }
     let!(:quiz_1) { create(:quiz) }
     let!(:quiz_2) { create(:quiz) }

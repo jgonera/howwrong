@@ -142,7 +142,7 @@ RSpec.shared_examples "quiz questions controller" do
         expect(assigns[:average_score]).to eq quiz.average_score.round
       end
 
-      it "assigns other_quizzes", focus: true do
+      it "assigns other_quizzes" do
         get :quiz_results, quiz_id: quiz.slug
 
         expect(assigns[:other_quizzes]).to match_array other_quizzes

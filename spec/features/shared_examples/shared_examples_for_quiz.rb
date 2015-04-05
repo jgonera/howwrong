@@ -83,7 +83,7 @@ RSpec.shared_examples "quiz" do
           ]
         end
 
-        it "shows other quizzes in the footer", focus: true do
+        it "shows other quizzes in the footer" do
           click_link "Done"
 
           expect(page).to have_content other_quizzes[0].title
