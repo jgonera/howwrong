@@ -1,7 +1,7 @@
-@import "bourbon";
-@import "variables";
-
+// Needs to be before @import "base";
 $desktop-mobile-width: 38em;
+@import "base";
+
 $side-margin: 20px;
 
 .embedded {

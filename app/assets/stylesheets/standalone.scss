@@ -1,8 +1,10 @@
 @import "bourbon";
 @import "variables";
 @import "mixins";
-
+// Needs to be before @import "base";
 $desktop-mobile-width: 60em;
+@import "base";
+
 $content-margin: 15px;
 
 .standalone {
