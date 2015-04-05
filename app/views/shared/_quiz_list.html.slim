@@ -1,8 +1,8 @@
 ul.card-list.quizzes
   - for quiz in quizzes do
     li
-      a.button href=quiz_path(quiz)
+      a.button href=quiz_path(quiz) target=(@layout == "embedded" ? "_blank" : "")
         h4 = quiz.title
         span.label-title
-          | Taken 
+          ' Taken
           = pluralize(quiz.times_taken, "time")
