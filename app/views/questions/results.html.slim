@@ -18,7 +18,7 @@ h2 How Wrong?
 p.exclamation = @question.answers.find(@vote_answer_id).feedback.text
 
 h2 How Others Answered
-table class="results"
+table.results.js-hidden
   - for answer in @question.answers do
     tr class=((answer.is_correct ? 'correct' : '') + ' ' + (answer.id == @vote_answer_id ? 'vote' : ''))
       td = answer.label

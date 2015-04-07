@@ -4,7 +4,7 @@
 @import "reset";
 
 .js {
-  form button, form input, table.results{
+  .js-hidden {
     display: none;
   }
 }

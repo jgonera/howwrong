@@ -7,6 +7,6 @@ h2 Pick an answer
     - for answer in @question.answers do
       div.button.uppercase.action role="button" tabindex="0"
         label
-          input type="radio" name="answer_id" value=answer.id
+          input.js-hidden type="radio" name="answer_id" value=answer.id
           = answer.label
-  button Submit
+  button.js-hidden Submit
