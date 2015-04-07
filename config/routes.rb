@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'questions#index'
 
+  get 'question/new', to: 'questions#new', as: :new_question
+  post 'question', to: 'questions#create', as: :create_question
   get 'question/:id', to: 'questions#show', as: :question
   patch 'question/:id/vote', to: 'questions#vote', as: :vote_question
   get 'question/:id/results', to: 'questions#results', as: :results_questions

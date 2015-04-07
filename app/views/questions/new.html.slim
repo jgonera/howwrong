@@ -1,0 +1,26 @@
+form
+  fieldset
+    label for="text" Enter a question
+    input type="text" id="text" name="text"
+
+  fieldset
+    legend Enter possible answers
+    - 0.upto(7) do |n|
+      label for="answer_#{n}" = "Answer ##{n}"
+      input type="text" id="answer_#{n}" name="answer_#{n}"
+
+  fieldset
+    legend Choose correct answer
+    - 0.upto(7) do |n|
+      label for="correct_answer" = "Answer ##{n}"
+      input type="radio" id="correct_answer" name="correct_answer" value=n
+
+  fieldset
+    label for="source" What is the source for the correct answer?
+    input type="text" id="source" name="source" placeholder="E.g. New York Times"
+
+  fieldset
+    label for="source_url" What is the URL of the source for the correct answer?
+    input type="text" id="source_url" name="source_url"
+
+  button Done

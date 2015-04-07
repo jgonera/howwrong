@@ -53,6 +53,12 @@ class QuestionsController < BaseQuestionsController
     redirect_to action: 'show', id: Question.find(params[:id]).slug
   end
 
+  def new
+  end
+
+  def create
+  end
+
   private
 
   def set_next_path
