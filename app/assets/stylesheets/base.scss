@@ -173,7 +173,7 @@ section h2 {
   line-height: 1;
 }
 
-#choices {
+.answers {
   padding-top: 10px;
 
   .button {
@@ -398,7 +398,7 @@ nav {
 
 // desktop
 @media all and (min-width: $desktop-mobile-width) {
-  #choices {
+  .answers {
     .button {
       width: 180px;
       margin-right: 10px;
@@ -457,7 +457,7 @@ nav {
 
 // mobile
 @media all and (max-width: $desktop-mobile-width) {
-  #choices {
+  .answers {
     .button {
       width: 48%;
 

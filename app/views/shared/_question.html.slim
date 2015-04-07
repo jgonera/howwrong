@@ -3,7 +3,7 @@ p.question = @question.text
 
 h2 Pick an answer
 = form_for @question, url: vote_path, html: { class: "vote-form" } do
-  div id="choices"
+  div.answers
     - for answer in @question.answers do
       div.button.uppercase.action role="button" tabindex="0"
         label
