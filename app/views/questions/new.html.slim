@@ -12,8 +12,8 @@
   fieldset
     legend Choose correct answer
     - 1.upto(8) do |n|
-      label for="correct_answer" = "Answer ##{n}"
-      input type="radio" id="correct_answer" name="correct_answer" value=n-1
+      label for="correct_answer_#{n}" = "Answer ##{n}"
+      input type="radio" id="correct_answer_#{n}" name="correct_answer" value=n-1
 
   fieldset
     label for="source" What is the source for the correct answer?
