@@ -28,4 +28,43 @@ RSpec.describe QuestionsController do
       expect(response).to redirect_to action: :show, id: question.slug
     end
   end
+
+  describe "POST create", focus:true do
+    let(:params) do
+      {
+        question: {
+          text: "Do I like marshmellows?",
+          source: "Old wisdom",
+          source_url: "http://localhost",
+        },
+        answers: [
+          "Yes",
+          "No",
+        ],
+        correct_answer: 1,
+      }
+    end
+
+    it "creates a question and answers" do
+      expect {
+        post :create, params
+      }.to change { Question.count }.by(1)
+
+      question = Question.first
+
+      expect(question.text).to eql(params[:question][:text])
+      expect(question.source).to eql(params[:question][:source])
+      expect(question.source_url).to eql(params[:question][:source_url])
+      expect(question.answers.lenght).to eql(2)
+      expect(question.answers[0].label).to eql(params[:answers][0])
+      expect(question.answers[1].label).to eql(params[:answers][1])
+      expect(question.answers[1].is_correct).to eql(true)
+    end
+
+    it "redirects to question" do
+      post :create, params
+
+      expect(response).to redirect_to(question_path(Question.first))
+    end
+  end
 end
