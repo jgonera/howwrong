@@ -54,9 +54,31 @@ class QuestionsController < BaseQuestionsController
   end
 
   def new
+    # Do not remove. Renders the view by default.
   end
 
   def create
+    question = Question.new
+    question.text = params[:question][:text]
+    question.source = params[:question][:source]
+    question.source_url = params[:question][:source_url]
+
+    params[:answers].map(&:strip).each_with_index do |label, n|
+      next if label == ""
+
+      answer = Answer.new
+      answer.label = label
+      answer.is_correct = (n == params[:correct_answer].to_i)
+
+      answer.feedback = Feedback.new
+      answer.feedback.text = answer.is_correct ? "You're right!" : "You're wrong!"
+
+      question.answers << answer
+    end
+
+    question.save
+
+    redirect_to action: "show", id: question.slug
   end
 
   private

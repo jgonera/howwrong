@@ -29,7 +29,7 @@ RSpec.describe QuestionsController do
     end
   end
 
-  describe "POST create", focus:true do
+  describe "POST create" do
     let(:params) do
       {
         question: {
@@ -40,6 +40,7 @@ RSpec.describe QuestionsController do
         answers: [
           "Yes",
           "No",
+          "",
         ],
         correct_answer: 1,
       }
@@ -55,7 +56,7 @@ RSpec.describe QuestionsController do
       expect(question.text).to eql(params[:question][:text])
       expect(question.source).to eql(params[:question][:source])
       expect(question.source_url).to eql(params[:question][:source_url])
-      expect(question.answers.lenght).to eql(2)
+      expect(question.answers.length).to eql(2)
       expect(question.answers[0].label).to eql(params[:answers][0])
       expect(question.answers[1].label).to eql(params[:answers][1])
       expect(question.answers[1].is_correct).to eql(true)

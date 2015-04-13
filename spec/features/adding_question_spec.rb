@@ -1,4 +1,4 @@
-RSpec.describe "adding question", focus:true do
+RSpec.describe "adding question" do
   let(:text) { "Do I like marshmellows?" }
   let(:answer_1) { "Yes" }
   let(:answer_2) { "No" }
