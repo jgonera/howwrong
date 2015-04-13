@@ -8,6 +8,8 @@ class Question < ActiveRecord::Base
   # needed for activeadmin (formtastic)
   accepts_nested_attributes_for :answers, allow_destroy: true
 
+  validates :text, :source, :source_url, presence: true
+
   scope :featured, -> { where(is_featured: true) }
 
   # TODO: Create a mixin to share with Quiz
