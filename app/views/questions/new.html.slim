@@ -1,3 +1,11 @@
+- content_for :nav do
+  header.nav-header
+    h1.big-title.quiz-title Add a new question
+    div.js-visible
+      div.progress-bar
+        div style="width: 0;"
+      p.label-title = "3 steps left"
+
 = form_tag({ controller: "questions", action: "create" }, method: "post", class: "form-new")
   fieldset
     label for="text" Enter a question

@@ -3,9 +3,17 @@
 @import "mixins";
 @import "reset";
 
+.js-visible {
+  display: none;
+}
+
 .js {
   .js-hidden {
     display: none;
+  }
+
+  .js-visible {
+    display: block;
   }
 }
 
@@ -239,16 +247,18 @@ section h2 {
   }
 }
 
+.nav-header {
+  h1 {
+    padding-bottom: 8px;
+  }
+}
+
 .big-title {
   font-family: 'Open Sans', sans-serif;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 22px;
   letter-spacing: 0.04em;
-}
-
-.quiz-title {
-  padding-bottom: 8px;
 }
 
 nav {
