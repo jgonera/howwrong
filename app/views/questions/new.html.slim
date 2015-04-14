@@ -1,19 +1,21 @@
-= form_tag({ controller: "questions", action: "create" }, method: "post")
+= form_tag({ controller: "questions", action: "create" }, method: "post", class: "form-new")
   fieldset
     label for="text" Enter a question
-    input type="text" id="text" name="question[text]"
+    textarea id="text" name="question[text]" rows="2" cols="80"
 
   fieldset
-    legend Enter possible answers
+    legend Enter up to eight answers
     - 1.upto(8) do |n|
-      label for="answer_#{n}" = "Answer ##{n}"
-      input type="text" id="answer_#{n}" name="answers[]"
+      label.js-hidden for="answer_#{n}" = "Answer ##{n}"
+      input.answer type="text" id="answer_#{n}" name="answers[]"
 
   fieldset
-    legend Choose correct answer
+    legend Choose the correct answer
     - 1.upto(8) do |n|
-      label for="correct_answer_#{n}" = "Answer ##{n}"
-      input type="radio" id="correct_answer_#{n}" name="correct_answer" value=n-1
+      div.button.checkable.answer role="button" tabindex="0"
+        label
+          input.js-hidden type="radio" id="correct_answer_#{n}" name="correct_answer" value=n-1
+          = "Answer ##{n}"
 
   fieldset
     label for="source" What is the source for the correct answer?
@@ -23,4 +25,4 @@
     label for="source_url" What is the URL of the source for the correct answer?
     input type="text" id="source_url" name="question[source_url]"
 
-  button Done
+  button.button.action Done

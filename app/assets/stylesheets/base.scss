@@ -18,6 +18,12 @@ body, input, textarea {
   font-family: Georgia, serif;
 }
 
+input, textarea {
+  outline: none;
+  border: none;
+  resize: none;
+}
+
 ::-moz-selection {
   @include selection;
 }
@@ -111,6 +117,10 @@ a {
   padding: 17px 19px;
   @include transition(box-shadow .25s, color .25s);
 
+  &, * {
+    cursor: pointer;
+  }
+
   &.uppercase {
     font-family: 'Open Sans', sans-serif;
     color: $grey-color;
@@ -129,12 +139,7 @@ a {
     border: 1px solid #353551;
     font-size: 14px;
 
-    &, * {
-      cursor: pointer;
-    }
-
     &:active {
-      outline: 0;
       @include background-image(linear-gradient(to bottom, #222222 0%, #4655AA 1px));
     }
   }
@@ -143,6 +148,7 @@ a {
     text-decoration: none;
     color: $text-color;
     box-shadow: inset 0px -4px 0 $action-color;
+    outline: 0;
   }
 
   &:active {
@@ -221,9 +227,6 @@ section h2 {
       height: 3em;
       font-size: 15px;
       background: transparent;
-      outline: none;
-      border: none;
-      resize: none;
       font-family: 'Open Sans', sans-serif;
       font-size: 12px;
       font-weight: 600;
