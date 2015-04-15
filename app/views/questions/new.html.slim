@@ -10,14 +10,14 @@
   fieldset.active
     label for="text" Enter a question
     textarea id="text" name="question[text]" rows="2" cols="80"
-    button.button.action.uppercase.icon.next.js-visible Next
+    button.button.action.uppercase.icon.next.js-visible disabled=true Next
 
   fieldset
     legend Enter up to eight answers
     - 1.upto(8) do |n|
       label.js-hidden for="answer_#{n}" = "Answer ##{n}"
       input.answer type="text" id="answer_#{n}" name="answers[]"
-    button.button.action.uppercase.icon.next.js-visible Next
+    button.button.action.uppercase.icon.next.js-visible disabled=true Next
 
   fieldset
     legend Choose the correct answer
@@ -26,12 +26,12 @@
         label
           input.js-hidden type="radio" id="correct_answer_#{n}" name="correct_answer" value=n-1
           = "Answer ##{n}"
-    button.button.action.uppercase.icon.next.js-visible Next
+    button.button.action.uppercase.icon.next.js-visible disabled=true Next
 
   fieldset
     label for="source" What is the source for the correct answer?
     input type="text" id="source" name="question[source]" placeholder="E.g. New York Times"
-    button.button.action.uppercase.icon.next.js-visible Next
+    button.button.action.uppercase.icon.next.js-visible disabled=true Next
 
   fieldset
     label for="source_url" What is the URL of the source for the correct answer?

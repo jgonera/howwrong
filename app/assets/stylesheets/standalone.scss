@@ -91,12 +91,16 @@ footer {
     position: absolute;
     top: 0;
     opacity: 0;
+    visibility: hidden;
 
-    @include transition(opacity .5s);
+    @include transition(visibility 0s 0.5s, opacity .5s);
 
     &.active {
       opacity: 1;
+      visibility: visible;
       z-index: 1;
+
+      @include transition(visibility 0s, opacity .5s);
     }
   }
 }

@@ -141,18 +141,26 @@ a {
 
 
   &.action {
+    $background: #4655AA;
+    $background-disabled: desaturate(lighten($background, 10%), 10%);
+
     color: #e6e6e6;
     text-align: center;
-    @include background-image(linear-gradient(to bottom, #888DB8 0%, #4655AA 1px));
+    @include background-image(linear-gradient(to bottom, #888DB8 0%, $background 1px));
     border: 1px solid #353551;
     font-size: 14px;
 
     &:active {
-      @include background-image(linear-gradient(to bottom, #222222 0%, #4655AA 1px));
+      @include background-image(linear-gradient(to bottom, #222222 0%, $background 1px));
+    }
+
+    &:disabled {
+      cursor: default;
+      @include background-image(linear-gradient(to bottom, #888DB8 0%, $background-disabled 1px));
     }
   }
 
-  &:hover, &:focus {
+  &:hover:enabled, &:focus {
     text-decoration: none;
     color: $text-color;
     box-shadow: inset 0px -4px 0 $action-color;
