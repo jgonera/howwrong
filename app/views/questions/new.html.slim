@@ -4,18 +4,20 @@
     div.js-visible
       div.progress-bar
         div style="width: 0;"
-      p.label-title = "3 steps left"
+      p.label-title
 
 = form_tag({ controller: "questions", action: "create" }, method: "post", class: "form-new")
-  fieldset
+  fieldset.active
     label for="text" Enter a question
     textarea id="text" name="question[text]" rows="2" cols="80"
+    button.button.action.uppercase.icon.next.js-visible Next
 
   fieldset
     legend Enter up to eight answers
     - 1.upto(8) do |n|
       label.js-hidden for="answer_#{n}" = "Answer ##{n}"
       input.answer type="text" id="answer_#{n}" name="answers[]"
+    button.button.action.uppercase.icon.next.js-visible Next
 
   fieldset
     legend Choose the correct answer
@@ -24,13 +26,14 @@
         label
           input.js-hidden type="radio" id="correct_answer_#{n}" name="correct_answer" value=n-1
           = "Answer ##{n}"
+    button.button.action.uppercase.icon.next.js-visible Next
 
   fieldset
     label for="source" What is the source for the correct answer?
     input type="text" id="source" name="question[source]" placeholder="E.g. New York Times"
+    button.button.action.uppercase.icon.next.js-visible Next
 
   fieldset
     label for="source_url" What is the URL of the source for the correct answer?
     input type="text" id="source_url" name="question[source_url]"
-
-  button.button.action Done
+    button.button.action.uppercase Done

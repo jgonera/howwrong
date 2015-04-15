@@ -59,11 +59,14 @@ footer {
     width: 100%;
   }
 
+  input, textarea, .button {
+    margin-bottom: 1em;
+  }
+
   fieldset .answer {
     background: #40363D;
     width: 22.75%;
     margin-right: 3%;
-    margin-bottom: 1em;
     font-family: 'Open Sans', sans-serif;
 
     &.checked {
@@ -76,6 +79,24 @@ footer {
 
     label {
       font-size: 20px;
+    }
+  }
+}
+
+.js .form-new {
+  position: relative;
+  height: 15em;
+
+  fieldset {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+
+    @include transition(opacity .5s);
+
+    &.active {
+      opacity: 1;
+      z-index: 1;
     }
   }
 }
@@ -104,7 +125,7 @@ footer {
     }
   }
 
-  .button.next {
+  #next {
     position: absolute;
     top: 0px;
     right: 0;
@@ -194,7 +215,7 @@ footer {
     }
   }
 
-  .button.next {
+  #next {
     position: fixed;
     z-index: 1;
     top: 5em;

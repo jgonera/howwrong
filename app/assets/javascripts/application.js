@@ -15,3 +15,4 @@
 //= require common
 //= require form
 //= require results
+//= require form_new
